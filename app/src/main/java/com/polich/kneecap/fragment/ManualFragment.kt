@@ -11,11 +11,6 @@ import com.google.android.material.card.MaterialCardView
 
 class ManualFragment (): Fragment() {
 
-//    val bundle = bundleOf(
-//        "URL_TECH" to R.string.url_tech,
-//        "URL_CULTURE" to R.string.url_culture
-//    )
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

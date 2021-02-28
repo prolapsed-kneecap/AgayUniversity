@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.webkit.WebView
 
-
 class WebFragment : Fragment() {
     lateinit var url: String
     override fun onCreateView(
@@ -21,7 +20,3 @@ class WebFragment : Fragment() {
         return WebView(requireContext()).apply { loadUrl(this@WebFragment.url) }
     }
 }
-/*
-enum class URL(var path: String){
-    MANUAL("file:///android_asset/technic.html")
-}*/

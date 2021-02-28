@@ -14,5 +14,9 @@
     <string name="manual_fragment">Справочник</string>
     <string name="game_fragment">Игра</string>
 
+    <string name="level_one">Уровень 1</string>
+    <string name="level">Уровень</string>
+    <string name="levels">Уровни</string>
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

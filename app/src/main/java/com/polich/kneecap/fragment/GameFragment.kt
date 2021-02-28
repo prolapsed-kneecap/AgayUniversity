@@ -69,7 +69,6 @@ class GameFragment : Fragment() {
 
             }
         }
-
         //progressBar.max = PLANS_COUNT_FOR_FINISH
         //progressBar.progressDrawable.setColorFilter(Color.rgb(0, 191, 50), android.graphics.PorterDuff.Mode.SRC_IN)
         progressBar.setProgressTintList(ColorStateList.valueOf(Color.rgb(0, 191, 50)))
@@ -165,10 +164,8 @@ class GameFragment : Fragment() {
             }
         }
         return view
-
-
-
     }
+
     private fun draw(myCanvasView: ImageView, buttonHarvest: Button) {
         MainScope().launch {
             for (i in 1..9) {
@@ -201,7 +198,6 @@ class GameFragment : Fragment() {
         Data.counter = 0
         view?.findNavController()?.navigate(R.id.action_gameFragment_to_resultFragment)
     }
-
 
     fun calculateScore(): MutableList<Int> {
         val score = mutableListOf<Int>()

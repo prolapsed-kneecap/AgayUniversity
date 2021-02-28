@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigate"
-    app:startDestination="@id/gameFragment">
+    app:startDestination="@id/levelSelectionFragment">
 
     <fragment
         android:id="@+id/gameFragment"
@@ -34,5 +34,14 @@
         <argument
             android:name="url"
             android:defaultValue="file:///android_asset/technic.html" />
+    </fragment>
+    <fragment
+        android:id="@+id/levelSelectionFragment"
+        android:name="com.polich.kneecap.fragment.LevelSelectionFragment"
+        android:label="@string/levels"
+        tools:layout="@layout/fragment_level_selection">
+        <action
+            android:id="@+id/action_levelSelectionFragment_to_gameFragment"
+            app:destination="@id/gameFragment" />
     </fragment>
 </navigation>
