@@ -224,7 +224,7 @@ class GameFragment : Fragment() {
         Data.lline[3] += 0.08f
     }
 
-    fun dialogEvent(builder:AlertDialog.Builder, checkedItem1: Int){
+    /*fun dialogEvent(builder:AlertDialog.Builder, checkedItem1: Int){
         var checkedItem = checkedItem1
         builder.setTitle(Eventik.event.eventText+" Выбери инструмент!")
         builder.setSingleChoiceItems(Eventik.instrumentsString, checkedItem) { dialog, which ->
@@ -235,7 +235,7 @@ class GameFragment : Fragment() {
         }
         builder.setNegativeButton("Отмена", null)
         Data.counter =0
-    }
+    }*/
     fun dialogResult(){
         //plantMaster.howIsGoodChoice(cultures[checkedItem], cultures[checkedItem+1])
     }

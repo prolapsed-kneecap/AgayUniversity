@@ -75,5 +75,5 @@ object Eventik{
         "что-то против соринков",
         "Катки"
     )
-    val event = Event("Сорняки!", solutions)
+    /*val event = Event("Сорняки!", solutions)*/
 }
