@@ -31,6 +31,8 @@ class GameFragment : Fragment() {
     val PLANS_COUNT_FOR_FINISH = 4
     val plantMaster = PlantMaster()
     val instrumentMaster = InstrumentMaster()
+    val naturalDisasters = NaturalDisasters(/*конструктор блин*/)
+    val massivchik = naturalDisasters.naturalEventForLevel
 
     internal var titleList: List<String> ?= null
     internal var adapter: ExpandableListAdapter?= null
@@ -238,6 +240,9 @@ class GameFragment : Fragment() {
     }*/
     fun dialogResult(){
         //plantMaster.howIsGoodChoice(cultures[checkedItem], cultures[checkedItem+1])
+    }
+    fun EventAppear(){
+
     }
 
     val data: HashMap<String, List<String>>
