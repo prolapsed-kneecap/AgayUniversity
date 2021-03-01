@@ -8,7 +8,7 @@
     tools:context=".fragment.EventFragment">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/titleEvent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Песчанная буря"
@@ -17,12 +17,40 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:id="@+id/descriptionEvent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="На ваши поля надвигается смерч.
     Вздымая тучи земли и пыли, смерчи могут пронести
     песчанную смесь несколько сотен метров и потерять"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/titleEvent" />
+
+    <RadioGroup
+        android:id="@+id/groupSolutions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/descriptionEvent" >
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </RadioGroup>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
