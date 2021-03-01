@@ -1,14 +1,16 @@
 package com.polich.kneecap
 
+import com.polich.kneecap.TemporaryObject.damageMultiplier
+
 abstract class Event{
     abstract val eventName:String
     abstract val importance:Int
     abstract val description:String
-    abstract fun damage(importance: Int): Int
+    abstract fun Damage(playerScore:Int, importance: Int): Int
 }
 class NaturalDisasters(override val eventName: String, override val importance: Int, override val description: String):Event(){
-    override fun damage(importance: Int): Int {
-        return 3
+    override fun Damage(playerScore:Int, importance: Int): Int {
+        return playerScore-importance*damageMultiplier// damageMultiplier:Int - число на которое будет умножаться важность (зависит от выбраной сложности), пока что хранится в объекте
     }
     val naturalEventForLevel = mutableListOf<NaturalDisasters>(
         NaturalDisasters("Смерч", 1,
@@ -34,8 +36,8 @@ class NaturalDisasters(override val eventName: String, override val importance: 
 }
 
 class ClimateDisasters(override val eventName: String, override val importance: Int, override val description: String):Event(){
-    override fun damage(importance: Int): Int {
-        return 3
+    override fun Damage(playerScore:Int, importance: Int): Int {
+        return playerScore-importance*damageMultiplier// damageMultiplier:Int - число на которое будет умножаться важность (зависит от выбраной сложности), пока что хранится в объекте
     }
     val climateEventForLevel = mutableListOf<ClimateDisasters>(
         ClimateDisasters("Засуха", 3,
@@ -57,8 +59,8 @@ class ClimateDisasters(override val eventName: String, override val importance: 
 }
 
 class Bugs(override val eventName: String, override val importance: Int, override val description: String):Event(){
-    override fun damage(importance: Int): Int {
-        return 3
+    override fun Damage(playerScore:Int, importance: Int): Int {
+        return playerScore-importance*damageMultiplier// damageMultiplier:Int - число на которое будет умножаться важность (зависит от выбраной сложности), пока что хранится в объекте
     }
     val bugs = mutableListOf<Bugs>(
         Bugs("Cаранча", 3,
