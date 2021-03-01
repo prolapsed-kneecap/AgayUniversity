@@ -55,6 +55,7 @@ object Plants {
 object History {
     var plantHistory: MutableList<Culture> = mutableListOf()
 }
+
 object Eventik{
     val solutions:Array<Harvesters> = arrayOf(
         Harvesters("Комбайн")
