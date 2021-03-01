@@ -18,9 +18,9 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import androidx.navigation.findNavController
 import com.polich.kneecap.*
-import com.polich.kneecap.Data.cultures
+import com.polich.kneecap.Plants.cultures
 import com.polich.kneecap.Eventik.instrumentsString
-import com.polich.kneecap.ExpandableListAdapter
+import com.polich.kneecap.adapters.ExpandableListAdapter
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -56,7 +56,7 @@ class GameFragment : Fragment() {
         //progressBar.setProgress(progress, true)
         fun progress() {
             val get_progressBar = progressBar.getProgress()
-            var schet_progressa_po_culturam = Data.counter
+            var schet_progressa_po_culturam = Plants.counter
             var schetchik_progressa = 0
             val currentprogress = 1000
 
@@ -78,7 +78,7 @@ class GameFragment : Fragment() {
         val builderPlant = AlertDialog.Builder(requireContext())
         builderPlant.setTitle("Выберите растение")
         var checkedItem = 0
-        builderPlant.setSingleChoiceItems(Data.plants, checkedItem) { dialog, which ->
+        builderPlant.setSingleChoiceItems(Plants.plants, checkedItem) { dialog, which ->
             checkedItem = which
         }
 
@@ -95,12 +95,12 @@ class GameFragment : Fragment() {
 
                 plantMaster.isPlanted = false
 
-               Data.initFilter()
+               Plants.initFilter()
                 val cmData: FloatArray = floatArrayOf(
-                    Data.rline[0], Data.rline[1], Data.rline[2], Data.rline[3], 0f,
-                    Data.gline[0], Data.gline[1], Data.gline[2], Data.gline[3], 0f,
-                    Data.bline[0], Data.bline[1], Data.bline[2], Data.bline[3], 0f,
-                    Data.lline[0], Data.lline[1], Data.lline[2], Data.lline[3], 0f
+                    Plants.rline[0], Plants.rline[1], Plants.rline[2], Plants.rline[3], 0f,
+                    Plants.gline[0], Plants.gline[1], Plants.gline[2], Plants.gline[3], 0f,
+                    Plants.bline[0], Plants.bline[1], Plants.bline[2], Plants.bline[3], 0f,
+                    Plants.lline[0], Plants.lline[1], Plants.lline[2], Plants.lline[3], 0f
                 )
                 myCanvasView.setColorFilter(ColorMatrixColorFilter(cmData))
                 myCanvasView.invalidate()
@@ -134,18 +134,18 @@ class GameFragment : Fragment() {
                 plantMaster.isPlanted = true
                 plantMaster.isCanHarvest = false
                 draw(myCanvasView, buttonHarvest)
-                History.plantHistory.add(Data.cultures[checkedItem])
-                Data.counter++
+                History.plantHistory.add(Plants.cultures[checkedItem])
+                Plants.counter++
 
                 //Toast.makeText(this, "${plantMaster.howIsGoodChoice(cultures[checkedItem], cultures[checkedItem+1])}", Toast.LENGTH_SHORT).show()
 
-                progressBar.setProgress(Data.counter, true)
-                if (Data.counter == PLANS_COUNT_FOR_FINISH) {
+                progressBar.setProgress(Plants.counter, true)
+                if (Plants.counter == PLANS_COUNT_FOR_FINISH) {
                     //dialogEvent(builder, checkedItem)
                     show_result.text = calculateScore().toString()
                     restartGame()
                 }
-                history.text = (Data.counter).toString() + "/$PLANS_COUNT_FOR_FINISH"
+                history.text = (Plants.counter).toString() + "/$PLANS_COUNT_FOR_FINISH"
                 progress()
             }
         }
@@ -174,10 +174,10 @@ class GameFragment : Fragment() {
                 buttonHarvest.text = "Созревание..."
                 delay(500)
                 val cmData: FloatArray = floatArrayOf(
-                    Data.rline[0], Data.rline[1], Data.rline[2], Data.rline[3], 0f,
-                    Data.gline[0], Data.gline[1], Data.gline[2], Data.gline[3], 0f,
-                    Data.bline[0], Data.bline[1], Data.bline[2], Data.bline[3], 0f,
-                    Data.lline[0], Data.lline[1], Data.lline[2], Data.lline[3], 0f
+                    Plants.rline[0], Plants.rline[1], Plants.rline[2], Plants.rline[3], 0f,
+                    Plants.gline[0], Plants.gline[1], Plants.gline[2], Plants.gline[3], 0f,
+                    Plants.bline[0], Plants.bline[1], Plants.bline[2], Plants.bline[3], 0f,
+                    Plants.lline[0], Plants.lline[1], Plants.lline[2], Plants.lline[3], 0f
                 )
                 val mColorMatrix = ColorMatrix(cmData)
                 val mfilter = ColorMatrixColorFilter(mColorMatrix)
@@ -195,7 +195,7 @@ class GameFragment : Fragment() {
 
     private fun restartGame() {
         History.plantHistory.clear()
-        Data.counter = 0
+        Plants.counter = 0
         view?.findNavController()?.navigate(R.id.action_gameFragment_to_resultFragment)
     }
 
@@ -219,9 +219,9 @@ class GameFragment : Fragment() {
     }
 
     fun lvlup() {
-        Data.rline[1] += 0.15f
-        Data.gline[1] += 0.08f
-        Data.lline[3] += 0.08f
+        Plants.rline[1] += 0.15f
+        Plants.gline[1] += 0.08f
+        Plants.lline[3] += 0.08f
     }
 
     /*fun dialogEvent(builder:AlertDialog.Builder, checkedItem1: Int){

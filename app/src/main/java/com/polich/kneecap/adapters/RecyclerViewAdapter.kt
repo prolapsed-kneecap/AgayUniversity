@@ -1,4 +1,4 @@
-package com.polich.kneecap
+package com.polich.kneecap.adapters
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.card.MaterialCardView
+import com.polich.kneecap.R
 
 class MyRecyclerViewAdapter(var fragment: Fragment, data: ArrayList<String>) :
     RecyclerView.Adapter<MyRecyclerViewAdapter.DataViewHolder>() {

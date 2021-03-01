@@ -1,6 +1,6 @@
 package com.polich.kneecap
 
-object Data {
+object Plants {
     val plants = arrayOf("Рожь", "Овёс", "Пшеница", "Гречиха", "Просо")
 
     var counter = 0

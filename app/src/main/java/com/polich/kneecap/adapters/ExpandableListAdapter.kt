@@ -1,4 +1,4 @@
-package com.polich.kneecap
+package com.polich.kneecap.adapters
 
 import android.content.Context
 import android.graphics.Typeface
@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseExpandableListAdapter
 import android.widget.TextView
+import com.polich.kneecap.R
 import java.util.*
 
 class ExpandableListAdapter internal constructor
