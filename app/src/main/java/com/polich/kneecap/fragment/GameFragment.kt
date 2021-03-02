@@ -238,7 +238,7 @@ class GameFragment : Fragment() {
         }, delay)
         Handler(Looper.getMainLooper()).postDelayed({
             eventFloatingActionButton.visibility = GONE
-        }, 10000)
+        }, 20000)
     }
     fun toRate(checkedItem: Int) {
         var rate = "WRONG"
