@@ -32,6 +32,7 @@ class GameFragment : Fragment() {
     val plantMaster = PlantMaster()
     val instrumentMaster = InstrumentMaster()
 
+
     internal var titleList: List<String> ?= null
     internal var adapter: ExpandableListAdapter?= null
 
@@ -49,6 +50,7 @@ class GameFragment : Fragment() {
         val buttonHarvest: Button = view.findViewById(R.id.sbor_button)
         val history: TextView = view.findViewById(R.id.history)
         val show_result: TextView = view.findViewById(R.id.show_result_check)
+        //val ButtonInstrument:Button = view.findViewById(R.id.TestInstrumentButton)
 
         history.text = "0/$PLANS_COUNT_FOR_FINISH"
 
