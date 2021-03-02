@@ -31,6 +31,8 @@ import com.polich.kneecap.adapters.ExpandableListAdapter
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import kotlin.random.Random
+import kotlin.random.Random.Default.nextLong
 
 class GameFragment : Fragment() {
     var progress : Int = 0
@@ -59,10 +61,6 @@ class GameFragment : Fragment() {
 
         //val ButtonInstrument:Button = view.findViewById(R.id.TestInstrumentButton)
 
-        Handler(Looper.getMainLooper()).postDelayed({
-            eventFloatingActionButton.visibility = VISIBLE
-        }, 10000)
-
         history.text = "0/$PLANS_COUNT_FOR_FINISH"
 
         //progressBar.setProgress(progress, true)
@@ -86,6 +84,7 @@ class GameFragment : Fragment() {
         progressBar.setProgressTintList(ColorStateList.valueOf(Color.rgb(0, 191, 50)))
         val myCanvasView: ImageView = view.findViewById(R.id.myView)
         myCanvasView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
+        myCanvasView.invalidate()
 
         val builderPlant = AlertDialog.Builder(requireContext())
         builderPlant.setTitle("Выберите растение")
@@ -148,6 +147,8 @@ class GameFragment : Fragment() {
             if (plantMaster.isPlanted == true) {
                 Toast.makeText(requireContext(), "Поле уже засажено", Toast.LENGTH_SHORT).show()
             } else {
+                var delay = nextLong(2000)+2000
+                EventButtonAppear(eventFloatingActionButton, delay)
                 plantMaster.isPlanted = true
                 plantMaster.isCanHarvest = false
                 draw(myCanvasView, buttonHarvest)
@@ -224,7 +225,11 @@ class GameFragment : Fragment() {
         }
         return score
     }
-
+    fun EventButtonAppear(eventFloatingActionButton:FloatingActionButton, delay:Long){
+        Handler(Looper.getMainLooper()).postDelayed({
+            eventFloatingActionButton.visibility = VISIBLE
+        }, delay)
+    }
     fun toRate(checkedItem: Int) {
         var rate = "WRONG"
         for (i in 0 until Eventik.solutions.size) {
@@ -256,9 +261,8 @@ class GameFragment : Fragment() {
     fun dialogResult(){
         //plantMaster.howIsGoodChoice(cultures[checkedItem], cultures[checkedItem+1])
     }
-    fun EventAppear(){
 
-    }
+
 
     val data: HashMap<String, List<String>>
         get() {
