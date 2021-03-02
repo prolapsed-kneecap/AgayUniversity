@@ -28,11 +28,10 @@ import kotlinx.coroutines.launch
 class GameFragment : Fragment() {
     var progress : Int = 0
 
-    val PLANS_COUNT_FOR_FINISH = 4
+    var PLANS_COUNT_FOR_FINISH = yearsPlants
     val plantMaster = PlantMaster()
     val instrumentMaster = InstrumentMaster()
-    val naturalDisasters = NaturalDisasters(/*конструктор блин*/)
-    val massivchik = naturalDisasters.naturalEventForLevel
+
 
     internal var titleList: List<String> ?= null
     internal var adapter: ExpandableListAdapter?= null

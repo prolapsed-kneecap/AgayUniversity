@@ -9,7 +9,10 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.card.MaterialCardView
+import com.polich.kneecap.Level
+import com.polich.kneecap.Leveldif.Levelsection
 import com.polich.kneecap.R
+import com.polich.kneecap.fragment.yearsPlants
 
 class MyRecyclerViewAdapter(var fragment: Fragment, data: ArrayList<String>) :
     RecyclerView.Adapter<MyRecyclerViewAdapter.DataViewHolder>() {
@@ -39,6 +42,11 @@ class MyRecyclerViewAdapter(var fragment: Fragment, data: ArrayList<String>) :
             title.text = "Уровень ${data}"
             card.setOnClickListener{
                 val bundle = Bundle()
+                when(data){
+                    "1" -> yearsPlants =+ Levelsection[0].years
+                    "2" -> yearsPlants =+ Levelsection[1].years
+                    "3" -> yearsPlants =+ Levelsection[2].years
+                }
                 bundle.putString("POLE", data)
                 fragment.requireActivity().findNavController(R.id.nav_host_fragment)
                     .navigate(R.id.action_levelSelectionFragment_to_gameFragment, bundle)
