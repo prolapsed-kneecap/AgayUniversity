@@ -97,15 +97,14 @@
       android:id="@+id/eventFloatingActionButton"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:layout_marginStart="4dp"
-      android:layout_marginLeft="4dp"
-      android:layout_marginTop="4dp"
       android:clickable="true"
       android:src="@drawable/priority_high"
-      android:visibility="gone"
-      app:backgroundTint="#FD5925"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/myView" />
+      android:visibility="visible"
+      android:layout_marginRight="16dp"
+      android:layout_marginBottom="16dp"
+      app:backgroundTint="#FFC400"
+      app:layout_constraintBottom_toBottomOf="@+id/myView"
+      app:layout_constraintEnd_toEndOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
