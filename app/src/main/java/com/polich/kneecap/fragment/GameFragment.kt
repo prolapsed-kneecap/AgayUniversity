@@ -1,22 +1,29 @@
 package com.polich.kneecap.fragment
 
 import android.animation.ObjectAnimator
+import android.content.Intent
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.graphics.ColorMatrix
 import android.graphics.ColorMatrixColorFilter
 import android.os.Build
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.widget.*
 import android.widget.Toast.LENGTH_SHORT
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import androidx.navigation.findNavController
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.polich.kneecap.*
 import com.polich.kneecap.Plants.cultures
 import com.polich.kneecap.Eventik.instrumentsString
@@ -31,7 +38,7 @@ class GameFragment : Fragment() {
     val PLANS_COUNT_FOR_FINISH = LevelSelectionFragment.yearsPlants
     val plantMaster = PlantMaster()
     val instrumentMaster = InstrumentMaster()
-
+    val eventFragment:Fragment = EventFragment()
     internal var titleList: List<String> ?= null
     internal var adapter: ExpandableListAdapter?= null
 
@@ -48,7 +55,13 @@ class GameFragment : Fragment() {
         val buttonHarvest: Button = view.findViewById(R.id.sbor_button)
         val history: TextView = view.findViewById(R.id.history)
         val show_result: TextView = view.findViewById(R.id.show_result_check)
+        val eventFloatingActionButton:FloatingActionButton = view.findViewById(R.id.eventFloatingActionButton)
+
         //val ButtonInstrument:Button = view.findViewById(R.id.TestInstrumentButton)
+
+        Handler(Looper.getMainLooper()).postDelayed({
+            eventFloatingActionButton.visibility = VISIBLE
+        }, 10000)
 
         history.text = "0/$PLANS_COUNT_FOR_FINISH"
 
@@ -77,6 +90,11 @@ class GameFragment : Fragment() {
         val builderPlant = AlertDialog.Builder(requireContext())
         builderPlant.setTitle("Выберите растение")
         var checkedItem = 0
+
+        eventFloatingActionButton.setOnClickListener {
+            view?.findNavController()?.navigate(R.id.eventFragment)
+        }
+
         builderPlant.setSingleChoiceItems(Plants.plants, checkedItem) { dialog, which ->
             checkedItem = which
         }
