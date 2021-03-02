@@ -1,9 +1,10 @@
 package com.polich.kneecap
 
 object LevelDif {
-    val easyLevelEvent: MutableList<Event> = mutableListOf(naturalEventForLevel.naturalEvent[0], climateEventForLevel.climateEvent[2], bugs.bugs[0])
-    val mediumLevelEvent: MutableList<Event> = mutableListOf(naturalEventForLevel.naturalEvent[0], climateEventForLevel.climateEvent[1], bugs.bugs[4])
-    val hardLevelEvent: MutableList<Event> = mutableListOf(naturalEventForLevel.naturalEvent[1], climateEventForLevel.climateEvent[0], bugs.bugs[3])
+    val easyLevelEvent: MutableList<Event> = mutableListOf(naturalEventForLevel.naturalEvent[0], climateEventForLevel.climateEvent[2], bugsEventForLevel.bugsEvent[0])
+    val mediumLevelEvent: MutableList<Event> = mutableListOf(naturalEventForLevel.naturalEvent[0], climateEventForLevel.climateEvent[1], bugsEventForLevel.bugsEvent[4])
+    val hardLevelEvent: MutableList<Event> = mutableListOf(naturalEventForLevel.naturalEvent[1], climateEventForLevel.climateEvent[0], bugsEventForLevel.bugsEvent[3])
+
     val LevelSection: List<Level> = listOf(
         Level("1", 3, 4, easyLevelEvent),
         Level("2", 4, 6, mediumLevelEvent),
@@ -68,36 +69,36 @@ object climateEventForLevel {
         )
     )
 }
-object bugs {
-    val bugs = mutableListOf<Bugs>(
-        Bugs(
+object bugsEventForLevel {
+    val bugsEvent = mutableListOf<Bugsss>(
+        Bugsss(
             "Cаранча", 3,
             "Ваше хойзяйстов под большой угрозой. Нашестиве саранчи! Всеядный вредитель, с наибольшей активностью питания в ранние утренние и " +
                     "вечерние часы, когда отсутствует пик жары. Одна особь съедает до 500 г растений" +
                     " с разной плотностью вегетативных и генеративных органов (листьев, цветов, " +
                     "молодых веток, стеблей, плодов)."
         ),
-        Bugs(
+        Bugsss(
             "Совка", 3,
             "В старину Cовку за ее вредоносность называли северной саранчой и озимым червем. " +
                     "Личинки выедают прорастающие семена пшеницы, отчего происходит прореживание всходов, " +
                     "и образуются оголенные участки поля."
         ),
-        Bugs(
+        Bugsss(
             "Хлебный жук", 3,
             "Цепкими лапками эти хлебные жуки перебирают колоски и перелетают на новые " +
                     "растения в поисках пищи. В просторечье этого жука называют «хлебным кузькой». " +
                     "Но, не смотря на такое милое название, этот жук является одним из самых злостных" +
                     " массовых вредителей посевов. Эти вредители наносят колоссальный урон сельскому хозяйству."
         ),
-        Bugs(
+        Bugsss(
             "Шведская мушка", 3,
             "Самый большой вред сельскохозяйственным культурам причиняют личинки шведских мух, " +
                     "которые выедают злаки и близлежащие ткани. В результате у злаков отмирают центральные " +
                     "листья, что приводит к замедлению роста растения или к полной его гибели. Личинки поедают " +
                     "зерна, не давая им созреть, что приводит к снижению урожая."
         ),
-        Bugs(
+        Bugsss(
             "Жук-щелкун", 3,
             "Ваши растения под большой угрозой. " +
                     "Жук-щелкун причиняет огромный вред сельскохозяйственным угодьям. " +
@@ -109,6 +110,6 @@ object bugs {
                     "этих вредителей следует принимать предупредительные меры, поскольку " +
                     "если он уже заведется, то избавиться от него будет крайне проблематично."
         ),
-        Bugs("", 3, ""),
+        Bugsss("", 3, ""),
     )
 }
