@@ -68,14 +68,6 @@ object Eventik{
         Harvesters("Культиватор"),
         Harvesters("Катки"),
     )
-    var instrumentsString:Array<String> = arrayOf(
-        "Плуг",
-        "Борона",
-        "Лущильник",
-        "Комбайн",
-        "что-то против соринков",
-        "Катки"
-    )
     /*val event = Event("Сорняки!", solutions)*/
 }
 object TemporaryObject /*Временно существующий объект*/{
