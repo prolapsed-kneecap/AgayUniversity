@@ -18,6 +18,7 @@ import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.widget.*
+import android.widget.Toast.LENGTH_SHORT
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.FragmentManager
@@ -25,6 +26,10 @@ import androidx.fragment.app.FragmentTransaction
 import androidx.navigation.findNavController
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.polich.kneecap.*
+import com.polich.kneecap.LevelDif.easyLevelEvent
+import com.polich.kneecap.Plants.cultures
+//import com.polich.kneecap.Eventik.instrumentsString
+//import com.polich.kneecap.adapters.ExpandableListAdapter
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -36,9 +41,11 @@ class GameFragment : Fragment() {
     val PLANS_COUNT_FOR_FINISH = LevelSelectionFragment.yearsPlants
     val plantMaster = PlantMaster()
     val instrumentMaster = InstrumentMaster()
-    val eventFragment:Fragment = EventFragment()
+
+
     internal var titleList: List<String> ?= null
     internal var adapter: ExpandableListAdapter?= null
+
 
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreateView(
@@ -75,6 +82,7 @@ class GameFragment : Fragment() {
 
             }
         }
+
         //progressBar.max = PLANS_COUNT_FOR_FINISH
         //progressBar.progressDrawable.setColorFilter(Color.rgb(0, 191, 50), android.graphics.PorterDuff.Mode.SRC_IN)
         progressBar.setProgressTintList(ColorStateList.valueOf(Color.rgb(0, 191, 50)))
@@ -87,7 +95,10 @@ class GameFragment : Fragment() {
         var checkedItem = 0
 
         eventFloatingActionButton.setOnClickListener {
-            view?.findNavController()?.navigate(R.id.eventFragment)
+            val bundle = Bundle()
+            bundle.putString("level",requireArguments().getString("level"))
+            Log.e("data",requireArguments().getString("level").toString())
+            view?.findNavController()?.navigate(R.id.eventFragment, bundle)
         }
 
         builderPlant.setSingleChoiceItems(Plants.plants, checkedItem) { dialog, which ->
@@ -119,25 +130,25 @@ class GameFragment : Fragment() {
                 progressBar.setProgress(0)
             }
         }
-        /*ButtonInstrument.setOnClickListener {
-            if (instrumentMaster.instrumentCanBeUsed){
-                val builderInstrument = AlertDialog.Builder(requireContext())
-                builderInstrument.setTitle("Выберите инструмент к растению "+cultures[checkedItem].name)
-                var checkedItemInstrument = 1
-                builderInstrument.setSingleChoiceItems(instrumentsString, checkedItemInstrument) { dialog, which ->
-                    checkedItemInstrument = which }
-                builderInstrument.setPositiveButton("OK") { dialogInstruments, which ->
-                    Toast.makeText(requireContext(), instrumentMaster.InstrumentUse(harvesters[checkedItemInstrument], cultures[checkedItem]), LENGTH_SHORT).show()
-                    instrumentMaster.instrumentCanBeUsed=false
-                }
-                builderInstrument.setNegativeButton("Отмена", null)
-                val dialogInstrument = builderInstrument.create()
-                dialogInstrument.show()
-            }
-            else{
-                Toast.makeText(requireContext(), "Инструмент уже был использован", LENGTH_SHORT).show()
-            }
-        }*/
+//        ButtonInstrument.setOnClickListener {
+//            if (instrumentMaster.instrumentCanBeUsed){
+//                val builderInstrument = AlertDialog.Builder(requireContext())
+//                builderInstrument.setTitle("Выберите инструмент к растению "+cultures[checkedItem].name)
+//                var checkedItemInstrument = 1
+//                builderInstrument.setSingleChoiceItems(instrumentsString, checkedItemInstrument) { dialog, which ->
+//                    checkedItemInstrument = which }
+//                builderInstrument.setPositiveButton("OK") { dialogInstruments, which ->
+//                    Toast.makeText(requireContext(), instrumentMaster.InstrumentUse(harvesters[checkedItemInstrument], cultures[checkedItem]), LENGTH_SHORT).show()
+//                    instrumentMaster.instrumentCanBeUsed=false
+//                }
+//                builderInstrument.setNegativeButton("Отмена", null)
+//                val dialogInstrument = builderInstrument.create()
+//                dialogInstrument.show()
+//            }
+//            else{
+//                Toast.makeText(requireContext(), "Инструмент уже был использован", LENGTH_SHORT).show()
+//            }
+//        }
 
         builderPlant.setPositiveButton("OK") { dialog, which ->
             if (plantMaster.isPlanted == true) {
@@ -165,6 +176,18 @@ class GameFragment : Fragment() {
         }
         builderPlant.setNegativeButton("Отмена", null)
 
+//        val expandableListView = view.findViewById<ExpandableListView>(R.id.listview)
+//        expandedListView.let{
+//            val listData = data
+//            titleList = ArrayList(listData.keys)
+//            adapter = ExpandableListAdapter(requireContext(), titleList as ArrayList<String>, listData)
+//            expandableListView.setAdapter(adapter)
+//            expandableListView.setOnGroupExpandListener { groupPosition ->  }
+//            expandableListView.setOnGroupCollapseListener { groupPosition ->  }
+//            expandableListView.setOnChildClickListener { parent, v, groupPosition, childPosition, id ->
+//                false
+//            }
+//        }
         return view
     }
 
@@ -248,8 +271,9 @@ class GameFragment : Fragment() {
     fun dialogResult(){
         //plantMaster.howIsGoodChoice(cultures[checkedItem], cultures[checkedItem+1])
     }
+    fun EventAppear(){
 
-
+    }
 
     val data: HashMap<String, List<String>>
         get() {
@@ -263,4 +287,4 @@ class GameFragment : Fragment() {
 
             return listData
         }
-    }
+}

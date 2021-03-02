@@ -8,8 +8,12 @@ import android.view.ViewGroup
 import androidx.navigation.findNavController
 import com.polich.kneecap.R
 import com.google.android.material.card.MaterialCardView
+import com.polich.kneecap.LevelDif
+import com.polich.kneecap.LevelDif.easyLevelEvent
 
 class ManualFragment (): Fragment() {
+
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -18,7 +22,7 @@ class ManualFragment (): Fragment() {
         val view = inflater.inflate(R.layout.fragment_manual, container, false)
         val card_tech: MaterialCardView = view.findViewById(R.id.card_tech)
         val card_culture: MaterialCardView = view.findViewById(R.id.card_culture)
-
+        LevelDif.easyLevelEvent
         card_tech.setOnClickListener{
             val bundle = Bundle()
             bundle.putString("key", "URL_TECH")
