@@ -25,7 +25,7 @@ class MyRecyclerViewAdapter(var fragment: Fragment, data: ArrayList<String>) :
     }
 
     override fun onBindViewHolder(holder: DataViewHolder, position: Int) {
-        holder.onBing(mData[position])
+        holder.onBing(mData[position],position)
         //holder.title.text = mData[position]
     }
 
@@ -37,7 +37,7 @@ class MyRecyclerViewAdapter(var fragment: Fragment, data: ArrayList<String>) :
         var card: MaterialCardView = itemView.findViewById(R.id.item_level)
         var title: TextView = itemView.findViewById(R.id.info_text)
 
-        fun onBing(data: String){
+        fun onBing(data: String, position: Int){
             title.text = "Уровень ${data}"
             card.setOnClickListener{
                 val bundle = Bundle()
@@ -46,6 +46,13 @@ class MyRecyclerViewAdapter(var fragment: Fragment, data: ArrayList<String>) :
                     "2" -> yearsPlants =+ LevelSection[1].years
                     "3" -> yearsPlants =+ LevelSection[2].years
                 }
+                var levelw = ""
+                when(position){
+                    0 -> levelw = "easy"
+                    1 -> levelw = "medium"
+                    2 -> levelw = "hard"
+                }
+                bundle.putString("level",levelw)
                 bundle.putString("POLE", data)
                 fragment.requireActivity().findNavController(R.id.nav_host_fragment)
                     .navigate(R.id.action_levelSelectionFragment_to_gameFragment, bundle)
