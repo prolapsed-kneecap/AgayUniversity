@@ -25,7 +25,7 @@
     <fragment
         android:id="@+id/eventFragment"
         android:name="com.polich.kneecap.fragment.EventFragment"
-        android:label="@string/result_fragment"
+        android:label="@string/event_fragment"
         tools:layout="@layout/fragment_event" />
     <fragment
         android:id="@+id/webFragment"

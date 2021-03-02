@@ -13,6 +13,7 @@
     <string name="result_fragment">Результаты</string>
     <string name="manual_fragment">Справочник</string>
     <string name="game_fragment">Игра</string>
+ашч    <string name="event_fragment">Событие</string>
 
     <string name="level_one">Уровень 1</string>
     <string name="level">Уровень</string>
