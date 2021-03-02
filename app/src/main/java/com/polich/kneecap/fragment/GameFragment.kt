@@ -14,6 +14,7 @@ import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.widget.*
@@ -211,6 +212,9 @@ class GameFragment : Fragment() {
     fun EventButtonAppear(eventFloatingActionButton:FloatingActionButton, delay:Long){
         Handler(Looper.getMainLooper()).postDelayed({
             eventFloatingActionButton.visibility = VISIBLE
+        }, delay)
+        Handler(Looper.getMainLooper()).postDelayed({
+            eventFloatingActionButton.visibility = GONE
         }, delay)
     }
     fun toRate(checkedItem: Int) {
