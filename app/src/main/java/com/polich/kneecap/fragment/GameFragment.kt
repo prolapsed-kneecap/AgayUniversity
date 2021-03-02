@@ -17,7 +17,6 @@ import android.view.View
 import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.widget.*
-import android.widget.Toast.LENGTH_SHORT
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.FragmentManager
@@ -25,13 +24,9 @@ import androidx.fragment.app.FragmentTransaction
 import androidx.navigation.findNavController
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.polich.kneecap.*
-import com.polich.kneecap.Plants.cultures
-import com.polich.kneecap.Eventik.instrumentsString
-import com.polich.kneecap.adapters.ExpandableListAdapter
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import kotlin.random.Random
 import kotlin.random.Random.Default.nextLong
 
 class GameFragment : Fragment() {
@@ -169,18 +164,6 @@ class GameFragment : Fragment() {
         }
         builderPlant.setNegativeButton("Отмена", null)
 
-        val expandableListView = view.findViewById<ExpandableListView>(R.id.listview)
-        expandedListView.let{
-            val listData = data
-            titleList = ArrayList(listData.keys)
-            adapter = ExpandableListAdapter(requireContext(), titleList as ArrayList<String>, listData)
-            expandableListView.setAdapter(adapter)
-            expandableListView.setOnGroupExpandListener { groupPosition ->  }
-            expandableListView.setOnGroupCollapseListener { groupPosition ->  }
-            expandableListView.setOnChildClickListener { parent, v, groupPosition, childPosition, id ->
-                false
-            }
-        }
         return view
     }
 
@@ -276,4 +259,5 @@ class GameFragment : Fragment() {
 
             return listData
         }
+    }
 }
