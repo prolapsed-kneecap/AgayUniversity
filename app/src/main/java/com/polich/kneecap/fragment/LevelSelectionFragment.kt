@@ -23,7 +23,7 @@ class LevelSelectionFragment : Fragment() {
 
         val level = arrayListOf("1", "2", "3", "4")
         val recycler : RecyclerView = view.findViewById(R.id.recyclerLevel)
-        val columns : Int = 2
+        val columns : Int = 1
 
         recycler.layoutManager = GridLayoutManager(requireContext(), columns)
 

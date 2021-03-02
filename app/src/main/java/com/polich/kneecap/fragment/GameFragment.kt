@@ -31,8 +31,6 @@ class GameFragment : Fragment() {
     val PLANS_COUNT_FOR_FINISH = 4
     val plantMaster = PlantMaster()
     val instrumentMaster = InstrumentMaster()
-    val naturalDisasters = NaturalDisasters(/*конструктор блин*/)
-    val massivchik = naturalDisasters.naturalEventForLevel
 
     internal var titleList: List<String> ?= null
     internal var adapter: ExpandableListAdapter?= null
@@ -51,7 +49,6 @@ class GameFragment : Fragment() {
         val buttonHarvest: Button = view.findViewById(R.id.sbor_button)
         val history: TextView = view.findViewById(R.id.history)
         val show_result: TextView = view.findViewById(R.id.show_result_check)
-        val ButtonInstrument:Button = view.findViewById(R.id.TestInstrumentButton)
 
         history.text = "0/$PLANS_COUNT_FOR_FINISH"
 
@@ -109,7 +106,7 @@ class GameFragment : Fragment() {
                 progressBar.setProgress(0)
             }
         }
-        ButtonInstrument.setOnClickListener {
+        /*ButtonInstrument.setOnClickListener {
             if (instrumentMaster.instrumentCanBeUsed){
                 val builderInstrument = AlertDialog.Builder(requireContext())
                 builderInstrument.setTitle("Выберите инструмент к растению "+cultures[checkedItem].name)
@@ -127,7 +124,7 @@ class GameFragment : Fragment() {
             else{
                 Toast.makeText(requireContext(), "Инструмент уже был использован", LENGTH_SHORT).show()
             }
-        }
+        }*/
 
         builderPlant.setPositiveButton("OK") { dialog, which ->
             if (plantMaster.isPlanted == true) {

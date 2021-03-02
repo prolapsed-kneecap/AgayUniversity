@@ -1,5 +1,4 @@
 package com.polich.kneecap
-
 import com.polich.kneecap.TemporaryObject.damageMultiplier
 
 abstract class Event{
@@ -12,7 +11,7 @@ class NaturalDisasters(override val eventName: String, override val importance: 
     override fun Damage(playerScore:Int, importance: Int): Int {
         return playerScore-importance*damageMultiplier// damageMultiplier:Int - число на которое будет умножаться важность (зависит от выбраной сложности), пока что хранится в объекте
     }
-    val naturalEventForLevel = mutableListOf<NaturalDisasters>(
+    /*val naturalEventForLevel = mutableListOf<NaturalDisasters>(
         NaturalDisasters("Смерч", 1,
             "На ваши поля надвигается смерч. " +
                     "Вздымая тучи земли и пыли, смерчи могут пронести " +
@@ -32,14 +31,14 @@ class NaturalDisasters(override val eventName: String, override val importance: 
                     "Дожди способствуют увеличению слизней и улиток."),
         NaturalDisasters("Пыльная буря", 2,
             "Разрушение почвенного покрова негативно влияет на урожйности."),
-    )
+    )*/
 }
 
 class ClimateDisasters(override val eventName: String, override val importance: Int, override val description: String):Event(){
     override fun Damage(playerScore:Int, importance: Int): Int {
         return playerScore-importance*damageMultiplier// damageMultiplier:Int - число на которое будет умножаться важность (зависит от выбраной сложности), пока что хранится в объекте
     }
-    val climateEventForLevel = mutableListOf<ClimateDisasters>(
+    /*val climateEventForLevel = mutableListOf<ClimateDisasters>(
         ClimateDisasters("Засуха", 3,
             " Палящее солнце иссушило сочные, высотой по колено золотистые травы до" +
                     " самой сердцевины, каждая травинка стала хрусткой и ломкой. Это " +
@@ -55,14 +54,14 @@ class ClimateDisasters(override val eventName: String, override val importance: 
         ClimateDisasters("Похолодание", 1,
             "Заморозки наносят существенный материальный ущерб сельскому хозяйству. " +
                     "Особенно чувствительны к заморозкам теплолюбивые культуры.")
-    )
+    )*/
 }
 
 class Bugs(override val eventName: String, override val importance: Int, override val description: String):Event(){
     override fun Damage(playerScore:Int, importance: Int): Int {
         return playerScore-importance*damageMultiplier// damageMultiplier:Int - число на которое будет умножаться важность (зависит от выбраной сложности), пока что хранится в объекте
     }
-    val bugs = mutableListOf<Bugs>(
+    /*val bugs = mutableListOf<Bugs>(
         Bugs("Cаранча", 3,
             "Ваше хойзяйстов под большой угрозой. Нашестиве саранчи! Всеядный вредитель, с наибольшей активностью питания в ранние утренние и " +
                     "вечерние часы, когда отсутствует пик жары. Одна особь съедает до 500 г растений" +
@@ -93,7 +92,5 @@ class Bugs(override val eventName: String, override val importance: Int, overrid
                     "этих вредителей следует принимать предупредительные меры, поскольку " +
                     "если он уже заведется, то избавиться от него будет крайне проблематично."),
         Bugs("", 3, ""),
-    )
-
-
+    )*/
 }
