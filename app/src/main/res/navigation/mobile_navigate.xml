@@ -13,12 +13,20 @@
         <action
             android:id="@+id/action_gameFragment_to_resultFragment"
             app:destination="@id/resultFragment" />
+        <action
+            android:id="@+id/action_gameFragment_to_eventFragment"
+            app:destination="@id/eventFragment" />
     </fragment>
     <fragment
         android:id="@+id/resultFragment"
         android:name="com.polich.kneecap.fragment.ResultFragment"
         android:label="@string/result_fragment"
         tools:layout="@layout/fragment_result" />
+    <fragment
+        android:id="@+id/eventFragment"
+        android:name="com.polich.kneecap.fragment.EventFragment"
+        android:label="@string/result_fragment"
+        tools:layout="@layout/fragment_event" />
     <fragment
         android:id="@+id/webFragment"
         android:name="com.polich.kneecap.fragment.WebFragment"
