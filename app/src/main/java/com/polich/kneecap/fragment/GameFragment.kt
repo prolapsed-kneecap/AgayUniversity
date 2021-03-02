@@ -94,8 +94,9 @@ class GameFragment : Fragment() {
         eventFloatingActionButton.setOnClickListener {
             val bundle = Bundle()
             bundle.putString("level",requireArguments().getString("level"))
-            Log.e("data",requireArguments().getString("level").toString())
-            view?.findNavController()?.navigate(R.id.eventFragment, bundle)
+            bundle.putString("POLE", requireArguments().getString("POLE"))
+
+            view?.findNavController()?.navigate(R.id.action_gameFragment_to_eventFragment, bundle)
         }
 
         builderPlant.setSingleChoiceItems(Plants.plants, checkedItem) { dialog, which ->
