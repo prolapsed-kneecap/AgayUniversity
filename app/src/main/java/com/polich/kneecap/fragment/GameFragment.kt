@@ -20,6 +20,7 @@ import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.widget.*
+import android.widget.Toast.LENGTH_SHORT
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import androidx.navigation.findNavController
@@ -174,7 +175,23 @@ class GameFragment : Fragment() {
                 Toast.makeText(requireContext(), "Поле уже засажено", Toast.LENGTH_SHORT).show()
             } else {
                 var delay = nextLong(2000)+2000
-                EventButtonAppear(eventFloatingActionButton, delay)
+                val bundle = Bundle()
+
+                bundle.putString("level",requireArguments().getString("level"))
+                bundle.putString("POLE", requireArguments().getString("POLE"))
+
+                val level = bundle.getString("POLE")
+                if(level != null){
+                    when(level){
+                        1.toString() -> TemporaryObject.amountOfHappendEvents = LevelDif.levelSection[0].amountOfEvents
+                        2.toString() -> TemporaryObject.amountOfHappendEvents = LevelDif.levelSection[1].amountOfEvents
+                        3.toString() ->  TemporaryObject.amountOfHappendEvents = LevelDif.levelSection[2].amountOfEvents
+                    }
+                }
+                TemporaryObject.amountOfHappendEvents-=1
+                if (TemporaryObject.amountOfHappendEvents>1){
+                    EventButtonAppear(eventFloatingActionButton, delay)
+                }
                 plantMaster.isPlanted = true
                 plantMaster.isCanHarvest = false
                 draw(myCanvasView, buttonHarvest)
