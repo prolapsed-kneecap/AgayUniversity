@@ -10,6 +10,8 @@ import android.widget.TextView
 import androidx.navigation.findNavController
 import com.google.android.material.button.MaterialButton
 import com.polich.kneecap.*
+import com.polich.kneecap.data.Event
+import com.polich.kneecap.data.LevelDif
 import kotlin.random.Random
 
 class EventFragment : Fragment() {
@@ -52,7 +54,7 @@ class EventFragment : Fragment() {
 
         return view
     }
-    fun getRandomEvent():Event{
+    fun getRandomEvent(): Event {
         var randIndex = Random.nextInt(current_level.size-1)
         try{
             return current_level[randIndex]

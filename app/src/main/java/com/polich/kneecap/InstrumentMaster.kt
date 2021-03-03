@@ -1,8 +1,9 @@
 package com.polich.kneecap
 
+import com.polich.kneecap.data.Culture
+import com.polich.kneecap.data.Plants
+
 class Harvesters(val name:String){}
-class Cultivator(val name: String){}
-class Chemicals(val name:String){}
 
 class InstrumentMaster(){
     var instrumentCanBeUsed = true
@@ -31,9 +32,3 @@ var harvesters:MutableList<Harvesters> = mutableListOf(
     Harvesters("что-то против соринков"),
     Harvesters("Катки"),
 )
-
-
-
-
-
-

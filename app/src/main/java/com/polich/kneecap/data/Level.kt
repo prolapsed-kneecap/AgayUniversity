@@ -1,10 +1,12 @@
-package com.polich.kneecap
+package com.polich.kneecap.data
 
 object LevelDif {
      val easyLevelEvent: MutableList<Event> = mutableListOf(naturalEventForLevel.naturalEvent[0], climateEventForLevel.climateEvent[2], bugsEventForLevel.bugsEvent[0])
-     val mediumLevelEvent: MutableList<Event> = mutableListOf(bugsEventForLevel.bugsEvent[2],
+     val mediumLevelEvent: MutableList<Event> = mutableListOf(
+         bugsEventForLevel.bugsEvent[2],
          naturalEventForLevel.naturalEvent[0], climateEventForLevel.climateEvent[1], bugsEventForLevel.bugsEvent[4])
-     val hardLevelEvent: MutableList<Event> = mutableListOf(bugsEventForLevel.bugsEvent[0], naturalEventForLevel.naturalEvent[1],
+     val hardLevelEvent: MutableList<Event> = mutableListOf(
+         bugsEventForLevel.bugsEvent[0], naturalEventForLevel.naturalEvent[1],
          climateEventForLevel.climateEvent[0], bugsEventForLevel.bugsEvent[3], naturalEventForLevel.naturalEvent[3])
 
     val levelSection: List<Level> = listOf(

@@ -8,8 +8,7 @@ import android.view.ViewGroup
 import androidx.navigation.findNavController
 import com.polich.kneecap.R
 import com.google.android.material.card.MaterialCardView
-import com.polich.kneecap.LevelDif
-import com.polich.kneecap.LevelDif.easyLevelEvent
+import com.polich.kneecap.data.LevelDif
 
 class ManualFragment (): Fragment() {
 

@@ -1,9 +1,5 @@
 package com.polich.kneecap.fragment
 
-import android.media.AudioAttributes
-import android.media.AudioManager
-import android.media.SoundPool
-import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.polich.kneecap.LevelDif.levelSection
+import com.polich.kneecap.data.LevelDif.levelSection
 import com.polich.kneecap.adapters.MyRecyclerViewAdapter
 import com.polich.kneecap.R
 

@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.card.MaterialCardView
-import com.polich.kneecap.LevelDif.levelSection
+import com.polich.kneecap.data.LevelDif.levelSection
 import com.polich.kneecap.R
 import com.polich.kneecap.fragment.LevelSelectionFragment.Companion.yearsPlants
 

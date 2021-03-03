@@ -1,16 +1,17 @@
 package com.polich.kneecap
 
-
+import com.polich.kneecap.data.Culture
+import com.polich.kneecap.data.Plants.cultures
 
 class PlantMaster {
     var isPlanted = false
     var isCanHarvest = false
     private val positiveMap = mutableMapOf<Culture, List<Culture>>(
-        Plants.cultures[0] to listOf(Plants.cultures[1], Plants.cultures[2]),
-        Plants.cultures[1] to listOf(Plants.cultures[0], Plants.cultures[2]),
-        Plants.cultures[2] to listOf(Plants.cultures[1], Plants.cultures[0]),
-        Plants.cultures[3] to listOf(Plants.cultures[1], Plants.cultures[0]),
-        Plants.cultures[4] to listOf(Plants.cultures[1], Plants.cultures[0])
+        cultures[0] to listOf(cultures[1], cultures[2]),
+        cultures[1] to listOf(cultures[0], cultures[2]),
+        cultures[2] to listOf(cultures[1], cultures[0]),
+        cultures[3] to listOf(cultures[1], cultures[0]),
+        cultures[4] to listOf(cultures[1], cultures[0])
     )
 
     fun howIsGoodChoice(prev : Culture, next : Culture) : Int{

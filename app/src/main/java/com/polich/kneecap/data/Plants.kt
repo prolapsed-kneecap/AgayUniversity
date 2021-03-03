@@ -1,4 +1,6 @@
-package com.polich.kneecap
+package com.polich.kneecap.data
+
+import com.polich.kneecap.Harvesters
 
 object Plants {
     val plants = arrayOf("Рожь", "Овёс", "Пшеница", "Гречиха", "Просо")
@@ -21,15 +23,18 @@ object Plants {
         lline = floatArrayOf(0f, 0f, 0f, 0.9f)
     }
 
-    val cultures: List<Culture> = listOf(
-        Culture("Рожь", "Озимые", "Зерновые", "Многолетние"),
-        Culture("Овёс", "Озимые", "Зерновые", "Многолетние"),
-        Culture("Пшеница", "Озимые", "Зерновые", "Многолетние"),
-        Culture("Гречиха", "Озимые", "Зерновые", "Многолетние"),
-        Culture("Просо", "Озимые", "Зерновые", "Многолетние"),
-        Culture("Подсолнечник", "Озимые", "Зерновые", "Многолетние"),
-        Culture("Горох", "Озимые", "Зернобобовые", "Многолетние"),
-        Culture("Картофель", "Озимые", "КоромовыеКорнеплоды", "Многолетние")
+    val cultures: MutableList<Culture> = mutableListOf(
+        Culture("Рожь", "Зерновые"),
+        Culture("Овёс", "Зерновые"),
+        Culture("Пшеница", "Зерновые"),
+        Culture("Гречиха", "Зерновые"),
+        Culture("Просо",  "Зерновые"),
+        Culture("Подсолнечник",  "Зерновые"), //5
+        Culture("Горох", "Зернобобовые"),
+        Culture("Картофель",  "Коромовые корнеплоды"),
+        Culture("Кукуруза", "Зерновые"),
+        Culture("Овес", "Зерновые"),
+        Culture("Ячмень", "Зерновые"), //10
     )
 
 }

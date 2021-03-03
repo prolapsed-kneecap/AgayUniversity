@@ -1,7 +1,6 @@
 package com.polich.kneecap.fragment
 
 import android.graphics.Color
-import android.media.Image
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -12,7 +11,7 @@ import android.widget.TextView
 import androidx.navigation.findNavController
 import com.google.android.material.button.MaterialButton
 import com.polich.kneecap.R
-import com.polich.kneecap.TemporaryObject.playerScore
+import com.polich.kneecap.data.TemporaryObject.playerScore
 
 class ResultFragment : Fragment() {
 
