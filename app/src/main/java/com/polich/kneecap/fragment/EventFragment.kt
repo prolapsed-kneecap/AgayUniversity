@@ -12,11 +12,13 @@ import com.google.android.material.button.MaterialButton
 import com.polich.kneecap.*
 
 class EventFragment : Fragment() {
+
     var current_level = mutableListOf<Event>()
     //var current_event =  0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         var level = requireArguments().getString("level")
         if(level != null){
             when(level){

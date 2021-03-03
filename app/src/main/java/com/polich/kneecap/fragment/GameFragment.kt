@@ -39,6 +39,7 @@ import kotlinx.coroutines.launch
 import kotlin.random.Random.Default.nextLong
 
 class GameFragment : Fragment() {
+
     fun buildSoundPool(maxStreams: Int): SoundPool =
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             val attrs = AudioAttributes.Builder()
@@ -97,8 +98,6 @@ class GameFragment : Fragment() {
 
             }
         }
-        //progressBar.max = PLANS_COUNT_FOR_FINISH
-        //progressBar.progressDrawable.setColorFilter(Color.rgb(0, 191, 50), android.graphics.PorterDuff.Mode.SRC_IN)
         progressBar.setProgressTintList(ColorStateList.valueOf(Color.rgb(0, 191, 50)))
         val myCanvasView: ImageView = view.findViewById(R.id.myView)
         myCanvasView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
@@ -165,7 +164,6 @@ class GameFragment : Fragment() {
                 Toast.makeText(requireContext(), "Инструмент уже был использован", LENGTH_SHORT).show()
             }
         }*/
-
         builderPlant.setPositiveButton("OK") { dialog, which ->
 
             if (plantMaster.isPlanted == true) {

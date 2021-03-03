@@ -6,48 +6,51 @@
     android:layout_height="match_parent"
     tools:context=".fragment.ResultFragment">
 
-    <ImageView
-        android:id="@+id/star1"
-        android:layout_width="116dp"
-        android:layout_height="116dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="292dp"
-        android:src="@drawable/star"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/star2"
-        android:layout_width="116dp"
-        android:layout_height="116dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginLeft="12dp"
-        android:layout_marginTop="292dp"
-        android:src="@drawable/star"
-        app:layout_constraintStart_toEndOf="@+id/star1"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/star3"
-        android:layout_width="116dp"
-        android:layout_height="116dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="292dp"
-        android:src="@drawable/star"
-        app:layout_constraintStart_toEndOf="@+id/star2"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <TextView
         android:id="@+id/resultTextView"
-        android:layout_width="218dp"
-        android:layout_height="68dp"
-        android:layout_marginStart="96dp"
-        android:layout_marginLeft="96dp"
-        android:layout_marginTop="108dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:textStyle="bold"
+        android:textSize="20sp"
         android:gravity="center"
         android:text="*Резуьтат Пользователя*"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="24dp"
+        android:layout_marginLeft="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/resultTextView">
+
+        <ImageView
+            android:layout_weight="2"
+            android:id="@+id/star1"
+            android:layout_width="0dp"
+            android:layout_height="90dp"
+            android:src="@drawable/star" />
+
+        <ImageView
+            android:layout_weight="2"
+            android:id="@+id/star2"
+            android:layout_width="0dp"
+            android:layout_height="90dp"
+            android:src="@drawable/star" />
+
+        <ImageView
+            android:layout_weight="2"
+            android:id="@+id/star3"
+            android:layout_width="0dp"
+            android:layout_height="90dp"
+            android:src="@drawable/star" />
+
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
