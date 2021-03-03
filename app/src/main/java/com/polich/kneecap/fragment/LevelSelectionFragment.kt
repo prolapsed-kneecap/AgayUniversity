@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.polich.kneecap.LevelDif.LevelSection
+import com.polich.kneecap.LevelDif.levelSection
 import com.polich.kneecap.adapters.MyRecyclerViewAdapter
 import com.polich.kneecap.R
 
@@ -18,7 +18,7 @@ class LevelSelectionFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         var yearsPlants_curent = yearsPlants
-        val level = arrayListOf(LevelSection[0].name, LevelSection[1].name, LevelSection[2].name)
+        val level = arrayListOf(levelSection[0].name, levelSection[1].name, levelSection[2].name)
 
         val view = inflater.inflate(R.layout.fragment_level_selection, container, false)
         val recycler : RecyclerView = view.findViewById(R.id.recyclerLevel)

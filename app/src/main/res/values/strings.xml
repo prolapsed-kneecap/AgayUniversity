@@ -13,10 +13,18 @@
     <string name="result_fragment">Результаты</string>
     <string name="manual_fragment">Справочник</string>
     <string name="game_fragment">Игра</string>
+    <string name="event_fragment">Событие</string>
 
-    <string name="level_one">Уровень 1</string>
     <string name="level">Уровень</string>
     <string name="levels">Уровни</string>
+    <string name="done_answer">Ответить</string>
+
+    <string name="info">Подумайте, что лучше сделать, чтобы спасти урожай</string>
+
+    <string name="answ_1">Глубокая зяблевая вспашка</string>
+    <string name="answ_2">Авиационное опыливание посевов</string>
+    <string name="answ_3">Комплексная минеральная подкормка</string>
+    <string name="answ_4">Обработка иммуностимуляторами</string>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

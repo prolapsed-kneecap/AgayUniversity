@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.card.MaterialCardView
-import com.polich.kneecap.LevelDif.LevelSection
+import com.polich.kneecap.LevelDif.levelSection
 import com.polich.kneecap.R
 import com.polich.kneecap.fragment.LevelSelectionFragment.Companion.yearsPlants
 
@@ -25,7 +25,7 @@ class MyRecyclerViewAdapter(var fragment: Fragment, data: ArrayList<String>) :
     }
 
     override fun onBindViewHolder(holder: DataViewHolder, position: Int) {
-        holder.onBing(mData[position])
+        holder.onBing(mData[position],position)
         //holder.title.text = mData[position]
     }
 
@@ -37,15 +37,22 @@ class MyRecyclerViewAdapter(var fragment: Fragment, data: ArrayList<String>) :
         var card: MaterialCardView = itemView.findViewById(R.id.item_level)
         var title: TextView = itemView.findViewById(R.id.info_text)
 
-        fun onBing(data: String){
+        fun onBing(data: String, position: Int){
             title.text = "Уровень ${data}"
             card.setOnClickListener{
                 val bundle = Bundle()
                 when(data){
-                    "1" -> yearsPlants =+ LevelSection[0].years
-                    "2" -> yearsPlants =+ LevelSection[1].years
-                    "3" -> yearsPlants =+ LevelSection[2].years
+                    "1" -> yearsPlants =+ levelSection[0].years
+                    "2" -> yearsPlants =+ levelSection[1].years
+                    "3" -> yearsPlants =+ levelSection[2].years
                 }
+                var levelw = ""
+                when(position){
+                    0 -> levelw = "easy"
+                    1 -> levelw = "medium"
+                    2 -> levelw = "hard"
+                }
+                bundle.putString("level",levelw)
                 bundle.putString("POLE", data)
                 fragment.requireActivity().findNavController(R.id.nav_host_fragment)
                     .navigate(R.id.action_levelSelectionFragment_to_gameFragment, bundle)

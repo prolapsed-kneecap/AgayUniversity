@@ -30,7 +30,6 @@
 
         <TextView
             android:id="@+id/info_text"
-            android:text="@string/level_one"
             android:textSize="20sp"
             android:textStyle="bold"
             android:layout_gravity="center_vertical|center_horizontal"

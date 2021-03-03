@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
     tools:context=".fragment.GameFragment">
 
   <!--  <Button
@@ -15,6 +14,7 @@
             android:layout_marginLeft="148dp"
             android:layout_marginTop="548dp"
             android:text="Инструменты"
+            android:visibility="invisible"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />-->
 
@@ -97,15 +97,14 @@
       android:id="@+id/eventFloatingActionButton"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:layout_marginStart="4dp"
-      android:layout_marginLeft="4dp"
-      android:layout_marginTop="4dp"
       android:clickable="true"
-      android:src="@drawable/ic_baseline_warning_24"
+      android:src="@drawable/priority_high"
       android:visibility="gone"
-      app:backgroundTint="#FD5925"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/myView" />
+      android:layout_marginRight="16dp"
+      android:layout_marginBottom="16dp"
+      app:backgroundTint="#FFC400"
+      app:layout_constraintBottom_toBottomOf="@+id/myView"
+      app:layout_constraintEnd_toEndOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -18,6 +18,7 @@ import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.widget.*
+import android.widget.Toast.LENGTH_SHORT
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.FragmentManager
@@ -25,6 +26,10 @@ import androidx.fragment.app.FragmentTransaction
 import androidx.navigation.findNavController
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.polich.kneecap.*
+import com.polich.kneecap.LevelDif.easyLevelEvent
+import com.polich.kneecap.Plants.cultures
+//import com.polich.kneecap.Eventik.instrumentsString
+//import com.polich.kneecap.adapters.ExpandableListAdapter
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -46,8 +51,8 @@ class GameFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_game, container, false)
-        val progressBar : ProgressBar = view.findViewById(R.id.progress_bar)
-        val expandedListView: ExpandableListView = view.findViewById(R.id.listview)
+        val progressBar: ProgressBar = view.findViewById(R.id.progress_bar)
+        //val expandedListView: ExpandableListView = view.findViewById(R.id.listview)
 
         val buttonPlant: Button = view.findViewById(R.id.add_button)
         val buttonHarvest: Button = view.findViewById(R.id.sbor_button)
@@ -87,7 +92,11 @@ class GameFragment : Fragment() {
         var checkedItem = 0
 
         eventFloatingActionButton.setOnClickListener {
-            view?.findNavController()?.navigate(R.id.eventFragment)
+            val bundle = Bundle()
+            bundle.putString("level",requireArguments().getString("level"))
+            bundle.putString("POLE", requireArguments().getString("POLE"))
+
+            view?.findNavController()?.navigate(R.id.action_gameFragment_to_eventFragment, bundle)
         }
 
         builderPlant.setSingleChoiceItems(Plants.plants, checkedItem) { dialog, which ->
@@ -209,7 +218,8 @@ class GameFragment : Fragment() {
         }
         return score
     }
-    fun EventButtonAppear(eventFloatingActionButton:FloatingActionButton, delay:Long){
+
+    fun EventButtonAppear(eventFloatingActionButton: FloatingActionButton, delay: Long) {
         Handler(Looper.getMainLooper()).postDelayed({
             eventFloatingActionButton.visibility = VISIBLE
         }, delay)
@@ -217,6 +227,7 @@ class GameFragment : Fragment() {
             eventFloatingActionButton.visibility = GONE
         }, 20000)
     }
+
     fun toRate(checkedItem: Int) {
         var rate = "WRONG"
         for (i in 0 until Eventik.solutions.size) {
@@ -245,11 +256,12 @@ class GameFragment : Fragment() {
         builder.setNegativeButton("Отмена", null)
         Data.counter =0
     }*/
-    fun dialogResult(){
+    fun dialogResult() {
         //plantMaster.howIsGoodChoice(cultures[checkedItem], cultures[checkedItem+1])
     }
+    fun EventAppear(){
 
-
+    }
 
     val data: HashMap<String, List<String>>
         get() {
@@ -263,4 +275,4 @@ class GameFragment : Fragment() {
 
             return listData
         }
-    }
+}
