@@ -6,6 +6,9 @@ import android.content.res.ColorStateList
 import android.graphics.Color
 import android.graphics.ColorMatrix
 import android.graphics.ColorMatrixColorFilter
+import android.media.AudioAttributes
+import android.media.AudioManager
+import android.media.SoundPool
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
@@ -36,7 +39,19 @@ import kotlinx.coroutines.launch
 import kotlin.random.Random.Default.nextLong
 
 class GameFragment : Fragment() {
-    var progress : Int = 0
+    fun buildSoundPool(maxStreams: Int): SoundPool =
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            val attrs = AudioAttributes.Builder()
+                .setUsage(AudioAttributes.USAGE_GAME)
+                .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
+                .build()
+            SoundPool.Builder()
+                .setAudioAttributes(attrs)
+                .setMaxStreams(maxStreams)
+                .build()
+        } else {
+            SoundPool(maxStreams, AudioManager.STREAM_MUSIC, 0)
+        }
 
     val PLANS_COUNT_FOR_FINISH = LevelSelectionFragment.yearsPlants
     val plantMaster = PlantMaster()
@@ -54,13 +69,15 @@ class GameFragment : Fragment() {
         val progressBar: ProgressBar = view.findViewById(R.id.progress_bar)
         //val expandedListView: ExpandableListView = view.findViewById(R.id.listview)
 
+        val sd = activity?.assets?.openFd("villageSongCut.mp3")
+        val soundPool: SoundPool = buildSoundPool(100000)
+        val zvon = soundPool.load(sd, 1)
+
         val buttonPlant: Button = view.findViewById(R.id.add_button)
         val buttonHarvest: Button = view.findViewById(R.id.sbor_button)
         val history: TextView = view.findViewById(R.id.history)
         val show_result: TextView = view.findViewById(R.id.show_result_check)
         val eventFloatingActionButton:FloatingActionButton = view.findViewById(R.id.eventFloatingActionButton)
-
-        //val ButtonInstrument:Button = view.findViewById(R.id.TestInstrumentButton)
 
         history.text = "0/$PLANS_COUNT_FOR_FINISH"
 
@@ -104,6 +121,7 @@ class GameFragment : Fragment() {
         }
 
         buttonPlant.setOnClickListener {
+            soundPool.play(zvon, 1f, 1f, 1, 0, 1f)
             val dialog = builderPlant.create()
             dialog.show()
         }
@@ -149,6 +167,7 @@ class GameFragment : Fragment() {
         }*/
 
         builderPlant.setPositiveButton("OK") { dialog, which ->
+
             if (plantMaster.isPlanted == true) {
                 Toast.makeText(requireContext(), "Поле уже засажено", Toast.LENGTH_SHORT).show()
             } else {
@@ -243,7 +262,6 @@ class GameFragment : Fragment() {
         Plants.gline[1] += 0.08f
         Plants.lline[3] += 0.08f
     }
-
     /*fun dialogEvent(builder:AlertDialog.Builder, checkedItem1: Int){
         var checkedItem = checkedItem1
         builder.setTitle(Eventik.event.eventText+" Выбери инструмент!")
@@ -262,17 +280,4 @@ class GameFragment : Fragment() {
     fun EventAppear(){
 
     }
-
-    val data: HashMap<String, List<String>>
-        get() {
-            val listData = HashMap<String, List<String>>()
-
-            val row = ArrayList<String>()
-            row.add("Адрес: $")
-            row.add("Возраст: $")
-            row.add("Телефон: $")
-            listData["Полная информация"] = row
-
-            return listData
-        }
 }

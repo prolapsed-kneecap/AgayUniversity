@@ -31,13 +31,6 @@ var harvesters:MutableList<Harvesters> = mutableListOf(
     Harvesters("что-то против соринков"),
     Harvesters("Катки"),
 )
-//Culture("Рожь"),
-//Culture("Овёс"),
-//Culture("Пшеница"),
-//Culture("Гречиха"),
-//Culture("Просо"),
-//Culture("Подсолнечник"),
-//Culture("Картофель")
 
 
 

@@ -1,5 +1,9 @@
 package com.polich.kneecap.fragment
 
+import android.media.AudioAttributes
+import android.media.AudioManager
+import android.media.SoundPool
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -17,6 +21,7 @@ class LevelSelectionFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         var yearsPlants_curent = yearsPlants
         val level = arrayListOf(levelSection[0].name, levelSection[1].name, levelSection[2].name)
 
