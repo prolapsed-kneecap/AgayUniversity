@@ -12,7 +12,8 @@
         tools:layout="@layout/fragment_game">
         <action
             android:id="@+id/action_gameFragment_to_resultFragment"
-            app:destination="@id/resultFragment" />
+            app:destination="@id/resultFragment"
+            app:popUpToInclusive="false" />
         <action
             android:id="@+id/action_gameFragment_to_eventFragment"
             app:destination="@id/eventFragment" />
@@ -21,7 +22,11 @@
         android:id="@+id/resultFragment"
         android:name="com.polich.kneecap.fragment.ResultFragment"
         android:label="@string/result_fragment"
-        tools:layout="@layout/fragment_result" />
+        tools:layout="@layout/fragment_result" >
+        <action
+            android:id="@+id/action_resultFragment_to_levelSelectionFragment"
+            app:destination="@id/levelSelectionFragment" />
+    </fragment>
     <fragment
         android:id="@+id/eventFragment"
         android:name="com.polich.kneecap.fragment.EventFragment"
