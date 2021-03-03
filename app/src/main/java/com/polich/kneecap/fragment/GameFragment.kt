@@ -20,6 +20,7 @@ import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.widget.*
+import android.widget.Toast.LENGTH_SHORT
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import androidx.navigation.findNavController
@@ -188,7 +189,6 @@ class GameFragment : Fragment() {
                     }
                 }
                 TemporaryObject.amountOfHappendEvents-=1
-                Toast.makeText(requireContext(), level.toString(), LENGTH_SHORT).show()
                 if (TemporaryObject.amountOfHappendEvents>1){
                     EventButtonAppear(eventFloatingActionButton, delay)
                 }
