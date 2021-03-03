@@ -71,6 +71,6 @@ object Eventik{
     /*val event = Event("Сорняки!", solutions)*/
 }
 object TemporaryObject /*Временно существующий объект*/{
-    var playerScore = 0 // счёт игрока (пока будет выглядеть так)
+    var playerScore = 750 // счёт игрока (пока будет выглядеть так)
     var damageMultiplier = 0// damageMultiplier:Int - число на которое будет умножаться важность (зависит от выбраной сложности), пока что хранится в объекте, нужен для функции damage
 }
