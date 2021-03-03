@@ -50,7 +50,9 @@ class EventFragment : Fragment() {
         descriptionEvent.text = current_level[0].description
 
         btnDoneAnswer.setOnClickListener{
-            view?.findNavController()?.navigate(R.id.action_eventFragment_to_gameFragment)
+            val bundle = Bundle()
+            bundle.putString("level",requireArguments().getString("level"))
+            view?.findNavController()?.navigate(R.id.action_eventFragment_to_gameFragment, bundle)
         }
 
         return view
