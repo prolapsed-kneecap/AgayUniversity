@@ -13,6 +13,8 @@
 
     <string name="result_fragment">Результаты</string>
     <string name="manual_fragment">Справочник</string>
+    <string name="rules">Правила</string>
+    <string name="context_menu">Больше информации</string>
     <string name="game_fragment">Игра</string>
     <string name="event_fragment">Событие</string>
 

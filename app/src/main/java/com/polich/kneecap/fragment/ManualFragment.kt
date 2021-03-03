@@ -13,8 +13,6 @@ import com.polich.kneecap.LevelDif.easyLevelEvent
 
 class ManualFragment (): Fragment() {
 
-
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -38,6 +36,5 @@ class ManualFragment (): Fragment() {
 
         return view
     }
-
 }
 

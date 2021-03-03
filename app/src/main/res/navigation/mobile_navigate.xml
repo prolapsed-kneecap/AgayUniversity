@@ -61,4 +61,9 @@
             android:id="@+id/action_levelSelectionFragment_to_gameFragment"
             app:destination="@id/gameFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/rulesFragment"
+        android:name="com.polich.kneecap.fragment.RulesFragment"
+        android:label="@string/rules"
+        tools:layout="@layout/fragment_rules" />
 </navigation>

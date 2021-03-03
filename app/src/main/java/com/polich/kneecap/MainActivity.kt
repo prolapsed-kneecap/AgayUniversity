@@ -1,18 +1,15 @@
 package com.polich.kneecap
 
-import android.app.Service
 import android.content.pm.ActivityInfo
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.onNavDestinationSelected
 import androidx.navigation.ui.setupActionBarWithNavController
-
 
 class MainActivity : AppCompatActivity() {
 
@@ -21,8 +18,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR)
+        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_NOSENSOR
 
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         navController = navHostFragment.findNavController()
@@ -34,7 +30,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         val inflate = menuInflater
-        inflate.inflate(R.menu.menu_main, menu)
+        inflate.inflate(R.menu.menu_app_bar, menu)
         return super.onCreateOptionsMenu(menu)
     }
 
