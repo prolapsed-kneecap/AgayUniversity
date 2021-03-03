@@ -5,6 +5,7 @@
     <string name="technics">Техника</string>
     <string name="culture">Культуры</string>
     <string name="tractor">Трактор</string>
+    <string name="exit">В главное меню</string>
 
     <string name="url_tech">file:///android_asset/technic.html</string>
     <string name="url_culture">file:///android_asset/culture.html</string>

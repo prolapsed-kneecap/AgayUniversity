@@ -1,7 +1,6 @@
 package com.polich.kneecap.fragment
 
 import android.animation.ObjectAnimator
-import android.content.Intent
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.graphics.ColorMatrix
@@ -21,24 +20,18 @@ import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.widget.*
-import android.widget.Toast.LENGTH_SHORT
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentTransaction
 import androidx.navigation.findNavController
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.polich.kneecap.*
-import com.polich.kneecap.LevelDif.easyLevelEvent
-import com.polich.kneecap.Plants.cultures
-//import com.polich.kneecap.Eventik.instrumentsString
-//import com.polich.kneecap.adapters.ExpandableListAdapter
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlin.random.Random.Default.nextLong
 
 class GameFragment : Fragment() {
+
     fun buildSoundPool(maxStreams: Int): SoundPool =
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             val attrs = AudioAttributes.Builder()
@@ -54,6 +47,7 @@ class GameFragment : Fragment() {
         }
 
     val PLANS_COUNT_FOR_FINISH = LevelSelectionFragment.yearsPlants
+
     val plantMaster = PlantMaster()
     val instrumentMaster = InstrumentMaster()
     val eventFragment:Fragment = EventFragment()
@@ -97,8 +91,6 @@ class GameFragment : Fragment() {
 
             }
         }
-        //progressBar.max = PLANS_COUNT_FOR_FINISH
-        //progressBar.progressDrawable.setColorFilter(Color.rgb(0, 191, 50), android.graphics.PorterDuff.Mode.SRC_IN)
         progressBar.setProgressTintList(ColorStateList.valueOf(Color.rgb(0, 191, 50)))
         val myCanvasView: ImageView = view.findViewById(R.id.myView)
         myCanvasView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
@@ -114,6 +106,15 @@ class GameFragment : Fragment() {
             val bundle = Bundle()
             bundle.putString("level",requireArguments().getString("level"))
             bundle.putString("POLE", requireArguments().getString("POLE"))
+
+            val level = bundle.getString("POLE")
+            if(level != null){
+                when(level){
+                    "easy" -> INTevent = LevelDif.levelSection[0].amountOfEvents
+                    "medium" -> INTevent = LevelDif.levelSection[1].amountOfEvents
+                    "hard" ->  INTevent = LevelDif.levelSection[2].amountOfEvents
+                }
+            }
 
             view?.findNavController()?.navigate(R.id.action_gameFragment_to_eventFragment, bundle)
         }
@@ -167,7 +168,6 @@ class GameFragment : Fragment() {
                 Toast.makeText(requireContext(), "Инструмент уже был использован", LENGTH_SHORT).show()
             }
         }*/
-
         builderPlant.setPositiveButton("OK") { dialog, which ->
 
             if (plantMaster.isPlanted == true) {

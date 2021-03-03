@@ -3,6 +3,4 @@
     <style name="Widget.AppCompat.ProgressBar.Horizontal" parent="Base.Widget.AppCompat.ProgressBar.Horizontal">
         <item name="backgroundTint">@color/colorBackground</item>
     </style>
-
-
 </resources>
