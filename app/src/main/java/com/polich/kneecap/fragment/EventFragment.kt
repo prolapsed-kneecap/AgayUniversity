@@ -10,21 +10,16 @@ import android.widget.TextView
 import androidx.navigation.findNavController
 import com.google.android.material.button.MaterialButton
 import com.polich.kneecap.*
+import kotlin.random.Random
 
 class EventFragment : Fragment() {
-    var current_level = mutableListOf<Event>()
+    var current_level= mutableListOf<Event>()
     //var current_event =  0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         var level = requireArguments().getString("level")
-        if(level != null){
-            when(level){
-                "easy" -> current_level = LevelDif.easyLevelEvent
-                "medium" -> current_level = LevelDif.mediumLevelEvent
-                "hard" ->  current_level = LevelDif.hardLevelEvent
-            }
-        }
+        current_level = levelToCurrentLevel(level)
         /*var year = requireArguments().getString("POLE")
         year.let {
             when(year){
@@ -46,8 +41,8 @@ class EventFragment : Fragment() {
         val descriptionEvent : TextView = view.findViewById(R.id.descriptionEvent)
         val btnDoneAnswer : MaterialButton = view.findViewById(R.id.done)
 
-        titleEvent.text = current_level[0].eventName
-        descriptionEvent.text = current_level[0].description
+        titleEvent.text = getRandomEvent().eventName
+        descriptionEvent.text = getRandomEvent().description
 
         btnDoneAnswer.setOnClickListener{
             val bundle = Bundle()
@@ -56,5 +51,24 @@ class EventFragment : Fragment() {
         }
 
         return view
+    }
+    fun getRandomEvent():Event{
+        var randIndex = Random.nextInt(current_level.size-1)
+        try{
+            return current_level[randIndex]
+        }
+        finally {
+            current_level.removeAt(randIndex)
+        }
+    }
+    fun levelToCurrentLevel(level:String?):MutableList<Event>{
+        if(level != null){
+            when(level){
+                "easy" -> current_level = LevelDif.easyLevelEvent
+                "medium" -> current_level = LevelDif.mediumLevelEvent
+                "hard" ->  current_level = LevelDif.hardLevelEvent
+            }
+        }
+        return current_level
     }
 }
