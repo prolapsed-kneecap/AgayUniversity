@@ -106,7 +106,6 @@ class GameFragment : Fragment() {
         progressBar.setProgressTintList(ColorStateList.valueOf(Color.rgb(0, 191, 50)))
         val myCanvasView: ImageView = view.findViewById(R.id.myView)
         myCanvasView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
-        initFilter()
         myCanvasView.setColorFilter(ColorMatrixColorFilter(cmDataInvalidate()))
         myCanvasView.invalidate()
 
@@ -148,7 +147,7 @@ class GameFragment : Fragment() {
                 buttonHarvest.isClickable = false
 
                 plantMaster.isPlanted = false
-
+                initFilter()
                 myCanvasView.setColorFilter(ColorMatrixColorFilter(cmDataInvalidate()))
                 myCanvasView.invalidate()
                 progressBar.setProgress(0)
@@ -156,6 +155,11 @@ class GameFragment : Fragment() {
                     show_result.text = calculateScore().toString()
                     restartGame()
                 }
+            }
+            else{
+                initFilter()
+                myCanvasView.setColorFilter(ColorMatrixColorFilter(cmDataInvalidate()))
+                myCanvasView.invalidate()
             }
         }
         /*ButtonInstrument.setOnClickListener {
@@ -274,9 +278,9 @@ class GameFragment : Fragment() {
     }
 
     fun lvlup() {
-        rline[1] += 0.08f
-        gline[1] += 0.04f
-        lline[3] += 0.04f
+        rline[1] += 0.10f
+        gline[1] += 0.05f
+        lline[3] += 0.05f
         cmDataInvalidate()
     }
     /*fun dialogEvent(builder:AlertDialog.Builder, checkedItem1: Int){
