@@ -36,7 +36,15 @@ object Plants {
         Culture("Овес", "Зерновые"),
         Culture("Ячмень", "Зерновые"), //10
     )
-
+    fun cmDataInvalidate():FloatArray{
+        var cmData: FloatArray = floatArrayOf(
+            rline[0], rline[1], rline[2], rline[3], 0f,
+            gline[0], gline[1], gline[2], gline[3], 0f,
+            bline[0], bline[1], bline[2], bline[3], 0f,
+            lline[0], lline[1], lline[2], lline[3], 0f
+        )
+        return cmData
+    }
 }
 
 

@@ -7,29 +7,34 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
+import android.widget.Toast.LENGTH_SHORT
 import androidx.navigation.findNavController
 import com.google.android.material.button.MaterialButton
 import com.polich.kneecap.*
-import com.polich.kneecap.data.*
+import com.polich.kneecap.data.Event
+import com.polich.kneecap.data.LevelDif
 import kotlin.random.Random
+import kotlin.random.nextInt
 
 class EventFragment : Fragment() {
-    var current_level = mutableListOf<Event>()
-    var current_suf_culture = mutableListOf<Culture>()
+    var current_level= mutableListOf<Event>()
+    var current_level_left = current_level
+    //var current_event =  0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         var level = requireArguments().getString("level")
         current_level = levelToCurrentLevel(level)
-
-        var year = requireArguments().getString("POLE")
+        current_level_left = current_level
+        /*var year = requireArguments().getString("POLE")
         year.let {
             when(year){
-                "1" -> current_suf_culture = BedBugs.bedBugsList[1].bugsVictim
-                "2" -> current_suf_culture = BedBugs.bedBugsList[1].bugsVictim
-                "3" -> current_suf_culture = BedBugs.bedBugsList[1].bugsVictim
+                "1" -> current_event = LevelDif.levelSection[0].amountOfEvents
+                "2" -> current_event = LevelDif.levelSection[1].amountOfEvents
+                "3" -> current_event = LevelDif.levelSection[2].amountOfEvents
             }
-        }
+        }*/
     }
 
     override fun onCreateView(
@@ -40,15 +45,18 @@ class EventFragment : Fragment() {
         Log.e("data",current_level.toString())
 
         val titleEvent : TextView = view.findViewById(R.id.titleEvent)
-        //val listSufferer : TextView = view.findViewById(R.id.sufferer)
         val descriptionEvent : TextView = view.findViewById(R.id.descriptionEvent)
         val btnDoneAnswer : MaterialButton = view.findViewById(R.id.done)
+        var randIndex=0
+        if (current_level_left.size<=1){randIndex = 0}
+        else {var randIndex = Random.nextInt(0 until current_level_left.size-1)}
 
-        titleEvent.text = getRandomEvent().eventName
-        descriptionEvent.text = getRandomEvent().description
-        //listSufferer.text = getRandomEvent().sufferer.size.toString()
-        //for (item in getRandomEvent().sufferer)
-        //listSufferer.text = current_suf_culture.toString()
+        var current_event = getRandomEvent(randIndex)
+
+        titleEvent.text = current_event.eventName
+        descriptionEvent.text = current_event.description
+
+        current_level_left.removeAt(randIndex)
 
         btnDoneAnswer.setOnClickListener{
             val bundle = Bundle()
@@ -58,14 +66,10 @@ class EventFragment : Fragment() {
 
         return view
     }
-    fun getRandomEvent(): Event {
-        var randIndex = Random.nextInt(current_level.size-1)
-        try{
-            return current_level[randIndex]
-        }
-        finally {
-            current_level.removeAt(randIndex)
-        }
+    fun getRandomEvent(randIndex:Int): Event {
+        if (current_level_left.size==0){current_level_left=current_level}
+        Toast.makeText(requireContext(), current_level.size.toString(), LENGTH_SHORT).show()
+        return current_level_left[randIndex]
     }
     fun levelToCurrentLevel(level:String?):MutableList<Event>{
         if(level != null){
