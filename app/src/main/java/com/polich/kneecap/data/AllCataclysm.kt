@@ -11,7 +11,7 @@ open class AllCataclysm(
  )
 
 object AAAllBed{
-    val aaalBed = mutableListOf<MutableList<AllCataclysm>>(bedNaturalList, bedBugsList, bedClimateList, )
+    val allBed = mutableListOf<MutableList<AllCataclysm>>(bedNaturalList, bedBugsList, bedClimateList, )
 }
 
 object BedBugs{
