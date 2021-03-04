@@ -38,11 +38,6 @@ import kotlin.random.Random.Default.nextLong
 
 class GameFragment : Fragment() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
-
     fun buildSoundPool(maxStreams: Int): SoundPool =
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             val attrs = AudioAttributes.Builder()
@@ -141,6 +136,7 @@ class GameFragment : Fragment() {
             val dialog = builderPlant.create()
             dialog.show()
         }
+
         buttonHarvest.setOnClickListener {
             if (plantMaster.isCanHarvest) {
                 buttonHarvest.alpha = 0.5F
@@ -176,6 +172,7 @@ class GameFragment : Fragment() {
                 Toast.makeText(requireContext(), "Инструмент уже был использован", LENGTH_SHORT).show()
             }
         }*/
+
         builderPlant.setPositiveButton("OK") { dialog, which ->
             if (plantMaster.isPlanted == true) {
                 Toast.makeText(requireContext(), "Поле уже засажено", Toast.LENGTH_SHORT).show()

@@ -53,6 +53,8 @@ class EventFragment : Fragment() {
 
         var current_event = getRandomEvent(randIndex)
 
+        AnswerMaster(current_event)
+
         titleEvent.text = current_event.eventName
         descriptionEvent.text = current_event.description
 
@@ -71,6 +73,7 @@ class EventFragment : Fragment() {
         Toast.makeText(requireContext(), current_level.size.toString(), LENGTH_SHORT).show()
         return current_level_left[randIndex]
     }
+
     fun levelToCurrentLevel(level:String?):MutableList<Event>{
         if(level != null){
             when(level){
