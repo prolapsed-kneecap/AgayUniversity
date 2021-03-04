@@ -10,26 +10,26 @@ import android.widget.TextView
 import androidx.navigation.findNavController
 import com.google.android.material.button.MaterialButton
 import com.polich.kneecap.*
-import com.polich.kneecap.data.Event
-import com.polich.kneecap.data.LevelDif
+import com.polich.kneecap.data.*
 import kotlin.random.Random
 
 class EventFragment : Fragment() {
-    var current_level= mutableListOf<Event>()
-    //var current_event =  0
+    var current_level = mutableListOf<Event>()
+    var current_suf_culture = mutableListOf<Culture>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         var level = requireArguments().getString("level")
         current_level = levelToCurrentLevel(level)
-        /*var year = requireArguments().getString("POLE")
+
+        var year = requireArguments().getString("POLE")
         year.let {
             when(year){
-                "1" -> current_event = LevelDif.levelSection[0].amountOfEvents
-                "2" -> current_event = LevelDif.levelSection[1].amountOfEvents
-                "3" -> current_event = LevelDif.levelSection[2].amountOfEvents
+                "1" -> current_suf_culture = BedBugs.bedBugsList[1].bugsVictim
+                "2" -> current_suf_culture = BedBugs.bedBugsList[1].bugsVictim
+                "3" -> current_suf_culture = BedBugs.bedBugsList[1].bugsVictim
             }
-        }*/
+        }
     }
 
     override fun onCreateView(
@@ -40,11 +40,15 @@ class EventFragment : Fragment() {
         Log.e("data",current_level.toString())
 
         val titleEvent : TextView = view.findViewById(R.id.titleEvent)
+        //val listSufferer : TextView = view.findViewById(R.id.sufferer)
         val descriptionEvent : TextView = view.findViewById(R.id.descriptionEvent)
         val btnDoneAnswer : MaterialButton = view.findViewById(R.id.done)
 
         titleEvent.text = getRandomEvent().eventName
         descriptionEvent.text = getRandomEvent().description
+        //listSufferer.text = getRandomEvent().sufferer.size.toString()
+        //for (item in getRandomEvent().sufferer)
+        //listSufferer.text = current_suf_culture.toString()
 
         btnDoneAnswer.setOnClickListener{
             val bundle = Bundle()

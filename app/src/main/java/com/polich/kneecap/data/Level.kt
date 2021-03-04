@@ -1,13 +1,15 @@
 package com.polich.kneecap.data
 
+import com.polich.kneecap.data.BedBugs.bedBugsList
+import com.polich.kneecap.data.bugsEventForLevel.bugsEvent
+import com.polich.kneecap.data.climateEventForLevel.climateEvent
+import com.polich.kneecap.data.naturalEventForLevel.naturalEvent
+
 object LevelDif {
-     val easyLevelEvent: MutableList<Event> = mutableListOf(naturalEventForLevel.naturalEvent[0], climateEventForLevel.climateEvent[2], bugsEventForLevel.bugsEvent[0])
-     val mediumLevelEvent: MutableList<Event> = mutableListOf(
-         bugsEventForLevel.bugsEvent[2],
-         naturalEventForLevel.naturalEvent[0], climateEventForLevel.climateEvent[1], bugsEventForLevel.bugsEvent[4])
-     val hardLevelEvent: MutableList<Event> = mutableListOf(
-         bugsEventForLevel.bugsEvent[0], naturalEventForLevel.naturalEvent[1],
-         climateEventForLevel.climateEvent[0], bugsEventForLevel.bugsEvent[3], naturalEventForLevel.naturalEvent[3])
+     val easyLevelEvent: MutableList<Event> = mutableListOf(naturalEvent[0], climateEvent[2], bugsEvent[0])
+     val mediumLevelEvent: MutableList<Event> = mutableListOf(bugsEvent[2], naturalEvent[0], climateEvent[1], bugsEvent[4])
+     val hardLevelEvent: MutableList<Event> = mutableListOf(bugsEvent[0], naturalEvent[1],
+         climateEvent[0], bugsEvent[3], naturalEvent[3])
 
     val levelSection: List<Level> = listOf(
         Level("1", 3, 4, easyLevelEvent),
@@ -23,7 +25,7 @@ object naturalEventForLevel {
             "Смерч", 1,
             "На ваши поля надвигается смерч. " +
                     "Вздымая тучи земли и пыли, смерчи могут пронести " +
-                    "песчанную смесь несколько сотен метров и потерять"
+                    "песчанную смесь несколько сотен метров и потерять", bedBugsList[3].bugsVictim
         ),
         NaturalDisasters(
             "Наводнение", 3,
@@ -33,18 +35,18 @@ object naturalEventForLevel {
                     "При этом в почве прекращается нормальный газообмен и в воду от корней " +
                     "растений поступает углекислота, которая вредно влияет на растения. " +
                     "Это обстоятельство — главная причина падения урожайности или гибели " +
-                    "сельскохозяйственных культур в результате наводнения."
+                    "сельскохозяйственных культур в результате наводнения.", bedBugsList[3].bugsVictim
         ),
         NaturalDisasters(
             "Ливни и грозы", 1,
             "Над степью нависли тучи. Ожидаются продолжительные дожди. " +
                     "Затяжные дожди могут привести к частичной или полной потере урожаяю. " +
                     "Почва становится плотной и воздух не проникает в почву. Света и тепла становится меньше. " +
-                    "Дожди способствуют увеличению слизней и улиток."
+                    "Дожди способствуют увеличению слизней и улиток.", bedBugsList[3].bugsVictim
         ),
         NaturalDisasters(
             "Пыльная буря", 2,
-            "Разрушение почвенного покрова негативно влияет на урожйности."
+            "Разрушение почвенного покрова негативно влияет на урожйности.", bedBugsList[3].bugsVictim
         ),
     )
 }
@@ -57,53 +59,57 @@ object climateEventForLevel {
                     "агрометеорологическое явление, вызывающее резкое несоответствие " +
                     "между потребностью растений во влаге и ее поступлением из почвы в результате" +
                     " недостаточного количества осадков и повышенной испаряемости, что " +
-                    "нарушает нормальное водоснабжение растений."
+                    "нарушает нормальное водоснабжение растений.", bedBugsList[3].bugsVictim
         ),
         ClimateDisasters(
             "Град", 2,
             "Получая повреждения растения начинают испытывать стресс. Стресс " +
                     "заставляет растение тратить энергию на выживание в экстремальных " +
                     "условиях в ущерб урожаю и его качеству. Сократить потери может только " +
-                    "своевременная помощь растениям в преодолении стресса."
+                    "своевременная помощь растениям в преодолении стресса.", bedBugsList[3].bugsVictim
         ),
         ClimateDisasters(
             "Похолодание", 1,
             "Заморозки наносят существенный материальный ущерб сельскому хозяйству. " +
-                    "Особенно чувствительны к заморозкам теплолюбивые культуры."
+                    "Особенно чувствительны к заморозкам теплолюбивые культуры.", bedBugsList[3].bugsVictim
         )
     )
 }
 object bugsEventForLevel {
     val bugsEvent = mutableListOf<Bugsss>(
         Bugsss(
-            "Cаранча", 3,
+            bedBugsList[3].bugsName, 3,
             "Ваше хойзяйстов под большой угрозой. Нашестиве саранчи! Всеядный вредитель, с наибольшей активностью питания в ранние утренние и " +
                     "вечерние часы, когда отсутствует пик жары. Одна особь съедает до 500 г растений" +
                     " с разной плотностью вегетативных и генеративных органов (листьев, цветов, " +
-                    "молодых веток, стеблей, плодов)."
+                    "молодых веток, стеблей, плодов).", bedBugsList[3].bugsVictim
         ),
         Bugsss(
-            "Совка", 3,
+            bedBugsList[4].bugsName, 3,
             "В старину Cовку за ее вредоносность называли северной саранчой и озимым червем. " +
                     "Личинки выедают прорастающие семена пшеницы, отчего происходит прореживание всходов, " +
-                    "и образуются оголенные участки поля."
+                    "и образуются оголенные участки поля.", bedBugsList[4].bugsVictim
+
         ),
         Bugsss(
-            "Хлебный жук", 3,
+            bedBugsList[5].bugsName,
+            3,
             "Цепкими лапками эти хлебные жуки перебирают колоски и перелетают на новые " +
                     "растения в поисках пищи. В просторечье этого жука называют «хлебным кузькой». " +
                     "Но, не смотря на такое милое название, этот жук является одним из самых злостных" +
-                    " массовых вредителей посевов. Эти вредители наносят колоссальный урон сельскому хозяйству."
+                    " массовых вредителей посевов. Эти вредители наносят колоссальный урон сельскому хозяйству.",
+            bedBugsList[5].bugsVictim
         ),
         Bugsss(
-            "Шведская мушка", 3,
+            bedBugsList[6].bugsName, 3,
             "Самый большой вред сельскохозяйственным культурам причиняют личинки шведских мух, " +
                     "которые выедают злаки и близлежащие ткани. В результате у злаков отмирают центральные " +
                     "листья, что приводит к замедлению роста растения или к полной его гибели. Личинки поедают " +
-                    "зерна, не давая им созреть, что приводит к снижению урожая."
+                    "зерна, не давая им созреть, что приводит к снижению урожая.",
+            bedBugsList[6].bugsVictim
         ),
         Bugsss(
-            "Жук-щелкун", 3,
+            bedBugsList[7].bugsName, 3,
             "Ваши растения под большой угрозой. " +
                     "Жук-щелкун причиняет огромный вред сельскохозяйственным угодьям. " +
                     "В частности, не сам жук, а его потомство личинок. " +
@@ -112,8 +118,9 @@ object bugsEventForLevel {
                     "самой корневой системы. Поврежденные растения становятся жертвой " +
                     "сапротрофов, в результате чего они быстро загнивают. Для защиты от " +
                     "этих вредителей следует принимать предупредительные меры, поскольку " +
-                    "если он уже заведется, то избавиться от него будет крайне проблематично."
-        ),
-        Bugsss("", 3, ""),
+                    "если он уже заведется, то избавиться от него будет крайне проблематично.",
+            bedBugsList[7].bugsVictim
+        )
     )
 }
+
