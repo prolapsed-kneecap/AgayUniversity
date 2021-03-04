@@ -14,6 +14,8 @@ import com.google.android.material.button.MaterialButton
 import com.polich.kneecap.*
 import com.polich.kneecap.data.Event
 import com.polich.kneecap.data.LevelDif
+import com.polich.kneecap.data.LevelDif.easyLevelEvent
+import com.polich.kneecap.data.TemporaryObject.playerScore
 import kotlin.random.Random
 import kotlin.random.nextInt
 
@@ -51,16 +53,18 @@ class EventFragment : Fragment() {
         if (current_level_left.size<=1){randIndex = 0}
         else {var randIndex = Random.nextInt(0 until current_level_left.size-1)}
 
-        var current_event = getRandomEvent(randIndex)
+        var level = requireArguments().getString("level")
+        var current_event = getRandomEvent(randIndex, level)
 
         //AnswerMaster(current_event)
 
         titleEvent.text = current_event.eventName
         descriptionEvent.text = current_event.description
-
         current_level_left.removeAt(randIndex)
 
         btnDoneAnswer.setOnClickListener{
+            playerScore = current_event.GivePlayerScore(playerScore, current_event.importance)
+            //else{current_event.DealDamage(playerScore, current_event.importance)}
             val bundle = Bundle()
             bundle.putString("level",requireArguments().getString("level"))
             view?.findNavController()?.navigate(R.id.action_eventFragment_to_gameFragment, bundle)
@@ -68,9 +72,8 @@ class EventFragment : Fragment() {
 
         return view
     }
-    fun getRandomEvent(randIndex:Int): Event {
-        if (current_level_left.size==0){current_level_left=current_level}
-        Toast.makeText(requireContext(), current_level.size.toString(), LENGTH_SHORT).show()
+    fun getRandomEvent(randIndex:Int, level:String?): Event {
+        if (current_level_left.size<=1){current_level_left = easyLevelEvent}
         return current_level_left[randIndex]
     }
 
