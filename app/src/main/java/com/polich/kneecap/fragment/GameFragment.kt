@@ -27,6 +27,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.polich.kneecap.*
 import com.polich.kneecap.data.*
 import com.polich.kneecap.data.Plants.cmDataInvalidate
+import com.polich.kneecap.data.Plants.counter
 import com.polich.kneecap.data.Plants.gline
 import com.polich.kneecap.data.Plants.initFilter
 import com.polich.kneecap.data.Plants.lline
@@ -84,7 +85,7 @@ class GameFragment : Fragment() {
         val show_result: TextView = view.findViewById(R.id.show_result_check)
         val eventFloatingActionButton:FloatingActionButton = view.findViewById(R.id.eventFloatingActionButton)
 
-        history.text = "0/$PLANS_COUNT_FOR_FINISH"
+        history.text = "$counter/$PLANS_COUNT_FOR_FINISH"
 
         //progressBar.setProgress(progress, true)
         fun progress() {
