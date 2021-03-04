@@ -53,7 +53,7 @@ class EventFragment : Fragment() {
 
         var current_event = getRandomEvent(randIndex)
 
-        AnswerMaster(current_event)
+        //AnswerMaster(current_event)
 
         titleEvent.text = current_event.eventName
         descriptionEvent.text = current_event.description
