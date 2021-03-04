@@ -26,12 +26,22 @@ import androidx.navigation.findNavController
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.polich.kneecap.*
 import com.polich.kneecap.data.*
+import com.polich.kneecap.data.Plants.cmDataInvalidate
+import com.polich.kneecap.data.Plants.gline
+import com.polich.kneecap.data.Plants.initFilter
+import com.polich.kneecap.data.Plants.lline
+import com.polich.kneecap.data.Plants.rline
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlin.random.Random.Default.nextLong
 
 class GameFragment : Fragment() {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+    }
 
     fun buildSoundPool(maxStreams: Int): SoundPool =
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -95,6 +105,8 @@ class GameFragment : Fragment() {
         progressBar.setProgressTintList(ColorStateList.valueOf(Color.rgb(0, 191, 50)))
         val myCanvasView: ImageView = view.findViewById(R.id.myView)
         myCanvasView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
+        initFilter()
+        myCanvasView.setColorFilter(ColorMatrixColorFilter(cmDataInvalidate()))
         myCanvasView.invalidate()
 
         val builderPlant = AlertDialog.Builder(requireContext())
@@ -130,24 +142,19 @@ class GameFragment : Fragment() {
             dialog.show()
         }
         buttonHarvest.setOnClickListener {
-
             if (plantMaster.isCanHarvest) {
-
                 buttonHarvest.alpha = 0.5F
                 buttonHarvest.isClickable = false
 
                 plantMaster.isPlanted = false
 
-               Plants.initFilter()
-                val cmData: FloatArray = floatArrayOf(
-                    Plants.rline[0], Plants.rline[1], Plants.rline[2], Plants.rline[3], 0f,
-                    Plants.gline[0], Plants.gline[1], Plants.gline[2], Plants.gline[3], 0f,
-                    Plants.bline[0], Plants.bline[1], Plants.bline[2], Plants.bline[3], 0f,
-                    Plants.lline[0], Plants.lline[1], Plants.lline[2], Plants.lline[3], 0f
-                )
-                myCanvasView.setColorFilter(ColorMatrixColorFilter(cmData))
+                myCanvasView.setColorFilter(ColorMatrixColorFilter(cmDataInvalidate()))
                 myCanvasView.invalidate()
                 progressBar.setProgress(0)
+                if (Plants.counter == PLANS_COUNT_FOR_FINISH) {
+                    show_result.text = calculateScore().toString()
+                    restartGame()
+                }
             }
         }
         /*ButtonInstrument.setOnClickListener {
@@ -170,7 +177,6 @@ class GameFragment : Fragment() {
             }
         }*/
         builderPlant.setPositiveButton("OK") { dialog, which ->
-
             if (plantMaster.isPlanted == true) {
                 Toast.makeText(requireContext(), "Поле уже засажено", Toast.LENGTH_SHORT).show()
             } else {
@@ -189,11 +195,12 @@ class GameFragment : Fragment() {
                     }
                 }
                 TemporaryObject.amountOfHappendEvents-=1
-                if (TemporaryObject.amountOfHappendEvents>1){
+                if (TemporaryObject.amountOfHappendEvents>0){
                     EventButtonAppear(eventFloatingActionButton, delay)
                 }
                 plantMaster.isPlanted = true
                 plantMaster.isCanHarvest = false
+                initFilter()
                 draw(myCanvasView, buttonHarvest)
                 History.plantHistory.add(Plants.cultures[checkedItem])
                 Plants.counter++
@@ -201,11 +208,6 @@ class GameFragment : Fragment() {
                 //Toast.makeText(this, "${plantMaster.howIsGoodChoice(cultures[checkedItem], cultures[checkedItem+1])}", Toast.LENGTH_SHORT).show()
 
                 progressBar.setProgress(Plants.counter, true)
-                if (Plants.counter == PLANS_COUNT_FOR_FINISH) {
-                    //dialogEvent(builder, checkedItem)
-                    show_result.text = calculateScore().toString()
-                    restartGame()
-                }
                 history.text = (Plants.counter).toString() + "/$PLANS_COUNT_FOR_FINISH"
                 progress()
             }
@@ -222,13 +224,7 @@ class GameFragment : Fragment() {
                 buttonHarvest.isClickable = false
                 buttonHarvest.text = "Созревание..."
                 delay(500)
-                val cmData: FloatArray = floatArrayOf(
-                    Plants.rline[0], Plants.rline[1], Plants.rline[2], Plants.rline[3], 0f,
-                    Plants.gline[0], Plants.gline[1], Plants.gline[2], Plants.gline[3], 0f,
-                    Plants.bline[0], Plants.bline[1], Plants.bline[2], Plants.bline[3], 0f,
-                    Plants.lline[0], Plants.lline[1], Plants.lline[2], Plants.lline[3], 0f
-                )
-                val mColorMatrix = ColorMatrix(cmData)
+                val mColorMatrix = ColorMatrix(cmDataInvalidate())
                 val mfilter = ColorMatrixColorFilter(mColorMatrix)
                 myCanvasView.colorFilter = mfilter
                 lvlup()
@@ -277,9 +273,10 @@ class GameFragment : Fragment() {
     }
 
     fun lvlup() {
-        Plants.rline[1] += 0.15f
-        Plants.gline[1] += 0.08f
-        Plants.lline[3] += 0.08f
+        rline[1] += 0.08f
+        gline[1] += 0.04f
+        lline[3] += 0.04f
+        cmDataInvalidate()
     }
     /*fun dialogEvent(builder:AlertDialog.Builder, checkedItem1: Int){
         var checkedItem = checkedItem1
