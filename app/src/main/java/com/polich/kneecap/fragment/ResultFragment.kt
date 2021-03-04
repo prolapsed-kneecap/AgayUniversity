@@ -25,6 +25,7 @@ class ResultFragment : Fragment() {
         val star3: ImageView = view.findViewById(R.id.star3)
         val resultTextView: TextView =view.findViewById(R.id.resultTextView)
         val go_to_selectLevel : MaterialButton = view.findViewById(R.id.go_to_select)
+
         star1.setColorFilter(Color.argb(255, 105, 105, 105))
         star2.setColorFilter(Color.argb(255, 105, 105, 105))
         star3.setColorFilter(Color.argb(255, 105, 105, 105))
@@ -38,6 +39,7 @@ class ResultFragment : Fragment() {
         return view
     }
     fun fillStars(star1:ImageView, star2:ImageView, star3:ImageView, resultTextView:TextView){
+        if(playerScore<500){resultTextView.text = "Вы набрали "+(playerScore/10).toString()+" баллов из 100! \n Вам явно нужно больше практики"}
         if (playerScore>=500){star1.setColorFilter(null); resultTextView.text = "Вы набрали "+(playerScore/10).toString()+" баллов из 100! \n Стоит потренироваться ещё!"}
         if (playerScore>=750){star2.setColorFilter(null); resultTextView.text = "Вы набрали "+(playerScore/10).toString()+" баллов из 100! \n Вы молодец, но нужно больше практики."}
         if (playerScore>=1000){star3.setColorFilter(null); resultTextView.text = "Вы набрали "+(playerScore/10).toString()+" баллов из 100! \n Идеально!"}

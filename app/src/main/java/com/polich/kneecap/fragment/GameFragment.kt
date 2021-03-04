@@ -34,6 +34,7 @@ import com.polich.kneecap.data.Plants.isCanHarvest
 import com.polich.kneecap.data.Plants.isPlanted
 import com.polich.kneecap.data.Plants.lline
 import com.polich.kneecap.data.Plants.rline
+import com.polich.kneecap.data.TemporaryObject.playerScore
 import com.polich.kneecap.data.TemporaryObject.progressBarNeedsToBeFilled
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.delay
@@ -151,7 +152,7 @@ class GameFragment : Fragment() {
                 myCanvasView.invalidate()
                 progressBar.setProgress(0)
                 if (Plants.counter == PLANS_COUNT_FOR_FINISH) {
-                    show_result.text = calculateScore().toString()
+                    calculateScore().toString()
                     restartGame()
                 }
             }
@@ -185,10 +186,9 @@ class GameFragment : Fragment() {
             if (isPlanted == true) {
                 Toast.makeText(requireContext(), "Поле уже засажено", Toast.LENGTH_SHORT).show()
             } else {
+                progressBarNeedsToBeFilled = true
                 var delay = nextLong(2000)+2000
                 val bundle = Bundle()
-
-                progressBarNeedsToBeFilled = true
 
                 bundle.putString("level",requireArguments().getString("level"))
                 bundle.putString("POLE", requireArguments().getString("POLE"))
@@ -250,13 +250,10 @@ class GameFragment : Fragment() {
         view?.findNavController()?.navigate(R.id.action_gameFragment_to_resultFragment)
     }
 
-    fun calculateScore(): MutableList<Int> {
-        val score = mutableListOf<Int>()
-        for (i in 0..History.plantHistory.size - 2) {
-            score.add(plantMaster.howIsGoodChoice(History.plantHistory[i], History.plantHistory[i + 1]))
-            Log.i("History", score.toString())
+    fun calculateScore(){
+        for (i in 0..History.plantHistory.size-2) {
+            playerScore += plantMaster.howIsGoodChoice(History.plantHistory[i], History.plantHistory[i + 1])
         }
-        return score
     }
 
     fun EventButtonAppear(eventFloatingActionButton: FloatingActionButton, delay: Long) {

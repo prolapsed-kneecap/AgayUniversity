@@ -88,7 +88,7 @@ object Eventik{
 }
 object TemporaryObject /*Временно существующий объект*/{
     var amountOfHappendEvents = 0
-    var playerScore = 750 // счёт игрока (пока будет выглядеть так)
-    var damageMultiplier = 0// damageMultiplier:Int - число на которое будет умножаться важность (зависит от выбраной сложности), пока что хранится в объекте, нужен для функции damage
+    var playerScore = 0 // счёт игрока (пока будет выглядеть так)
+    var damageMultiplier = 100// damageMultiplier:Int - число на которое будет умножаться важность (зависит от выбраной сложности), пока что хранится в объекте, нужен для функции damage
     var progressBarNeedsToBeFilled = false
 }
