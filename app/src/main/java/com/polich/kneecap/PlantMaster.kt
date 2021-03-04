@@ -4,8 +4,7 @@ import com.polich.kneecap.data.Culture
 import com.polich.kneecap.data.Plants.cultures
 
 class PlantMaster {
-    var isPlanted = false
-    var isCanHarvest = false
+
     private val positiveMap = mutableMapOf<Culture, List<Culture>>(
         cultures[0] to listOf(cultures[1], cultures[2]),
         cultures[1] to listOf(cultures[0], cultures[2]),
