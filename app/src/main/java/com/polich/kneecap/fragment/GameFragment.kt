@@ -262,7 +262,7 @@ class GameFragment : Fragment() {
         }, delay)
         Handler(Looper.getMainLooper()).postDelayed({
             eventFloatingActionButton.visibility = GONE
-        }, 15000)
+        }, 10000)
     }
 
     fun toRate(checkedItem: Int) {

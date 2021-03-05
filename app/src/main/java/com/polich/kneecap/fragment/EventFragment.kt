@@ -81,8 +81,10 @@ class EventFragment : Fragment() {
 
         titleEvent.text = current_event.eventName
         descriptionEvent.text = current_event.description
-        current_level_left.removeAt(randIndex)
-
+        if (current_level_left.size<=0){
+            current_level_left = mediumLevelEvent
+            current_level_left.removeAt(randIndex)
+        }
         btnDoneAnswer.setOnClickListener{
             val id: Int = radioGroup.checkedRadioButtonId
             if (id != -1){
@@ -101,8 +103,9 @@ class EventFragment : Fragment() {
         return view
     }
     fun getRandomEvent(randIndex:Int, level:String?): Event {
-        if (current_level_left.size<=1){current_level_left = easyLevelEvent}
-        return current_level_left[randIndex]
+        var current_level = current_level_left
+        if (current_level_left.size<=1){current_level = mediumLevelEvent}
+        return current_level[randIndex]
     }
 
     fun levelToCurrentLevel(level:String?):MutableList<Event>{
