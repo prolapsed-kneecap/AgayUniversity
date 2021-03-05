@@ -41,8 +41,8 @@ object AnswerAllLevel{
     val easyLevelAnswers2: MutableSet<MethodsStruggle> = mutableSetOf(allMethods[2], allMethods[12], allMethods[17], allMethods[10])
     val easyLevelAnswers3: MutableSet<MethodsStruggle> = mutableSetOf(allMethods[3], allMethods[16], allMethods[0], allMethods[13])
 
-    val mediumLevelAnswers1: MutableSet<MethodsStruggle> = mutableSetOf(allMethods[8], allMethods[19], allMethods[10], allMethods[3],)
-    val mediumLevelAnswers2: MutableSet<MethodsStruggle> = mutableSetOf(allMethods[14], allMethods[7], allMethods[16], allMethods[17],)
+    val mediumLevelAnswers1: MutableSet<MethodsStruggle> = mutableSetOf(allMethods[8], allMethods[19], allMethods[10], allMethods[3])
+    val mediumLevelAnswers2: MutableSet<MethodsStruggle> = mutableSetOf(allMethods[14], allMethods[7], allMethods[16], allMethods[17])
     val mediumLevelAnswers3: MutableSet<MethodsStruggle> = mutableSetOf(allMethods[19], allMethods[11], allMethods[14], allMethods[7])
     val mediumLevelAnswers4: MutableSet<MethodsStruggle> = mutableSetOf(allMethods[6], allMethods[15], allMethods[1], allMethods[4])
 

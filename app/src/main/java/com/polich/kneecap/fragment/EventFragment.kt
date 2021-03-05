@@ -70,15 +70,14 @@ class EventFragment : Fragment() {
             }
         )*/
 
-        var year = requireArguments().getString("POLE")
+       /* val year = requireArguments().getString("POLE")
         year.let {
             when(year){
-
                     "1" -> current_answer = levelSection[0].answers[]
                     "2" -> current_answer = levelSection[1].answers[]
                     "3" -> current_answer = levelSection[2].answers[]
             }
-        }
+        }*/
 
         titleEvent.text = current_event.eventName
         descriptionEvent.text = current_event.description
@@ -130,12 +129,8 @@ class EventFragment : Fragment() {
             for (i in 0 until answerPositiveMap.size){
                 if (nowEventName == answerPositiveMap[i].)
             }
-
-
-
             return
         }
-
         //Log.e("data", )
         return list
     }*/

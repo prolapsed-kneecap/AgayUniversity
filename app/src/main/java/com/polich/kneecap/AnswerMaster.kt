@@ -76,9 +76,7 @@ fun searchMethod(event_sufferer : MutableList<Culture>, name_event: String): Str
     }
     return search_name
 }
-class AnswerMaster(event: Event) {
-
-}
+class AnswerMaster(event: Event)
 object AllAnswerPositiveMap{
     val answerPositiveMap  = mutableMapOf(
         bedBugsList[3] to mutableListOf(allMethods[13]),
@@ -91,7 +89,7 @@ object AllAnswerPositiveMap{
         bedClimateList[1] to mutableListOf(),
         bedClimateList[2] to mutableListOf(),
 
-        bedNaturalList[0] to mutableListOf(allMethods[18]),
+        bedNaturalList [0] to mutableListOf(allMethods[18]),
         bedNaturalList[1] to mutableListOf(allMethods[16]),
         bedNaturalList[2] to mutableListOf(allMethods[17], allMethods[14]),
     )
