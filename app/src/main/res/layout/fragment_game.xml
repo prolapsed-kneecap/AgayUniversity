@@ -99,7 +99,7 @@
       android:layout_height="wrap_content"
       android:clickable="true"
       android:src="@drawable/priority_high"
-      android:visibility="gone"
+      android:visibility="visible"
       android:layout_marginRight="16dp"
       android:layout_marginBottom="16dp"
       app:backgroundTint="#FFC400"

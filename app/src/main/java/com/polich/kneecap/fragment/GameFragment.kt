@@ -246,7 +246,7 @@ class GameFragment : Fragment() {
 
     private fun restartGame() {
         History.plantHistory.clear()
-        Plants.counter = 0
+        counter = 0
         view?.findNavController()?.navigate(R.id.action_gameFragment_to_resultFragment)
     }
 

@@ -3,17 +3,11 @@ package com.polich.kneecap.data
 import com.polich.kneecap.data.BedBugs.bedBugsList
 import com.polich.kneecap.data.BedClimate.bedClimateList
 import com.polich.kneecap.data.BedNatural.bedNaturalList
-import com.polich.kneecap.data.MethodsStruggleBugs.bugsMethods
-import com.polich.kneecap.data.MethodsStruggleNatural.naturalMethods
 
 open class MethodsStruggle(val methodName: String, var opponent: MutableList<AllCataclysm>)
 
-object MethodsAll{
-    val allMethods = mutableListOf(bugsMethods, naturalMethods)
-}
-
-object MethodsStruggleBugs { //Агротехнические меры борьбы
-    val bugsMethods : MutableList<MethodsStruggle> = mutableListOf(
+object MethodsAll { //Агротехнические меры борьбы
+    val allMethods : MutableList<MethodsStruggle> = mutableListOf(
         MethodsStruggle("Соблюдение севооборота", mutableListOf(bedBugsList[0], bedBugsList[7])),
         MethodsStruggle("Оптимальные сроки посева зерновых культур", mutableListOf(bedBugsList[1], bedBugsList[7])),
         MethodsStruggle("Борьба с сорной растительностью", mutableListOf(bedBugsList[1], bedBugsList[2], bedBugsList[5], bedBugsList[7], bedNaturalList[1])),
@@ -29,17 +23,12 @@ object MethodsStruggleBugs { //Агротехнические меры борь�
         MethodsStruggle("Опрыскивание растений пиретроидами, неоникотиноидамии другими инсектицидами", mutableListOf(bedBugsList[1], bedBugsList[2], bedBugsList[4], bedBugsList[5])),
         MethodsStruggle("Опрыскивание резерваций вредителя биологическими инсектицидами", mutableListOf(bedBugsList[3])), //13
         MethodsStruggle("Внесение минеральных и органических удобрений", mutableListOf(bedBugsList[7], bedClimateList[2], bedNaturalList[2])),
-        MethodsStruggle("Применение паразитических и хищных насекомых", mutableListOf(bedBugsList[7]))
-    )
-}
-object MethodsStruggleNatural{
-    val naturalMethods : MutableList<MethodsStruggle> = mutableListOf(
+        MethodsStruggle("Применение паразитических и хищных насекомых", mutableListOf(bedBugsList[7])),
+        MethodsStruggle("Частое рыхление", mutableListOf(bedNaturalList[1])), //16
+        MethodsStruggle("Окучивание", mutableListOf(bedClimateList[2], bedNaturalList[2])),
         MethodsStruggle("Регулируемое и лиманное орошение", mutableListOf(bedClimateList[0])),
         MethodsStruggle("Комплекс аминокислот для преодаления стресса", mutableListOf(bedClimateList[1])),
-        MethodsStruggle("Окучивание", mutableListOf(bedClimateList[2], bedNaturalList[2])),
-        MethodsStruggle("Нет спасаения", mutableListOf(bedNaturalList[0])),
-        MethodsStruggle("Частое рыхление", mutableListOf(bedNaturalList[1]))
-    )
+        MethodsStruggle("Нет спасаения", mutableListOf(bedNaturalList[0])), //20
+        )
 }
-
 

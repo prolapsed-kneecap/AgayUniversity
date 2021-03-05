@@ -6,10 +6,8 @@ import com.polich.kneecap.data.BedBugs.bedBugsList
 import com.polich.kneecap.data.BedClimate.bedClimateList
 import com.polich.kneecap.data.BedNatural.bedNaturalList
 import com.polich.kneecap.data.MethodsAll.allMethods
-import com.polich.kneecap.data.MethodsStruggleBugs.bugsMethods
-import com.polich.kneecap.data.MethodsStruggleNatural.naturalMethods
-import com.polich.kneecap.data.bugsEventForLevel.bugsEvent
 
+/*
 fun main(){
 
     val event = bugsEvent[1]
@@ -49,6 +47,7 @@ fun main(){
     }
     println(searchMethod(event_sufferer, name_event))
 }
+*/
 
 fun searchMethod(event_sufferer : MutableList<Culture>, name_event: String): String {
     var search_name = ""
@@ -74,32 +73,26 @@ fun searchMethod(event_sufferer : MutableList<Culture>, name_event: String): Str
                 positionInList = i
             }
         }
-
     }
-
-
-
     return search_name
 }
 class AnswerMaster(event: Event) {
-    val all_cultures : MutableList<Culture> = Plants.cultures //все культуры
 
-    val name_event = event.eventName
-    val event_sufferer : MutableList<Culture> = event.sufferer //массив для жертв конкретного события
-
+}
+object AllAnswerPositiveMap{
     val answerPositiveMap  = mutableMapOf(
-        bedBugsList[3] to mutableListOf(bugsMethods[13]),
-        bedBugsList[4] to mutableListOf(bugsMethods[4], bugsMethods[6], bugsMethods[12]),
-        bedBugsList[5] to mutableListOf(bugsMethods[8], bugsMethods[12]),
-        bedBugsList[6] to mutableListOf(bugsMethods[7], bugsMethods[11]),
-        bedBugsList[7] to mutableListOf(bugsMethods[15], bugsMethods[14], bugsMethods[0], bugsMethods[4], bugsMethods[11]),
+        bedBugsList[3] to mutableListOf(allMethods[13]),
+        bedBugsList[4] to mutableListOf(allMethods[4], allMethods[6], allMethods[12]),
+        bedBugsList[5] to mutableListOf(allMethods[8], allMethods[12]),
+        bedBugsList[6] to mutableListOf(allMethods[7], allMethods[11]),
+        bedBugsList[7] to mutableListOf(allMethods[15], allMethods[14], allMethods[0], allMethods[4], allMethods[11]),
 
-        bedClimateList[0] to mutableListOf(),
+        bedClimateList[0] to mutableListOf(allMethods[20]),
         bedClimateList[1] to mutableListOf(),
         bedClimateList[2] to mutableListOf(),
 
-        bedNaturalList[0] to mutableListOf(naturalMethods[0]),
-        bedNaturalList[1] to mutableListOf(naturalMethods[4]),
-        bedNaturalList[2] to mutableListOf(naturalMethods[2], bugsMethods[14]),
+        bedNaturalList[0] to mutableListOf(allMethods[18]),
+        bedNaturalList[1] to mutableListOf(allMethods[16]),
+        bedNaturalList[2] to mutableListOf(allMethods[17], allMethods[14]),
     )
 }
