@@ -8,9 +8,9 @@ class PlantMaster {
     private val positivePlantMap = mutableMapOf<Culture, List<Culture>>(
         cultures[0] to listOf(cultures[1], cultures[2]),
         cultures[1] to listOf(cultures[0], cultures[2]),
-        cultures[2] to listOf(cultures[1], cultures[0]),
-        cultures[3] to listOf(cultures[1], cultures[0]),
-        cultures[4] to listOf(cultures[1], cultures[0])
+        cultures[2] to listOf(cultures[1], cultures[2]),
+        cultures[3] to listOf(cultures[0], cultures[4]),
+        cultures[4] to listOf(cultures[3], cultures[0])
     )
 
     fun howIsGoodChoice(prev : Culture, next : Culture) : Int{

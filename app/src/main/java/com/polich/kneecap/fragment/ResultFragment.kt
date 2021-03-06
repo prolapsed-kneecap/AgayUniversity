@@ -1,6 +1,7 @@
 package com.polich.kneecap.fragment
 
 import android.graphics.Color
+import android.graphics.ColorMatrixColorFilter
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,7 +13,14 @@ import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import com.google.android.material.button.MaterialButton
 import com.polich.kneecap.R
+import com.polich.kneecap.data.FilterObject.blineResult
+import com.polich.kneecap.data.FilterObject.glineResult
+import com.polich.kneecap.data.FilterObject.rlineResult
+import com.polich.kneecap.data.Plants
 import com.polich.kneecap.data.TemporaryObject.playerScore
+import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 
 class ResultFragment : Fragment() {/*MainActivity.OnBackPressedListener*/
@@ -45,9 +53,25 @@ class ResultFragment : Fragment() {/*MainActivity.OnBackPressedListener*/
 
     fun fillStars(star1: ImageView, star2: ImageView, star3: ImageView, resultTextView: TextView){
         if(playerScore<500){resultTextView.text = "Вы набрали "+(playerScore/10).toString()+" баллов из 100! \n Вам явно нужно больше практики"}
-        if (playerScore>=500){star1.setColorFilter(null); resultTextView.text = "Вы набрали "+(playerScore/10).toString()+" баллов из 100! \n Стоит потренироваться ещё!"}
-        if (playerScore>=750){star2.setColorFilter(null); resultTextView.text = "Вы набрали "+(playerScore/10).toString()+" баллов из 100! \n Вы молодец, но нужно больше практики."}
-        if (playerScore>=1000){star3.setColorFilter(null); resultTextView.text = "Вы набрали "+(playerScore/10).toString()+" баллов из 100! \n Идеально!"}
+        if (playerScore>=500){star1.setColorFilter(null); resultTextView.text = "Вы набрали "+(playerScore/10).toString()+" баллов из 100! \n Стоит потренироваться ещё!"/*; FilterStart(star1)*/}
+        if (playerScore>=750){star2.setColorFilter(null); resultTextView.text = "Вы набрали "+(playerScore/10).toString()+" баллов из 100! \n Вы молодец, но нужно больше практики."/*; FilterStart(star2)*/}
+        if (playerScore>=1000){star3.setColorFilter(null); resultTextView.text = "Вы набрали "+(1000/10).toString()+" баллов из 100! \n Идеально!"/*; FilterStart(star3)*/}
+    }
+    fun FilterStart(star:ImageView){
+        MainScope().launch {
+            for (i in 1..21){
+                lvlupResult()
+                star.setColorFilter(Color.argb(0, rlineResult, glineResult, blineResult))
+                delay(90)
+            }
+        }
+        star.setColorFilter(Color.argb(0, rlineResult, glineResult, blineResult))
+        star.invalidate()
+    }
+    fun lvlupResult(){
+        rlineResult+=7
+        glineResult+=7
+        blineResult-=5
     }
 
 //    var navHostFragment: NavHostFragment = fragmentManager?.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
