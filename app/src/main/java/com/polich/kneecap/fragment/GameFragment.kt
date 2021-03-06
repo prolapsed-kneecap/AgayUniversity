@@ -34,6 +34,7 @@ import com.polich.kneecap.data.Plants.isCanHarvest
 import com.polich.kneecap.data.Plants.isPlanted
 import com.polich.kneecap.data.Plants.lline
 import com.polich.kneecap.data.Plants.rline
+import com.polich.kneecap.data.TemporaryObject.amountOfHappendEvents
 import com.polich.kneecap.data.TemporaryObject.playerScore
 import com.polich.kneecap.data.TemporaryObject.progressBarNeedsToBeFilled
 import kotlinx.coroutines.MainScope
@@ -254,8 +255,15 @@ class GameFragment : Fragment() {
             isCanHarvest = true
             buttonHarvest.alpha = 1F
             buttonHarvest.isClickable = false
-            buttonHarvest.isEnabled = false
-            buttonHarvest.text = "Решите проблему"
+            if (amountOfHappendEvents>0){
+                buttonHarvest.isEnabled = false
+                buttonHarvest.text = "Решите проблему"
+            }
+            else{
+                buttonHarvest.isEnabled = true
+                buttonHarvest.isClickable = true
+                buttonHarvest.text = "Собрать урожай"
+            }
         }
     }
 

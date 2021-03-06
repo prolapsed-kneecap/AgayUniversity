@@ -92,3 +92,9 @@ object TemporaryObject /*Временно существующий объект*
     var damageMultiplier = 100// damageMultiplier:Int - число на которое будет умножаться важность (зависит от выбраной сложности), пока что хранится в объекте, нужен для функции damage
     var progressBarNeedsToBeFilled = false
 }
+object FilterObject{
+    var aline = 0
+    var rlineResult = 105
+    var glineResult = 105
+    var blineResult = 105
+}
