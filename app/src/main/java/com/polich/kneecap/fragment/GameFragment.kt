@@ -182,6 +182,20 @@ class GameFragment : Fragment() {
             }
         }*/
 
+
+        fun EventButtonAppear(eventFloatingActionButton: FloatingActionButton, delay: Long) {
+            Handler(Looper.getMainLooper()).postDelayed({
+                eventFloatingActionButton.visibility = VISIBLE
+            }, delay)
+            Handler(Looper.getMainLooper()).postDelayed({
+                eventFloatingActionButton.visibility = GONE
+                buttonHarvest.isEnabled = true
+                buttonHarvest.isClickable = true
+                buttonHarvest.text = "Собрать Урожай"
+            }, 10000)
+        }
+
+
         builderPlant.setPositiveButton("OK") { dialog, which ->
             if (isPlanted == true) {
                 Toast.makeText(requireContext(), "Поле уже засажено", Toast.LENGTH_SHORT).show()
@@ -239,8 +253,9 @@ class GameFragment : Fragment() {
             }
             isCanHarvest = true
             buttonHarvest.alpha = 1F
-            buttonHarvest.isClickable = true
-            buttonHarvest.text = "Собрать урожай"
+            buttonHarvest.isClickable = false
+            buttonHarvest.isEnabled = false
+            buttonHarvest.text = "Решите проблему"
         }
     }
 
@@ -256,14 +271,7 @@ class GameFragment : Fragment() {
         }
     }
 
-    fun EventButtonAppear(eventFloatingActionButton: FloatingActionButton, delay: Long) {
-        Handler(Looper.getMainLooper()).postDelayed({
-            eventFloatingActionButton.visibility = VISIBLE
-        }, delay)
-        Handler(Looper.getMainLooper()).postDelayed({
-            eventFloatingActionButton.visibility = GONE
-        }, 10000)
-    }
+
 
     fun toRate(checkedItem: Int) {
         var rate = "WRONG"
