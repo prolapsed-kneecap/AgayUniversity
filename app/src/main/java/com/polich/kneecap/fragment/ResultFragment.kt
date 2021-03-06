@@ -2,18 +2,20 @@ package com.polich.kneecap.fragment
 
 import android.graphics.Color
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import com.google.android.material.button.MaterialButton
 import com.polich.kneecap.R
 import com.polich.kneecap.data.TemporaryObject.playerScore
 
-class ResultFragment : Fragment() {
+
+class ResultFragment : Fragment() {/*MainActivity.OnBackPressedListener*/
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,16 +34,27 @@ class ResultFragment : Fragment() {
 
         fillStars(star1, star2, star3, resultTextView)
 
+        //val callback = requireActivity().onBackPressedDispatcher.addCallback(this)
+
         go_to_selectLevel.setOnClickListener {
             view.findNavController().navigate(R.id.action_resultFragment_to_levelSelectionFragment)
         }
 
         return view
     }
-    fun fillStars(star1:ImageView, star2:ImageView, star3:ImageView, resultTextView:TextView){
+
+    fun fillStars(star1: ImageView, star2: ImageView, star3: ImageView, resultTextView: TextView){
         if(playerScore<500){resultTextView.text = "Вы набрали "+(playerScore/10).toString()+" баллов из 100! \n Вам явно нужно больше практики"}
         if (playerScore>=500){star1.setColorFilter(null); resultTextView.text = "Вы набрали "+(playerScore/10).toString()+" баллов из 100! \n Стоит потренироваться ещё!"}
         if (playerScore>=750){star2.setColorFilter(null); resultTextView.text = "Вы набрали "+(playerScore/10).toString()+" баллов из 100! \n Вы молодец, но нужно больше практики."}
         if (playerScore>=1000){star3.setColorFilter(null); resultTextView.text = "Вы набрали "+(playerScore/10).toString()+" баллов из 100! \n Идеально!"}
     }
+
+//    var navHostFragment: NavHostFragment = fragmentManager?.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+    //    override fun onBackPressed() {
+//        val currentFragment: Fragment =
+//            navHostFragment.getChildFragmentManager().getFragments().get(0)
+//        val controller = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment)
+//        if (currentFragment is OnBackPressedListener) (currentFragment as OnBackPressedListener).onBackPressed() else if (!controller.popBackStack()) requireActivity().moveTaskToBack(false)
+//    }
 }

@@ -76,21 +76,20 @@ fun searchMethod(event_sufferer : MutableList<Culture>, name_event: String): Str
     }
     return search_name
 }
-class AnswerMaster(event: Event)
 object AllAnswerPositiveMap{
-    val answerPositiveMap  = mutableMapOf(
-        bedBugsList[3] to mutableListOf(allMethods[13]),
-        bedBugsList[4] to mutableListOf(allMethods[4], allMethods[6], allMethods[12]),
-        bedBugsList[5] to mutableListOf(allMethods[8], allMethods[12]),
-        bedBugsList[6] to mutableListOf(allMethods[7], allMethods[11]),
-        bedBugsList[7] to mutableListOf(allMethods[15], allMethods[14], allMethods[0], allMethods[4], allMethods[11]),
+    val answerPositiveMap  = hashMapOf(
+        bedBugsList[3] to allMethods[13],
+        bedBugsList[4] to allMethods[4], //allMethods[6], allMethods[12]),
+        bedBugsList[5] to allMethods[8], //allMethods[12]),
+        bedBugsList[6] to allMethods[11], //allMethods[7],
+        bedBugsList[7] to allMethods[0], //allMethods[15], allMethods[14],  allMethods[4], allMethods[11],
 
-        bedClimateList[0] to mutableListOf(allMethods[20]),
-        bedClimateList[1] to mutableListOf(),
-        bedClimateList[2] to mutableListOf(),
+        bedNaturalList[0] to allMethods[20],
+        bedNaturalList[1] to  allMethods[20],
+        bedNaturalList[2] to  allMethods[20],
 
-        bedNaturalList [0] to mutableListOf(allMethods[18]),
-        bedNaturalList[1] to mutableListOf(allMethods[16]),
-        bedNaturalList[2] to mutableListOf(allMethods[17], allMethods[14]),
+        bedClimateList [0] to  allMethods[18],
+        bedClimateList[1] to allMethods[16],
+        bedClimateList[2] to allMethods[17], //allMethods[14]),
     )
 }

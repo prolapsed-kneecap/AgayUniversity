@@ -14,6 +14,9 @@ import android.widget.Toast.LENGTH_SHORT
 import androidx.navigation.findNavController
 import com.google.android.material.button.MaterialButton
 import com.polich.kneecap.*
+import com.polich.kneecap.AllAnswerPositiveMap.answerPositiveMap
+import com.polich.kneecap.data.BedBugs
+import com.polich.kneecap.data.BedBugs.bedBugsList
 import com.polich.kneecap.data.Event
 import com.polich.kneecap.data.LevelDif.easyLevelEvent
 import com.polich.kneecap.data.LevelDif.hardLevelEvent
@@ -27,7 +30,8 @@ import kotlin.random.nextInt
 class EventFragment : Fragment() {
     var current_level= mutableListOf<Event>()
     var current_level_left = current_level
-    var current_answer = mutableSetOf<MethodsStruggle>()
+    var current_good_answer = mutableSetOf<MethodsStruggle>()
+    var current_bad_answer = mutableSetOf<MethodsStruggle>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -60,24 +64,36 @@ class EventFragment : Fragment() {
 
         val level = requireArguments().getString("level")
         val current_event = getRandomEvent(randIndex, level)
-        //val event_name = randomAnswer(current_event.eventName)
-        //AnswerMaster(current_event)
 
-        /*radioGroup.setOnCheckedChangeListener (
+        for (key in answerPositiveMap.keys){
+            if (key.cataclysmName == current_event.eventName)
+                rad2.text = answerPositiveMap.get(key)?.methodName.toString()
+            /*for (i in 0..current_bad_answer.size-1){
+                rad1.text = current_bad_answer.toString()
+            }*/
+        }
+
+        radioGroup.setOnCheckedChangeListener (
             RadioGroup.OnCheckedChangeListener { group, checkID ->
                 val radButton : RadioButton = view.findViewById(checkID)
                 //Toast.makeText(requireContext(), radButton.text, LENGTH_SHORT).show()
             }
-        )*/
+        )
 
-       /* val year = requireArguments().getString("POLE")
+        val year = requireArguments().getString("POLE")
         year.let {
             when(year){
-                    "1" -> current_answer = levelSection[0].answers[]
-                    "2" -> current_answer = levelSection[1].answers[]
-                    "3" -> current_answer = levelSection[2].answers[]
+                    "1" -> current_good_answer = levelSection[0].goodAnswers
+                    "2" -> current_good_answer = levelSection[1].goodAnswers
+                    "3" -> current_good_answer = levelSection[2].goodAnswers
             }
-        }*/
+            when(year){
+                "1" -> current_bad_answer = levelSection[0].badAnswer
+                "2" -> current_bad_answer = levelSection[1].badAnswer
+                "3" -> current_bad_answer = levelSection[2].badAnswer
+            }
+
+        }
 
         titleEvent.text = current_event.eventName
         descriptionEvent.text = current_event.description

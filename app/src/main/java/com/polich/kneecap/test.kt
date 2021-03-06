@@ -1,6 +1,6 @@
 package com.polich.kneecap
 import com.polich.kneecap.data.*
-
+/*
 fun main(){
     val localEasyLevel = LevelDif.easyLevelEvent
     val localEasyAnswer = LevelDif.easyAnswer
@@ -52,4 +52,4 @@ fun get(event: Event): MutableSet<MethodsStruggle> {
 
     val position = getPositionEasy(event)
     return LevelDif.easyAnswer.toMutableList()[position]
-}
+}*/
