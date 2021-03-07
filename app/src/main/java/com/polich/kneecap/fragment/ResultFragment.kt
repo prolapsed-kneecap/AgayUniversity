@@ -86,6 +86,7 @@ class ResultFragment : Fragment() {/*MainActivity.OnBackPressedListener*/
             }
 //            Toast.makeText(requireContext(), scoreHistory.toString(), LENGTH_SHORT).show()
             completedLevels++
+            playerScore = 0
             view.findNavController().navigate(R.id.action_resultFragment_to_levelSelectionFragment)
         }
 
