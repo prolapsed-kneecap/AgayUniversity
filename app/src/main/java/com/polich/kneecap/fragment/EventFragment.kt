@@ -106,6 +106,13 @@ class EventFragment : Fragment() {
                 val checkRadio: RadioButton = view.findViewById(id)
                 Toast.makeText(requireContext(), checkRadio.text, LENGTH_SHORT).show()
             }
+            if (id != 1){
+                playerScore = current_event.DealDamage(playerScore, current_event.importance)
+                Toast.makeText(requireContext(), "Не верно!", LENGTH_SHORT).show()
+            } else {
+                playerScore = current_event.GivePlayerScore(playerScore, current_event.importance)
+                Toast.makeText(requireContext(), "Верно!", LENGTH_SHORT).show()
+            }
             playerScore = current_event.GivePlayerScore(playerScore, current_event.importance)
             //else{current_event.DealDamage(playerScore, current_event.importance)}
             val bundle = Bundle()
