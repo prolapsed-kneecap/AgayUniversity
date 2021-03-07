@@ -23,6 +23,7 @@
         android:orientation="vertical">
         
         <ImageView
+            android:id="@+id/cardImage"
             android:background="#93DFB2"
             android:layout_weight="3"
             android:layout_width="match_parent"

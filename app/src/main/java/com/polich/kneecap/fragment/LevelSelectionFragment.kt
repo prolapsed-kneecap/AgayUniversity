@@ -30,7 +30,6 @@ class LevelSelectionFragment : Fragment() {
         val adapter = MyRecyclerViewAdapter(this, level)
         recycler.adapter = adapter
 
-        // Тут (может и не тут...) надо в зависимости от выбранного уровня изменить переменную damageMultiplier:Int в обьекте
 
         return view
     }

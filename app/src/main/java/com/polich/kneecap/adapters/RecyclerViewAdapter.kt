@@ -1,9 +1,11 @@
 package com.polich.kneecap.adapters
 
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
@@ -36,9 +38,14 @@ class MyRecyclerViewAdapter(var fragment: Fragment, data: ArrayList<String>) :
     inner class DataViewHolder internal constructor(itemView: View) : RecyclerView.ViewHolder(itemView){
         var card: MaterialCardView = itemView.findViewById(R.id.item_level)
         var title: TextView = itemView.findViewById(R.id.info_text)
+        var imageCard:ImageView = itemView.findViewById(R.id.cardImage)
 
         fun onBing(data: String, position: Int){
             title.text = "Уровень ${data}"
+            if (position in arrayOf(1, 2)){
+                card.isEnabled = false
+                imageCard.setBackgroundColor(Color.rgb(181,181,181))
+            }
             card.setOnClickListener{
                 val bundle = Bundle()
                 when(data){
@@ -52,6 +59,7 @@ class MyRecyclerViewAdapter(var fragment: Fragment, data: ArrayList<String>) :
                     1 -> levelw = "medium"
                     2 -> levelw = "hard"
                 }
+
                 bundle.putString("level",levelw)
                 bundle.putString("POLE", data)
                 fragment.requireActivity().findNavController(R.id.nav_host_fragment)
