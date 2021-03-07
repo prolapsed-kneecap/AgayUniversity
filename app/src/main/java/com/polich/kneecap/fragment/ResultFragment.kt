@@ -95,7 +95,8 @@ class ResultFragment : Fragment() {
         if(playerScore<300){resultTextView.text = "Вы набрали "+(playerScore/10).toString()+" баллов из 100! \n Вам явно нужно больше практики"}
         if (playerScore>=300){star1.setColorFilter(null); resultTextView.text = "Вы набрали "+(playerScore/10).toString()+" баллов из 100! \n Стоит потренироваться ещё!"/*; FilterStart(star1)*/}
         if (playerScore>=500){star2.setColorFilter(null); resultTextView.text = "Вы набрали "+(playerScore/10).toString()+" баллов из 100! \n Вы молодец, но нужно больше практики."/*; FilterStart(star2)*/}
-        if (playerScore>=900){star3.setColorFilter(null); resultTextView.text = "Вы набрали "+(1000/10).toString()+" баллов из 100! \n Идеально!"/*; FilterStart(star3)*/}
+        if (playerScore>=900){star3.setColorFilter(null); resultTextView.text = "Вы набрали "+(playerScore/10).toString()+" баллов из 100! \n Вы большой молодец!"/*; FilterStart(star3)*/}
+        if (playerScore>=1000){resultTextView.text = "Вы набрали 100 баллов из 100 \n Идеально!"}
     }
     fun FilterStart(star:ImageView){
         MainScope().launch {
