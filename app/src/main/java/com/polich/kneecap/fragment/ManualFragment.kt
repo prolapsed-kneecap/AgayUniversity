@@ -19,6 +19,7 @@ class ManualFragment (): Fragment() {
         val view = inflater.inflate(R.layout.fragment_manual, container, false)
         val card_tech: MaterialCardView = view.findViewById(R.id.card_tech)
         val card_culture: MaterialCardView = view.findViewById(R.id.card_culture)
+        val card_planted: MaterialCardView = view.findViewById(R.id.card_planted)
         LevelDif.easyLevelEvent
         card_tech.setOnClickListener{
             val bundle = Bundle()
@@ -30,6 +31,12 @@ class ManualFragment (): Fragment() {
             val bundle = Bundle()
             bundle.putString("key", "URL_CULTURE")
             bundle.putString("URL_CULTURE", requireContext().resources.getString(R.string.url_culture))
+            view.findNavController().navigate(R.id.action_manualFragment_to_webFragment, bundle)
+        }
+        card_planted.setOnClickListener{
+            val bundle = Bundle()
+            bundle.putString("key", "URL_PLANTED")
+            bundle.putString("URL_PLANTED", requireContext().resources.getString(R.string.url_planted))
             view.findNavController().navigate(R.id.action_manualFragment_to_webFragment, bundle)
         }
 
