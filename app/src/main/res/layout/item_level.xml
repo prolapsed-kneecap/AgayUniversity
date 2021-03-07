@@ -24,10 +24,7 @@
         android:orientation="vertical">
 
         <LinearLayout
-
-            android:layout_marginBottom="4dp"
-            android:layout_marginTop="4dp"
-            android:background="@color/teal_600"
+            android:background="#93DFB2"
             android:layout_weight="3"
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -38,7 +35,7 @@
                 android:id="@+id/cardImage"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"/>
-
+<!--
             <ImageView
                 android:visibility="gone"
                 android:id="@+id/one_star"
@@ -59,7 +56,7 @@
                 android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:background="@drawable/star"/>
+                android:background="@drawable/star"/>-->
 
         </LinearLayout>
 
@@ -71,6 +68,7 @@
             android:textStyle="bold"
             android:layout_gravity="center_vertical|center_horizontal"
             android:layout_weight="5"
+            android:text="level1"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:paddingTop="4dp"

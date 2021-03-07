@@ -8,6 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
+import android.widget.Toast.LENGTH_SHORT
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
@@ -42,24 +44,28 @@ class ResultFragment : Fragment() {/*MainActivity.OnBackPressedListener*/
 
         fillStars(star1, star2, star3, resultTextView)
 
+        val level = requireArguments().getString("levelNow")
+
         //val callback = requireActivity().onBackPressedDispatcher.addCallback(this)
 
         go_to_selectLevel.setOnClickListener {
-            if (current_level==1){
+            Toast.makeText(requireContext(), "$level", LENGTH_SHORT).show()
+            if (level=="1"){
                 if (scoreHistory[0]<playerScore){
                     scoreHistory[0]= playerScore
                 }
             }
-            if (current_level==2){
+            if (level=="2"){
                 if (scoreHistory[1]<playerScore){
                     scoreHistory[1]= playerScore
                 }
             }
-            if (current_level==3){
+            if (level=="3"){
                 if (scoreHistory[2]<playerScore){
                     scoreHistory[2]= playerScore
                 }
             }
+//            Toast.makeText(requireContext(), scoreHistory.toString(), LENGTH_SHORT).show()
             completedLevels++
             view.findNavController().navigate(R.id.action_resultFragment_to_levelSelectionFragment)
         }

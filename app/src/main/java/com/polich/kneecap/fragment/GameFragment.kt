@@ -59,7 +59,8 @@ class GameFragment : Fragment() {
         }
 
     val PLANS_COUNT_FOR_FINISH = LevelSelectionFragment.yearsPlants
-    lateinit var leveeel: String
+    var leveeel: String = "1"
+
 
     val plantMaster = PlantMaster()
     val instrumentMaster = InstrumentMaster()
@@ -275,6 +276,7 @@ class GameFragment : Fragment() {
     }
 
     private fun restartGame() {
+        playerScore = 0
         History.plantHistory.clear()
         counter = 0
         val bundle = Bundle()
