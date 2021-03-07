@@ -14,6 +14,7 @@ import com.google.android.material.card.MaterialCardView
 import com.polich.kneecap.data.LevelDif.levelSection
 import com.polich.kneecap.R
 import com.polich.kneecap.fragment.LevelSelectionFragment.Companion.yearsPlants
+import com.polich.kneecap.fragment.completedLevels
 
 class MyRecyclerViewAdapter(var fragment: Fragment, data: ArrayList<String>) :
     RecyclerView.Adapter<MyRecyclerViewAdapter.DataViewHolder>() {
@@ -35,17 +36,42 @@ class MyRecyclerViewAdapter(var fragment: Fragment, data: ArrayList<String>) :
         return mData.size
     }
 
-    inner class DataViewHolder internal constructor(itemView: View) : RecyclerView.ViewHolder(itemView){
+    inner class DataViewHolder internal constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var card: MaterialCardView = itemView.findViewById(R.id.item_level)
         var title: TextView = itemView.findViewById(R.id.info_text)
-        var imageCard:ImageView = itemView.findViewById(R.id.cardImage)
+        var imageCard: ImageView = itemView.findViewById(R.id.cardImage)
 
-        fun onBing(data: String, position: Int){
+        fun onBing(data: String, position: Int) {
             title.text = "Уровень ${data}"
-            if (position in arrayOf(1, 2)){
+
+            if (position in arrayOf(1, 2)) {
                 card.isEnabled = false
-                imageCard.setBackgroundColor(Color.rgb(181,181,181))
+                imageCard.setBackgroundColor(Color.rgb(181, 181, 181))
             }
+            if (completedLevels==1) {
+                if (position==1){
+                    card.isEnabled = true
+                    imageCard.setBackgroundColor(Color.rgb(147, 223, 178))
+                }
+            }
+            if (completedLevels>1){
+                if (position==1){
+                    card.isEnabled = true
+                    imageCard.setBackgroundColor(Color.rgb(147, 223, 178))
+                }
+                if (position==2){
+                    card.isEnabled = true
+                    imageCard.setBackgroundColor(Color.rgb(147, 223, 178))
+                }
+            }
+//            if (position in arrayOf(2)){
+//                card.isEnabled = false
+//                imageCard.setBackgroundColor(Color.rgb(181,181,181))
+//                if (completedLevels==2 && position == 2){
+//                    card.isEnabled = true
+//                    imageCard.setBackgroundColor(Color.rgb(147, 223, 178))
+//                }
+//            }
             card.setOnClickListener{
                 val bundle = Bundle()
                 when(data){

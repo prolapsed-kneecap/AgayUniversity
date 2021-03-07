@@ -22,9 +22,8 @@ import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-
+var completedLevels = 0
 class ResultFragment : Fragment() {/*MainActivity.OnBackPressedListener*/
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -45,6 +44,7 @@ class ResultFragment : Fragment() {/*MainActivity.OnBackPressedListener*/
         //val callback = requireActivity().onBackPressedDispatcher.addCallback(this)
 
         go_to_selectLevel.setOnClickListener {
+            completedLevels++
             view.findNavController().navigate(R.id.action_resultFragment_to_levelSelectionFragment)
         }
 
