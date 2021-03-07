@@ -12,7 +12,6 @@ import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -33,6 +32,7 @@ import com.polich.kneecap.data.Plants.initFilter
 import com.polich.kneecap.data.Plants.isCanHarvest
 import com.polich.kneecap.data.Plants.isPlanted
 import com.polich.kneecap.data.Plants.lline
+import com.polich.kneecap.data.Plants.plants
 import com.polich.kneecap.data.Plants.rline
 import com.polich.kneecap.data.TemporaryObject.amountOfHappendEvents
 import com.polich.kneecap.data.TemporaryObject.playerScore
@@ -59,6 +59,7 @@ class GameFragment : Fragment() {
         }
 
     val PLANS_COUNT_FOR_FINISH = LevelSelectionFragment.yearsPlants
+    lateinit var leveeel: String
 
     val plantMaster = PlantMaster()
     val instrumentMaster = InstrumentMaster()
@@ -132,7 +133,7 @@ class GameFragment : Fragment() {
             view?.findNavController()?.navigate(R.id.action_gameFragment_to_eventFragment, bundle)
         }
 
-        builderPlant.setSingleChoiceItems(Plants.plants, checkedItem) { dialog, which ->
+        builderPlant.setSingleChoiceItems(plants, checkedItem) { dialog, which ->
             checkedItem = which
         }
 
@@ -152,7 +153,7 @@ class GameFragment : Fragment() {
                 myCanvasView.setColorFilter(ColorMatrixColorFilter(cmDataInvalidate()))
                 myCanvasView.invalidate()
                 progressBar.setProgress(0)
-                if (Plants.counter == PLANS_COUNT_FOR_FINISH) {
+                if (counter == PLANS_COUNT_FOR_FINISH) {
                     calculateScore().toString()
                     restartGame()
                 }
@@ -211,13 +212,19 @@ class GameFragment : Fragment() {
                 val level = bundle.getString("POLE")
                 if(level != null){
                     when(level){
-                        "1" -> TemporaryObject.amountOfHappendEvents = LevelDif.levelSection[0].amountOfEvents
-                        "2" -> TemporaryObject.amountOfHappendEvents = LevelDif.levelSection[1].amountOfEvents
-                        "3" ->  TemporaryObject.amountOfHappendEvents = LevelDif.levelSection[2].amountOfEvents
+                        "1" -> amountOfHappendEvents = LevelDif.levelSection[0].amountOfEvents
+                        "2" -> amountOfHappendEvents = LevelDif.levelSection[1].amountOfEvents
+                        "3" ->  amountOfHappendEvents = LevelDif.levelSection[2].amountOfEvents
+                    }
+                    when(level){
+                        "1" -> leveeel = LevelDif.levelSection[0].name
+                        "2" -> leveeel = LevelDif.levelSection[1].name
+                        "3" ->  leveeel = LevelDif.levelSection[2].name
                     }
                 }
-                TemporaryObject.amountOfHappendEvents-=1
-                if (TemporaryObject.amountOfHappendEvents>0){
+
+                amountOfHappendEvents-=1
+                if (amountOfHappendEvents>0){
                     EventButtonAppear(eventFloatingActionButton, delay)
                 }
                 isPlanted = true
@@ -225,12 +232,12 @@ class GameFragment : Fragment() {
                 initFilter()
                 draw(myCanvasView, buttonHarvest)
                 History.plantHistory.add(Plants.cultures[checkedItem])
-                Plants.counter++
+                counter++
 
                 //Toast.makeText(this, "${plantMaster.howIsGoodChoice(cultures[checkedItem], cultures[checkedItem+1])}", Toast.LENGTH_SHORT).show()
 
-                progressBar.setProgress(Plants.counter, true)
-                history.text = (Plants.counter).toString() + "/$PLANS_COUNT_FOR_FINISH"
+                progressBar.setProgress(counter, true)
+                history.text = (counter).toString() + "/$PLANS_COUNT_FOR_FINISH"
                 progress()
             }
         }
@@ -270,7 +277,9 @@ class GameFragment : Fragment() {
     private fun restartGame() {
         History.plantHistory.clear()
         counter = 0
-        view?.findNavController()?.navigate(R.id.action_gameFragment_to_resultFragment)
+        val bundle = Bundle()
+        bundle.putString("levelNow", leveeel)
+        view?.findNavController()?.navigate(R.id.action_gameFragment_to_resultFragment, bundle)
     }
 
     fun calculateScore(){
@@ -278,8 +287,6 @@ class GameFragment : Fragment() {
             playerScore += plantMaster.howIsGoodChoice(History.plantHistory[i], History.plantHistory[i + 1])
         }
     }
-
-
 
     fun toRate(checkedItem: Int) {
         var rate = "WRONG"
