@@ -211,9 +211,9 @@ class GameFragment : Fragment() {
                 val level = bundle.getString("POLE")
                 if(level != null){
                     when(level){
-                        1.toString() -> TemporaryObject.amountOfHappendEvents = LevelDif.levelSection[0].amountOfEvents
-                        2.toString() -> TemporaryObject.amountOfHappendEvents = LevelDif.levelSection[1].amountOfEvents
-                        3.toString() ->  TemporaryObject.amountOfHappendEvents = LevelDif.levelSection[2].amountOfEvents
+                        "1" -> TemporaryObject.amountOfHappendEvents = LevelDif.levelSection[0].amountOfEvents
+                        "2" -> TemporaryObject.amountOfHappendEvents = LevelDif.levelSection[1].amountOfEvents
+                        "3" ->  TemporaryObject.amountOfHappendEvents = LevelDif.levelSection[2].amountOfEvents
                     }
                 }
                 TemporaryObject.amountOfHappendEvents-=1

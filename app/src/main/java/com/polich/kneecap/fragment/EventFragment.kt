@@ -97,8 +97,7 @@ class EventFragment : Fragment() {
 
         titleEvent.text = current_event.eventName
         descriptionEvent.text = current_event.description
-        if (current_level_left.size<=0){
-            current_level_left = mediumLevelEvent
+        if (current_level_left.size>0){
             current_level_left.removeAt(randIndex)
         }
         btnDoneAnswer.setOnClickListener{
@@ -106,9 +105,7 @@ class EventFragment : Fragment() {
             if (id != -1){
                 val checkRadio: RadioButton = view.findViewById(id)
                 Toast.makeText(requireContext(), checkRadio.text, LENGTH_SHORT).show()
-
             }
-
             playerScore = current_event.GivePlayerScore(playerScore, current_event.importance)
             //else{current_event.DealDamage(playerScore, current_event.importance)}
             val bundle = Bundle()
@@ -120,7 +117,7 @@ class EventFragment : Fragment() {
     }
     fun getRandomEvent(randIndex:Int, level:String?): Event {
         var current_level = current_level_left
-        if (current_level_left.size<=1){current_level = mediumLevelEvent}
+        if (current_level_left.size<=0){current_level.add(mediumLevelEvent[randIndex])}
         return current_level[randIndex]
     }
 
