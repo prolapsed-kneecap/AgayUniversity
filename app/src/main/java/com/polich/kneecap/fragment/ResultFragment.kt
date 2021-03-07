@@ -16,27 +16,14 @@ import com.polich.kneecap.R
 import com.polich.kneecap.data.FilterObject.blineResult
 import com.polich.kneecap.data.FilterObject.glineResult
 import com.polich.kneecap.data.FilterObject.rlineResult
-import com.polich.kneecap.data.LevelDif
 import com.polich.kneecap.data.Plants
-import com.polich.kneecap.data.TemporaryObject
 import com.polich.kneecap.data.TemporaryObject.playerScore
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import javax.security.auth.callback.Callback
 
 
 class ResultFragment : Fragment() {/*MainActivity.OnBackPressedListener*/
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        //val callback = requireActivity().onBackPressedDispatcher.addCallback()
-        super.onCreate(savedInstanceState)
-
-        //return callback
-
-    }
-    //lateinit var nowLevel : String
-    val level = requireArguments().getString("levelNow")
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -54,6 +41,9 @@ class ResultFragment : Fragment() {/*MainActivity.OnBackPressedListener*/
         star3.setColorFilter(Color.argb(255, 105, 105, 105))
 
         fillStars(star1, star2, star3, resultTextView)
+
+        //val callback = requireActivity().onBackPressedDispatcher.addCallback(this)
+
         go_to_selectLevel.setOnClickListener {
             view.findNavController().navigate(R.id.action_resultFragment_to_levelSelectionFragment)
         }
