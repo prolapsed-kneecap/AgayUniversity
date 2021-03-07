@@ -276,8 +276,6 @@ class GameFragment : Fragment() {
     }
 
     private fun restartGame() {
-        playerScore = 0
-        History.plantHistory.clear()
         counter = 0
         val bundle = Bundle()
         bundle.putString("levelNow", leveeel)
