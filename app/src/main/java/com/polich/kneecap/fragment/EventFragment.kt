@@ -72,11 +72,18 @@ class EventFragment : Fragment() {
                 rad1.text = current_bad_answer.toString()
             }*/
         }
-
         radioGroup.setOnCheckedChangeListener (
             RadioGroup.OnCheckedChangeListener { group, checkID ->
                 val radButton : RadioButton = view.findViewById(checkID)
-                //Toast.makeText(requireContext(), radButton.text, LENGTH_SHORT).show()
+                Log.e("idCheck in RadioGroup", checkID.toString())
+
+             /*   if (checkID == 2131231169){
+                    playerScore = current_event.DealDamage(playerScore, current_event.importance)
+                    Toast.makeText(requireContext(), "Верно!", LENGTH_SHORT).show()
+                } else {
+                    playerScore = current_event.GivePlayerScore(playerScore, current_event.importance)
+                    Toast.makeText(requireContext(), "Неверно!", LENGTH_SHORT).show()
+                }*/
             }
         )
 
@@ -104,14 +111,15 @@ class EventFragment : Fragment() {
             val id: Int = radioGroup.checkedRadioButtonId
             if (id != -1){
                 val checkRadio: RadioButton = view.findViewById(id)
-                Toast.makeText(requireContext(), checkRadio.text, LENGTH_SHORT).show()
+                //Toast.makeText(requireContext(), checkRadio.text, LENGTH_SHORT).show()
             }
-            if (id != 1){
+            if (id == 2131231169){
                 playerScore = current_event.DealDamage(playerScore, current_event.importance)
-                Toast.makeText(requireContext(), "Не верно!", LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "Верно!", LENGTH_SHORT).show()
+                //Log.e("Score", )
             } else {
                 playerScore = current_event.GivePlayerScore(playerScore, current_event.importance)
-                Toast.makeText(requireContext(), "Верно!", LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "Неверно!", LENGTH_SHORT).show()
             }
             playerScore = current_event.GivePlayerScore(playerScore, current_event.importance)
             //else{current_event.DealDamage(playerScore, current_event.importance)}

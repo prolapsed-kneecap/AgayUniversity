@@ -22,7 +22,7 @@ import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-
+var completedLevels = 0
 class ResultFragment : Fragment() {/*MainActivity.OnBackPressedListener*/
 
     override fun onCreateView(
