@@ -98,3 +98,8 @@ object FilterObject{
     var glineResult = 105
     var blineResult = 105
 }
+object PlayerResults{
+    var scoreHistory = mutableListOf<Int>(
+        0, 0, 0
+    )
+}

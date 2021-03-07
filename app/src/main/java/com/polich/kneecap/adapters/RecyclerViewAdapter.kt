@@ -1,11 +1,13 @@
 package com.polich.kneecap.adapters
 
 import android.graphics.Color
+import android.media.Image
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
@@ -13,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.card.MaterialCardView
 import com.polich.kneecap.data.LevelDif.levelSection
 import com.polich.kneecap.R
+import com.polich.kneecap.data.PlayerResults.scoreHistory
 import com.polich.kneecap.fragment.LevelSelectionFragment.Companion.yearsPlants
 import com.polich.kneecap.fragment.completedLevels
 
@@ -38,30 +41,40 @@ class MyRecyclerViewAdapter(var fragment: Fragment, data: ArrayList<String>) :
 
     inner class DataViewHolder internal constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var card: MaterialCardView = itemView.findViewById(R.id.item_level)
+        var liner : LinearLayout = itemView.findViewById(R.id.backImage)
         var title: TextView = itemView.findViewById(R.id.info_text)
-        var imageCard: ImageView = itemView.findViewById(R.id.cardImage)
+        var star1 = itemView.findViewById<ImageView>(R.id.one_star)
+        var star2 = itemView.findViewById<ImageView>(R.id.two_star)
+        var star3 = itemView.findViewById<ImageView>(R.id.three_star)
 
         fun onBing(data: String, position: Int) {
-            title.text = "Уровень ${data}"
 
+            star1.setColorFilter(Color.argb(255, 105, 105, 105))
+            star2.setColorFilter(Color.argb(255, 105, 105, 105))
+            star3.setColorFilter(Color.argb(255, 105, 105, 105))
+
+            title.text = "Уровень ${data}"
+            if (position==0){
+                if (scoreHistory[0]>500){fillstars(star1)}
+            }
             if (position in arrayOf(1, 2)) {
                 card.isEnabled = false
-                imageCard.setBackgroundColor(Color.rgb(181, 181, 181))
+                liner.setBackgroundColor(Color.rgb(181, 181, 181))
             }
             if (completedLevels==1) {
                 if (position==1){
                     card.isEnabled = true
-                    imageCard.setBackgroundColor(Color.rgb(147, 223, 178))
+                    liner.setBackgroundColor(Color.rgb(147, 223, 178))
                 }
             }
             if (completedLevels>1){
                 if (position==1){
                     card.isEnabled = true
-                    imageCard.setBackgroundColor(Color.rgb(147, 223, 178))
+                    liner.setBackgroundColor(Color.rgb(147, 223, 178))
                 }
                 if (position==2){
                     card.isEnabled = true
-                    imageCard.setBackgroundColor(Color.rgb(147, 223, 178))
+                    liner.setBackgroundColor(Color.rgb(147, 223, 178))
                 }
             }
 //            if (position in arrayOf(2)){
@@ -98,5 +111,5 @@ class MyRecyclerViewAdapter(var fragment: Fragment, data: ArrayList<String>) :
     fun getItem(id: Int): String {
         return mData[id]
     }
-
+    fun fillstars()
 }

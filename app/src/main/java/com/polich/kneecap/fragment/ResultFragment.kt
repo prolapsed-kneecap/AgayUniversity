@@ -17,6 +17,7 @@ import com.polich.kneecap.data.FilterObject.blineResult
 import com.polich.kneecap.data.FilterObject.glineResult
 import com.polich.kneecap.data.FilterObject.rlineResult
 import com.polich.kneecap.data.Plants
+import com.polich.kneecap.data.PlayerResults.scoreHistory
 import com.polich.kneecap.data.TemporaryObject.playerScore
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.delay
@@ -44,6 +45,21 @@ class ResultFragment : Fragment() {/*MainActivity.OnBackPressedListener*/
         //val callback = requireActivity().onBackPressedDispatcher.addCallback(this)
 
         go_to_selectLevel.setOnClickListener {
+            if (current_level==1){
+                if (scoreHistory[0]<playerScore){
+                    scoreHistory[0]= playerScore
+                }
+            }
+            if (current_level==2){
+                if (scoreHistory[1]<playerScore){
+                    scoreHistory[1]= playerScore
+                }
+            }
+            if (current_level==3){
+                if (scoreHistory[2]<playerScore){
+                    scoreHistory[2]= playerScore
+                }
+            }
             completedLevels++
             view.findNavController().navigate(R.id.action_resultFragment_to_levelSelectionFragment)
         }
