@@ -77,7 +77,7 @@ class EventFragment : Fragment() {
                 val radButton : RadioButton = view.findViewById(checkID)
                 Log.e("idCheck in RadioGroup", checkID.toString())
 
-             /*   if (checkID == 2131231169){
+                /*if (checkID == R.id.two__answer){
                     playerScore = current_event.DealDamage(playerScore, current_event.importance)
                     Toast.makeText(requireContext(), "Верно!", LENGTH_SHORT).show()
                 } else {
@@ -113,7 +113,7 @@ class EventFragment : Fragment() {
                 val checkRadio: RadioButton = view.findViewById(id)
                 //Toast.makeText(requireContext(), checkRadio.text, LENGTH_SHORT).show()
             }
-            if (id == 2131231169){
+            if (id == R.id.two__answer){
                 playerScore = current_event.DealDamage(playerScore, current_event.importance)
                 Toast.makeText(requireContext(), "Верно!", LENGTH_SHORT).show()
                 //Log.e("Score", )

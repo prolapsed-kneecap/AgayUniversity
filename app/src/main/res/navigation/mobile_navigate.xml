@@ -13,8 +13,7 @@
         <action
             android:id="@+id/action_gameFragment_to_resultFragment"
             app:destination="@id/resultFragment"
-            app:popUpToInclusive="false"
-            app:popUpTo="@layout/fragment_level_selection"/>
+            app:popUpTo="@id/levelSelectionFragment" />
         <action
             android:id="@+id/action_gameFragment_to_eventFragment"
             app:destination="@id/eventFragment" />

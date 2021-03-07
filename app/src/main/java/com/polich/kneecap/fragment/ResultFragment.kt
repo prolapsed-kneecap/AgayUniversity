@@ -12,9 +12,11 @@ import android.widget.TextView
 import android.widget.Toast
 import android.widget.Toast.LENGTH_SHORT
 import androidx.fragment.app.Fragment
+import androidx.navigation.NavOptions
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.navOptions
 import com.google.android.material.button.MaterialButton
 import com.polich.kneecap.R
 import com.polich.kneecap.data.FilterObject.blineResult
@@ -31,18 +33,9 @@ import kotlinx.coroutines.launch
 var completedLevels = 0
 class ResultFragment : Fragment() {/*MainActivity.OnBackPressedListener*/
 
-   /* override fun onResume() {
+    /*override fun onResume() {
         super.onResume()
 
-        activity?.window?.addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
-        val flags =
-            View.SYSTEM_UI_FLAG_LOW_PROFILE or
-                   // View.SYSTEM_UI_FLAG_FULLSCREEN //or
-                    View.SYSTEM_UI_FLAG_LAYOUT_STABLE or
-                    View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY// or
-                    //View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION //or
-                    //View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-        activity?.window?.decorView?.systemUiVisibility = flags
         nextScreen()
     }*/
 
@@ -125,11 +118,14 @@ class ResultFragment : Fragment() {/*MainActivity.OnBackPressedListener*/
 //    }
     private fun nextScreen() {
 
-            val deleteThisFragmentFromBackStack =
-                findNavController().popBackStack(R.id.levelSelectionFragment, true)
+        val builder : NavOptions.Builder = NavOptions.Builder()
+        //var navOptions = builder.setPopUpTo(R.id.action_resultFragment_to_levelSelectionFragment)
 
-            if (deleteThisFragmentFromBackStack.not()) {
-                findNavController().navigate(R.id.gameFragment)
-            }
+        val deleteThisFragmentFromBackStack =
+            findNavController().popBackStack(R.id.gameFragment, true)
+
+        if (deleteThisFragmentFromBackStack.not()) {
+            findNavController().navigate(R.id.action_gameFragment_to_resultFragment, null, )
+        }
     }
 }
