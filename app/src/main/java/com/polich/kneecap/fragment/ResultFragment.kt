@@ -6,11 +6,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.google.android.material.button.MaterialButton
 import com.polich.kneecap.R
 import com.polich.kneecap.data.FilterObject.blineResult
@@ -18,12 +20,28 @@ import com.polich.kneecap.data.FilterObject.glineResult
 import com.polich.kneecap.data.FilterObject.rlineResult
 import com.polich.kneecap.data.Plants
 import com.polich.kneecap.data.TemporaryObject.playerScore
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-
+var completedLevels = 0
 class ResultFragment : Fragment() {/*MainActivity.OnBackPressedListener*/
+
+   /* override fun onResume() {
+        super.onResume()
+
+        activity?.window?.addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
+        val flags =
+            View.SYSTEM_UI_FLAG_LOW_PROFILE or
+                   // View.SYSTEM_UI_FLAG_FULLSCREEN //or
+                    View.SYSTEM_UI_FLAG_LAYOUT_STABLE or
+                    View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY// or
+                    //View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION //or
+                    //View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+        activity?.window?.decorView?.systemUiVisibility = flags
+        nextScreen()
+    }*/
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -81,4 +99,13 @@ class ResultFragment : Fragment() {/*MainActivity.OnBackPressedListener*/
 //        val controller = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment)
 //        if (currentFragment is OnBackPressedListener) (currentFragment as OnBackPressedListener).onBackPressed() else if (!controller.popBackStack()) requireActivity().moveTaskToBack(false)
 //    }
+    private fun nextScreen() {
+
+            val deleteThisFragmentFromBackStack =
+                findNavController().popBackStack(R.id.levelSelectionFragment, true)
+
+            if (deleteThisFragmentFromBackStack.not()) {
+                findNavController().navigate(R.id.gameFragment)
+            }
+    }
 }

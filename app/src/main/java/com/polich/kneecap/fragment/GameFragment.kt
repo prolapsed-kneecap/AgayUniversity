@@ -59,7 +59,7 @@ class GameFragment : Fragment() {
         }
 
     val PLANS_COUNT_FOR_FINISH = LevelSelectionFragment.yearsPlants
-    lateinit var leveeel: String
+    var leveeel: String = ""
 
     val plantMaster = PlantMaster()
     val instrumentMaster = InstrumentMaster()
