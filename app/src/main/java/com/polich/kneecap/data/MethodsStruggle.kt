@@ -6,7 +6,7 @@ import com.polich.kneecap.data.BedNatural.bedNaturalList
 
 open class MethodsStruggle(val methodName: String, var opponent: MutableList<AllCataclysm>)
 
-object MethodsAll { //Агротехнические меры борьбы
+object MethodsAll { //Агротехнические и химические меры борьбы
     val allMethods : MutableList<MethodsStruggle> = mutableListOf(
         MethodsStruggle("Соблюдение севооборота", mutableListOf(bedBugsList[0], bedBugsList[7])),
         MethodsStruggle("Оптимальные сроки посева зерновых культур", mutableListOf(bedBugsList[1], bedBugsList[7])),

@@ -111,18 +111,15 @@ class EventFragment : Fragment() {
             val id: Int = radioGroup.checkedRadioButtonId
             if (id != -1){
                 val checkRadio: RadioButton = view.findViewById(id)
-                //Toast.makeText(requireContext(), checkRadio.text, LENGTH_SHORT).show()
             }
             if (id == R.id.two__answer){
                 playerScore = current_event.DealDamage(playerScore, current_event.importance)
                 Toast.makeText(requireContext(), "Верно!", LENGTH_SHORT).show()
-                //Log.e("Score", )
             } else {
                 playerScore = current_event.GivePlayerScore(playerScore, current_event.importance)
                 Toast.makeText(requireContext(), "Неверно!", LENGTH_SHORT).show()
             }
             playerScore = current_event.GivePlayerScore(playerScore, current_event.importance)
-            //else{current_event.DealDamage(playerScore, current_event.importance)}
             val bundle = Bundle()
             bundle.putString("level",requireArguments().getString("level"))
             view?.findNavController()?.navigate(R.id.action_eventFragment_to_gameFragment, bundle)
@@ -131,7 +128,7 @@ class EventFragment : Fragment() {
         return view
     }
     fun getRandomEvent(randIndex:Int, level:String?): Event {
-        var current_level = current_level_left
+        val current_level = current_level_left
         if (current_level_left.size<=0){current_level.add(mediumLevelEvent[randIndex])}
         return current_level[randIndex]
     }
@@ -146,23 +143,4 @@ class EventFragment : Fragment() {
         }
         return current_level
     }
-
-    /*fun randomAnswer(nowEventName: String): MutableList<Any> {
-        val allListAnswer = answerPositiveMap
-        val randInt = (0 until allListAnswer.size).random()
-
-        fun randomAnswerGet(nowEventName: String){
-            val list = setOf<MethodsAll>()
-            list.plus(allMethods.random().methodName)
-            list.plus(allMethods.random().methodName)
-            list.plus(allMethods.random().methodName)
-            //list.plus()
-            for (i in 0 until answerPositiveMap.size){
-                if (nowEventName == answerPositiveMap[i].)
-            }
-            return
-        }
-        //Log.e("data", )
-        return list
-    }*/
 }

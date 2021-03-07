@@ -30,7 +30,6 @@ class LevelSelectionFragment : Fragment() {
         val adapter = MyRecyclerViewAdapter(this, level)
         recycler.adapter = adapter
 
-
         return view
     }
     companion object{

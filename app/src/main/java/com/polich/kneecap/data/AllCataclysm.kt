@@ -7,7 +7,7 @@ import com.polich.kneecap.data.Plants.cultures
 
 open class AllCataclysm(
     val cataclysmName : String,
-    val cataclysmVictim : MutableList<Culture> //пострадавшее от катаклизма растение
+    val cataclysmVictim : MutableList<Culture> //пострадавшее от катаклизма растения
  )
 
 object AAAllBed{

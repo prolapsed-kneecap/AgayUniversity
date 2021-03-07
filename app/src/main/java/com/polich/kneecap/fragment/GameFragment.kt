@@ -61,12 +61,7 @@ class GameFragment : Fragment() {
     val PLANS_COUNT_FOR_FINISH = LevelSelectionFragment.yearsPlants
     var leveeel: String = "1"
 
-
     val plantMaster = PlantMaster()
-    val instrumentMaster = InstrumentMaster()
-    val eventFragment:Fragment = EventFragment()
-    internal var titleList: List<String> ?= null
-    internal var adapter: ExpandableListAdapter?= null
 
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreateView(
@@ -75,7 +70,6 @@ class GameFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_game, container, false)
         val progressBar: ProgressBar = view.findViewById(R.id.progress_bar)
-        //val expandedListView: ExpandableListView = view.findViewById(R.id.listview)
 
         val sd = activity?.assets?.openFd("villageSongCut.mp3")
         val soundPool: SoundPool = buildSoundPool(100000)
@@ -165,26 +159,6 @@ class GameFragment : Fragment() {
                 myCanvasView.invalidate()
             }
         }
-        /*ButtonInstrument.setOnClickListener {
-            if (instrumentMaster.instrumentCanBeUsed){
-                val builderInstrument = AlertDialog.Builder(requireContext())
-                builderInstrument.setTitle("Выберите инструмент к растению "+cultures[checkedItem].name)
-                var checkedItemInstrument = 1
-                builderInstrument.setSingleChoiceItems(instrumentsString, checkedItemInstrument) { dialog, which ->
-                    checkedItemInstrument = which }
-                builderInstrument.setPositiveButton("OK") { dialogInstruments, which ->
-                    Toast.makeText(requireContext(), instrumentMaster.InstrumentUse(harvesters[checkedItemInstrument], cultures[checkedItem]), LENGTH_SHORT).show()
-                    instrumentMaster.instrumentCanBeUsed=false
-                }
-                builderInstrument.setNegativeButton("Отмена", null)
-                val dialogInstrument = builderInstrument.create()
-                dialogInstrument.show()
-            }
-            else{
-                Toast.makeText(requireContext(), "Инструмент уже был использован", LENGTH_SHORT).show()
-            }
-        }*/
-
 
         fun EventButtonAppear(eventFloatingActionButton: FloatingActionButton, delay: Long) {
             Handler(Looper.getMainLooper()).postDelayed({
@@ -197,7 +171,6 @@ class GameFragment : Fragment() {
                 buttonHarvest.text = "Собрать Урожай"
             }, 10000)
         }
-
 
         builderPlant.setPositiveButton("OK") { dialog, which ->
             if (isPlanted == true) {
@@ -234,8 +207,6 @@ class GameFragment : Fragment() {
                 draw(myCanvasView, buttonHarvest)
                 History.plantHistory.add(Plants.cultures[checkedItem])
                 counter++
-
-                //Toast.makeText(this, "${plantMaster.howIsGoodChoice(cultures[checkedItem], cultures[checkedItem+1])}", Toast.LENGTH_SHORT).show()
 
                 progressBar.setProgress(counter, true)
                 history.text = (counter).toString() + "/$PLANS_COUNT_FOR_FINISH"
@@ -303,23 +274,5 @@ class GameFragment : Fragment() {
         gline[1] += 0.0120f
         lline[3] += 0.0120f
         cmDataInvalidate()
-    }
-    /*fun dialogEvent(builder:AlertDialog.Builder, checkedItem1: Int){
-        var checkedItem = checkedItem1
-        builder.setTitle(Eventik.event.eventText+" Выбери инструмент!")
-        builder.setSingleChoiceItems(Eventik.instrumentsString, checkedItem) { dialog, which ->
-            checkedItem=which
-        }
-        builder.setPositiveButton("OK") { dialog, which ->
-            toRate(checkedItem)
-        }
-        builder.setNegativeButton("Отмена", null)
-        Data.counter =0
-    }*/
-    fun dialogResult() {
-        //plantMaster.howIsGoodChoice(cultures[checkedItem], cultures[checkedItem+1])
-    }
-    fun EventAppear(){
-
     }
 }

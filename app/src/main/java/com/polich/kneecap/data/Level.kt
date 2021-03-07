@@ -13,10 +13,6 @@ object LevelDif {
      val mediumLevelEvent: MutableList<Event> = mutableListOf(bugsEvent[2], naturalEvent[1], climateEvent[1], bugsEvent[4])
      val hardLevelEvent: MutableList<Event> = mutableListOf(bugsEvent[0], bugsEvent[1], climateEvent[0], bugsEvent[3], naturalEvent[2])
 
-    //val easyAnswer = mutableSetOf<MutableSet<MethodsStruggle>>(easyLevelAnswers1, easyLevelAnswers2, easyLevelAnswers3)
-    //val mediumAnswer = mutableSetOf<MutableSet<MethodsStruggle>>(mediumLevelAnswers1, mediumLevelAnswers2, mediumLevelAnswers3, mediumLevelAnswers4)
-    //val hardAnswer = mutableSetOf<MutableSet<MethodsStruggle>>(hardLevelAnswers1, hardLevelAnswers2, hardLevelAnswers3, hardLevelAnswers4, hardLevelAnswers5)
-
     val goodAnswerEasy: MutableSet<MethodsStruggle> = mutableSetOf(allMethods[18], allMethods[17], allMethods[13])
     val goodAnswerMedium: MutableSet<MethodsStruggle> = mutableSetOf(allMethods[8], allMethods[20], allMethods[16], allMethods[0])
     val goodAnswerHard: MutableSet<MethodsStruggle> = mutableSetOf(allMethods[13], allMethods[4], allMethods[18], allMethods[11], allMethods[20])
@@ -29,26 +25,6 @@ object LevelDif {
         Level("3", 6, 8, hardLevelEvent, goodAnswerHard, badAnswer),
         )
 }
-
-/*object AnswerAllLevel{
-    val easyLevelAnswers1: MutableSet<MethodsStruggle> = mutableSetOf(allMethods[11], allMethods[20], allMethods[6], allMethods[8])
-    val easyLevelAnswers2: MutableSet<MethodsStruggle> = mutableSetOf(allMethods[2], allMethods[12], allMethods[17], allMethods[10])
-    val easyLevelAnswers3: MutableSet<MethodsStruggle> = mutableSetOf(allMethods[3], allMethods[16], allMethods[0], allMethods[13])
-
-    val mediumLevelAnswers1: MutableSet<MethodsStruggle> = mutableSetOf(allMethods[8], allMethods[19], allMethods[10], allMethods[3])
-    val mediumLevelAnswers2: MutableSet<MethodsStruggle> = mutableSetOf(allMethods[14], allMethods[7], allMethods[16], allMethods[17])
-    val mediumLevelAnswers3: MutableSet<MethodsStruggle> = mutableSetOf(allMethods[19], allMethods[11], allMethods[14], allMethods[7])
-    val mediumLevelAnswers4: MutableSet<MethodsStruggle> = mutableSetOf(allMethods[6], allMethods[15], allMethods[1], allMethods[4])
-
-    val hardLevelAnswers1: MutableSet<MethodsStruggle> = mutableSetOf(allMethods[3], allMethods[17], allMethods[0], allMethods[8])
-    val hardLevelAnswers2: MutableSet<MethodsStruggle> = mutableSetOf(allMethods[1], allMethods[6], allMethods[13], allMethods[15])
-    val hardLevelAnswers3: MutableSet<MethodsStruggle> = mutableSetOf(allMethods[10], allMethods[8], allMethods[18], allMethods[19])
-    val hardLevelAnswers4: MutableSet<MethodsStruggle> = mutableSetOf(allMethods[5], allMethods[12], allMethods[7], allMethods[20])
-    val hardLevelAnswers5: MutableSet<MethodsStruggle> = mutableSetOf(allMethods[17], allMethods[6], allMethods[2], allMethods[9])
-}*/
-
-//class Level(val name: String, val amountOfEvents: Int,
-//            val years: Int, var events: MutableList<Event>, var answers:  MutableSet<MutableSet<MethodsStruggle>>)
 
 class Level(val name: String, val amountOfEvents: Int,
             val years: Int, var events: MutableList<Event>,

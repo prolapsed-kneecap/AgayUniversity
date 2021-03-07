@@ -1,37 +1,30 @@
 package com.polich.kneecap.fragment
 
 import android.graphics.Color
-import android.graphics.ColorMatrixColorFilter
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.WindowManager
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import android.widget.Toast.LENGTH_SHORT
 import androidx.fragment.app.Fragment
-import androidx.navigation.NavOptions
-import androidx.navigation.Navigation
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
-import androidx.navigation.navOptions
 import com.google.android.material.button.MaterialButton
 import com.polich.kneecap.R
 import com.polich.kneecap.data.FilterObject.blineResult
 import com.polich.kneecap.data.FilterObject.glineResult
 import com.polich.kneecap.data.FilterObject.rlineResult
-import com.polich.kneecap.data.Plants
 import com.polich.kneecap.data.PlayerResults.scoreHistory
 import com.polich.kneecap.data.TemporaryObject.playerScore
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 var completedLevels = 0
-class ResultFragment : Fragment() {/*MainActivity.OnBackPressedListener*/
+
+class ResultFragment : Fragment() {
 
     override fun onDestroy() {
         super.onDestroy()
@@ -51,7 +44,6 @@ class ResultFragment : Fragment() {/*MainActivity.OnBackPressedListener*/
                 scoreHistory[2]= playerScore
             }
         }
-//            Toast.makeText(requireContext(), scoreHistory.toString(), LENGTH_SHORT).show()
         completedLevels++
         playerScore = 0
     }
@@ -71,12 +63,28 @@ class ResultFragment : Fragment() {/*MainActivity.OnBackPressedListener*/
         star3.setColorFilter(Color.argb(255, 105, 105, 105))
 
         fillStars(star1, star2, star3, resultTextView)
-        val level = requireArguments().getString("levelNow")
 
-        //val callback = requireActivity().onBackPressedDispatcher.addCallback(this)
+        val level = requireArguments().getString("levelNow")
 
         go_to_selectLevel.setOnClickListener {
             Toast.makeText(requireContext(), "$level", LENGTH_SHORT).show()
+            if (level=="1"){
+                if (scoreHistory[0]<playerScore){
+                    scoreHistory[0]= playerScore
+                }
+            }
+            if (level=="2"){
+                if (scoreHistory[1]<playerScore){
+                    scoreHistory[1]= playerScore
+                }
+            }
+            if (level=="3"){
+                if (scoreHistory[2]<playerScore){
+                    scoreHistory[2]= playerScore
+                }
+            }
+            completedLevels++
+            playerScore = 0
             view.findNavController().navigate(R.id.action_resultFragment_to_levelSelectionFragment)
         }
 
@@ -104,25 +112,5 @@ class ResultFragment : Fragment() {/*MainActivity.OnBackPressedListener*/
         rlineResult+=7
         glineResult+=7
         blineResult-=5
-    }
-
-//    var navHostFragment: NavHostFragment = fragmentManager?.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
-    //    override fun onBackPressed() {
-//        val currentFragment: Fragment =
-//            navHostFragment.getChildFragmentManager().getFragments().get(0)
-//        val controller = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment)
-//        if (currentFragment is OnBackPressedListener) (currentFragment as OnBackPressedListener).onBackPressed() else if (!controller.popBackStack()) requireActivity().moveTaskToBack(false)
-//    }
-    private fun nextScreen() {
-
-        val builder : NavOptions.Builder = NavOptions.Builder()
-        //var navOptions = builder.setPopUpTo(R.id.action_resultFragment_to_levelSelectionFragment)
-
-        val deleteThisFragmentFromBackStack =
-            findNavController().popBackStack(R.id.gameFragment, true)
-
-        if (deleteThisFragmentFromBackStack.not()) {
-            findNavController().navigate(R.id.action_gameFragment_to_resultFragment, null, )
-        }
     }
 }

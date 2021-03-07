@@ -40,7 +40,7 @@ object Plants {
         Culture("Ячмень", "Зерновые"), //10
     )
     fun cmDataInvalidate():FloatArray{
-        var cmData: FloatArray = floatArrayOf(
+        val cmData: FloatArray = floatArrayOf(
             rline[0], rline[1], rline[2], rline[3], 0f,
             gline[0], gline[1], gline[2], gline[3], 0f,
             bline[0], bline[1], bline[2], bline[3], 0f,
@@ -49,24 +49,6 @@ object Plants {
         return cmData
     }
 }
-
-
-/*object CheckGood {
-    private val positiveMap = mutableMapOf<Culture, List<Culture>>(
-        data.cultures[0] to listOf(cultures[1], cultures[2]),
-        data.cultures[1] to listOf(cultures[0], cultures[2]),
-        data.cultures[2] to listOf(cultures[1], cultures[0])
-    )
-
-    fun c(prev : Culture, next : Culture) : Rate{
-        val isGoodNext = positiveMap[prev]?.contains(next) ?: false
-        if (isGoodNext)
-            return  Rate.GOOD
-        else
-            return  Rate.BAD
-    }
-
-}*/
 
 object History {
     var plantHistory: MutableList<Culture> = mutableListOf()
@@ -84,7 +66,6 @@ object Eventik{
         Harvesters("Культиватор"),
         Harvesters("Катки"),
     )
-    /*val event = Event("Сорняки!", solutions)*/
 }
 object TemporaryObject /*Временно существующий объект*/{
     var amountOfHappendEvents = 0

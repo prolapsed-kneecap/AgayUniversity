@@ -1,8 +1,6 @@
 package com.polich.kneecap.adapters
 
 import android.graphics.Color
-import android.media.Image
-import android.opengl.Visibility
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,14 +9,12 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.card.MaterialCardView
 import com.polich.kneecap.data.LevelDif.levelSection
 import com.polich.kneecap.R
-import com.polich.kneecap.data.PlayerResults.scoreHistory
 import com.polich.kneecap.fragment.LevelSelectionFragment.Companion.yearsPlants
 import com.polich.kneecap.fragment.completedLevels
 
@@ -35,7 +31,6 @@ class MyRecyclerViewAdapter(var fragment: Fragment, data: ArrayList<String>) :
 
     override fun onBindViewHolder(holder: DataViewHolder, position: Int) {
         holder.onBing(mData[position],position)
-        //holder.title.text = mData[position]
     }
 
     override fun getItemCount(): Int {
@@ -118,19 +113,17 @@ class MyRecyclerViewAdapter(var fragment: Fragment, data: ArrayList<String>) :
         return mData[id]
     }
     fun fillstars(star1:ImageView, star2:ImageView, star3:ImageView, score:Int){
-        if (score<499){}
+        if (score<=749){
+            star1.visibility= VISIBLE
+        }
         else
-            if (score<=749){
-                star1.visibility= VISIBLE
+            if (score<1000){
+                star1.visibility = VISIBLE
+                star2.visibility = VISIBLE
             }
             else
-                if (score<1000){
-                    star1.visibility = VISIBLE
-                    star2.visibility = VISIBLE
-                }
-                else
-                    star1.visibility = VISIBLE
-                    star2.visibility = VISIBLE
-                    star3.visibility = VISIBLE
+                star1.visibility = VISIBLE
+                star2.visibility = VISIBLE
+                star3.visibility = VISIBLE
     }
 }
