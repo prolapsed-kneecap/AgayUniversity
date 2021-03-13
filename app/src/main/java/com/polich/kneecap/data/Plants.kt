@@ -3,7 +3,7 @@ package com.polich.kneecap.data
 import com.polich.kneecap.Harvesters
 
 object Plants {
-    val plants = arrayOf("Рожь", "Овёс", "Пшеница", "Гречиха", "Просо")
+    val plants = arrayOf("Рожь", "Овёс", "Пшеница", "Гречиха", "Просо","Подсолнечник","Горох","Картофель","Кукуруза","Ячмень")
 
     var isPlanted = false
     var isCanHarvest = false

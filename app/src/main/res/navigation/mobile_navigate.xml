@@ -32,9 +32,9 @@
     </fragment>
     <fragment
         android:id="@+id/eventFragment"
-        android:name="com.polich.kneecap.fragment.EventFragment"
+        android:name="com.polich.kneecap.fragment.SevoobFragment"
         android:label="@string/event_fragment"
-        tools:layout="@layout/fragment_event" >
+        tools:layout="@layout/fragment_sevoob" >
         <action
             android:id="@+id/action_eventFragment_to_gameFragment"
             app:destination="@id/gameFragment" />
