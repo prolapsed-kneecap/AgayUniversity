@@ -44,38 +44,11 @@ class SevoobRecyclerViewAdapter(var fragment:Fragment, private val values: List<
         var helpButton:ImageView = itemView.findViewById(R.id.helpImageView)
         var currentButton = -1
         val selectedItems = ArrayList<Int>()
+        var buttonsClickedMutableList = fillButtonsClickedMutableList()
+
         fun onBing(position: Int){
             addButton.setOnClickListener {
-                if (currentButton==position){
-                    if (!addButtonClicked){
-                        var checkedItem = 1
-                        var builder = AlertDialog.Builder(fragment.requireContext())
-                        builder.setTitle("Выберите культуру")
-                            .setSingleChoiceItems(Plants.plants, checkedItem) { dialog, item ->
-                                checkedItem = item
-                            }
-                            .setPositiveButton("OK"
-                            ) { dialog, which ->
-                                addButtonClicked = true
-                                addButton.text = "-"
-                                helpButton.visibility = VISIBLE
-                                selectedCulture.text = Plants.plants[checkedItem]
-                                culturesChosen++
-                            }
-                            .setNegativeButton("Отмена") {
-                                    dialog, id ->
-                            }
-                        val dialog = builder.create()
-                        dialog.show()
-                    }
-                    else {
-                        addButtonClicked = false
-                        helpButton.visibility = INVISIBLE
-                        addButton.text = "+"
-                        selectedCulture.text = "Выберите растение"
-                    }
-                }
-                else{
+                if (!buttonsClickedMutableList[position]){
                     var checkedItem = 1
                     var builder = AlertDialog.Builder(fragment.requireContext())
                     builder.setTitle("Выберите культуру")
@@ -84,7 +57,7 @@ class SevoobRecyclerViewAdapter(var fragment:Fragment, private val values: List<
                         }
                         .setPositiveButton("OK"
                         ) { dialog, which ->
-                            addButtonClicked = true
+                            buttonsClickedMutableList[position] = true
                             addButton.text = "-"
                             helpButton.visibility = VISIBLE
                             selectedCulture.text = Plants.plants[checkedItem]
@@ -95,6 +68,12 @@ class SevoobRecyclerViewAdapter(var fragment:Fragment, private val values: List<
                         }
                     val dialog = builder.create()
                     dialog.show()
+                }
+                else {
+                    buttonsClickedMutableList[position] = false
+                    helpButton.visibility = INVISIBLE
+                    addButton.text = "+"
+                    selectedCulture.text = "Выберите растение"
                 }
                 currentButton = position
             }
@@ -115,5 +94,12 @@ class SevoobRecyclerViewAdapter(var fragment:Fragment, private val values: List<
                     .show()
             }
         }
+    }
+    fun fillButtonsClickedMutableList():MutableList<Boolean>{
+        var buttonsClickedMutableList:MutableList<Boolean> = mutableListOf()
+        for (i in values){
+            buttonsClickedMutableList.add(false)
+        }
+        return buttonsClickedMutableList
     }
 }
