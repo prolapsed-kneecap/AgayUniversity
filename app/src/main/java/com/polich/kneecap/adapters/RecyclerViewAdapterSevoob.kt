@@ -42,11 +42,40 @@ class SevoobRecyclerViewAdapter(var fragment:Fragment, private val values: List<
         var cultureNumberTextView:TextView = itemView.findViewById(R.id.cultureNumberTextView)
         var addButton: Button = itemView.findViewById(R.id.addToSevoob)
         var helpButton:ImageView = itemView.findViewById(R.id.helpImageView)
-
+        var currentButton = -1
         val selectedItems = ArrayList<Int>()
         fun onBing(position: Int){
             addButton.setOnClickListener {
-                if (!addButtonClicked){
+                if (currentButton==position){
+                    if (!addButtonClicked){
+                        var checkedItem = 1
+                        var builder = AlertDialog.Builder(fragment.requireContext())
+                        builder.setTitle("Выберите культуру")
+                            .setSingleChoiceItems(Plants.plants, checkedItem) { dialog, item ->
+                                checkedItem = item
+                            }
+                            .setPositiveButton("OK"
+                            ) { dialog, which ->
+                                addButtonClicked = true
+                                addButton.text = "-"
+                                helpButton.visibility = VISIBLE
+                                selectedCulture.text = Plants.plants[checkedItem]
+                                culturesChosen++
+                            }
+                            .setNegativeButton("Отмена") {
+                                    dialog, id ->
+                            }
+                        val dialog = builder.create()
+                        dialog.show()
+                    }
+                    else {
+                        addButtonClicked = false
+                        helpButton.visibility = INVISIBLE
+                        addButton.text = "+"
+                        selectedCulture.text = "Выберите растение"
+                    }
+                }
+                else{
                     var checkedItem = 1
                     var builder = AlertDialog.Builder(fragment.requireContext())
                     builder.setTitle("Выберите культуру")
@@ -67,12 +96,7 @@ class SevoobRecyclerViewAdapter(var fragment:Fragment, private val values: List<
                     val dialog = builder.create()
                     dialog.show()
                 }
-                else {
-                    addButtonClicked = false
-                    helpButton.visibility = INVISIBLE
-                    addButton.text = "+"
-                    selectedCulture.text = "Выберите растение"
-                }
+                currentButton = position
             }
             helpButton.setOnClickListener {
                 var webFragment = WebFragment()
