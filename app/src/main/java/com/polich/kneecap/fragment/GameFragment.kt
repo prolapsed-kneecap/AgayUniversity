@@ -134,8 +134,8 @@ class GameFragment : Fragment() {
 
         buttonPlant.setOnClickListener {
 //            soundPool.play(zvon, 1f, 1f, 1, 0, 1f)
-//            val dialog = builderPlant.create()
-//            dialog.show()
+            val dialog = builderPlant.create()
+            dialog.show()
             view?.findNavController()?.navigate(R.id.action_gameFragment_to_eventFragment)
         }
 

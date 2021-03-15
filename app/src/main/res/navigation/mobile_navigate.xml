@@ -33,7 +33,7 @@
     <fragment
         android:id="@+id/eventFragment"
         android:name="com.polich.kneecap.fragment.SevoobFragment"
-        android:label="@string/event_fragment"
+        android:label="@string/sevoob_fragment"
         tools:layout="@layout/fragment_sevoob" >
         <action
             android:id="@+id/action_eventFragment_to_gameFragment"
@@ -61,8 +61,8 @@
         android:label="@string/levels"
         tools:layout="@layout/fragment_level_selection">
         <action
-            android:id="@+id/action_levelSelectionFragment_to_gameFragment"
-            app:destination="@id/gameFragment" />
+            android:id="@+id/action_levelSelectionFragment_to_eventFragment"
+            app:destination="@id/eventFragment" />
     </fragment>
     <fragment
         android:id="@+id/fragmentCultList"

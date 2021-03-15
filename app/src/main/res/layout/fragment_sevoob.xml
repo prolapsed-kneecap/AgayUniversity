@@ -7,7 +7,7 @@
     tools:context=".fragment.ResultFragment">
 
 
-    <TextView
+    <!--<TextView
         android:id="@+id/textview_sevoob"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -15,31 +15,49 @@
         android:layout_marginLeft="132dp"
         android:layout_marginTop="16dp"
         android:scaleX="1"
-        android:text="Сделайте севооборот"
+        android:text="Задайте севооборот"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" />-->
 
-    <TextView
-        android:id="@+id/text_select_sevoob"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="124dp"
-        android:layout_marginLeft="124dp"
-        android:layout_marginTop="100dp"
-        android:text="Выберете культуру"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rekukler"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button"
-        android:layout_width="75dp"
-        android:layout_height="53dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="80dp"
-        android:text="+"
+        android:id="@+id/moveToGameFragmentButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="156dp"
+        android:layout_marginLeft="156dp"
+        android:layout_marginTop="8dp"
+        android:text="0/4"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/rekukler" />
+    <!--
+        <TextView
+            android:id="@+id/text_select_sevoob"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="124dp"
+            android:layout_marginLeft="124dp"
+            android:layout_marginTop="100dp"
+            android:text="Выберете культуру"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="75dp"
+            android:layout_height="53dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="80dp"
+            android:text="+"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />-->
 
 
 

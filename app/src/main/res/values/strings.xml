@@ -17,8 +17,8 @@
     <string name="manual_fragment">Справочник</string>
     <string name="rules">Правила</string>
     <string name="context_menu">Больше информации</string>
-    <string name="game_fragment">Игра</string>
-    <string name="event_fragment">Событие</string>
+    <string name="game_fragment">Поле</string>
+    <string name="sevoob_fragment">Задайте севооборот</string>
 
     <string name="level">Уровень</string>
     <string name="levels">Уровни</string>

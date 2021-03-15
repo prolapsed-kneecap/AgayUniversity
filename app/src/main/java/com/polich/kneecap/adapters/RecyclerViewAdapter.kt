@@ -103,7 +103,7 @@ class MyRecyclerViewAdapter(var fragment: Fragment, data: ArrayList<String>) :
                 bundle.putString("level",levelw)
                 bundle.putString("POLE", data)
                 fragment.requireActivity().findNavController(R.id.nav_host_fragment)
-                    .navigate(R.id.action_levelSelectionFragment_to_gameFragment, bundle)
+                    .navigate(R.id.action_levelSelectionFragment_to_eventFragment, bundle)
             }
         }
 

@@ -84,3 +84,6 @@ object PlayerResults{
         0, 0, 0
     )
 }
+object Sevoob{
+    var culturesChosen = 0
+}
