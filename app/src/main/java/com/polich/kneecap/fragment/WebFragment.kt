@@ -15,8 +15,8 @@ class WebFragment : Fragment() {
     ): View {
         val key = requireArguments().getString("key")
         if (key != null) {
-            url = requireArguments().getString(key, "file:///android_asset/technic.html")
+            url = requireArguments().getString(key, "file:///android_asset/posadka.html")
         }
-        return WebView(requireContext()).apply { loadUrl(this@WebFragment.url) }
+        return WebView(requireContext()).apply {loadUrl(this@WebFragment.url) }
     }
 }
