@@ -7,6 +7,7 @@ import android.view.View
 import android.view.View.INVISIBLE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
+import android.webkit.WebView
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
@@ -19,6 +20,7 @@ import com.polich.kneecap.R
 import com.polich.kneecap.data.Plants
 import com.polich.kneecap.data.Sevoob.addButtonClicked
 import com.polich.kneecap.data.Sevoob.culturesChosen
+import com.polich.kneecap.fragment.WebFragment
 
 class SevoobRecyclerViewAdapter(var fragment:Fragment, private val values: List<String>) :
     RecyclerView.Adapter<SevoobRecyclerViewAdapter.MyViewHolder>() {
@@ -73,10 +75,20 @@ class SevoobRecyclerViewAdapter(var fragment:Fragment, private val values: List<
                 }
             }
             helpButton.setOnClickListener {
-                val bundle = Bundle()
+                var webFragment = WebFragment()
+                var webView:WebView = WebView(fragment.requireContext())
+                webView.loadUrl(itemView.resources.getString(R.string.url_culture))
+                /*val bundle = Bundle()
                 bundle.putString("key", "URL_PLANTED")
                 bundle.putString("URL_PLANTED", itemView.resources.getString(R.string.url_culture))
-                itemView.findNavController().navigate(R.id.action_eventFragment_to_webFragment, bundle)
+                itemView.findNavController().navigate(R.id.action_eventFragment_to_webFragment, bundle)*/
+                var builder = AlertDialog.Builder(fragment.requireContext())
+                builder.setTitle("")
+                    .setView(webView)
+                    .setNeutralButton("OK"){
+                        dialog, which ->
+                    }
+                    .show()
             }
         }
     }
