@@ -13,6 +13,11 @@
     <string name="url_planted">file:///android_asset/posadka.html</string>
     <string name="url_test">file:///android_asset/Test.html</string>
 
+
+    <string name="url_rozh">file:///android_asset/Rozh.html</string>
+
+
+
     <string name="result_fragment">Результаты</string>
     <string name="manual_fragment">Справочник</string>
     <string name="rules">Правила</string>

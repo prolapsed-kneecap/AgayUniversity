@@ -1,5 +1,6 @@
 package com.polich.kneecap.adapters
 
+import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -46,6 +47,7 @@ class SevoobRecyclerViewAdapter(var fragment:Fragment, private val values: List<
         val selectedItems = ArrayList<Int>()
         var buttonsClickedMutableList = fillButtonsClickedMutableList()
 
+        @SuppressLint("RestrictedApi")
         fun onBing(position: Int){
             addButton.setOnClickListener {
                 if (!buttonsClickedMutableList[position]){
@@ -68,6 +70,28 @@ class SevoobRecyclerViewAdapter(var fragment:Fragment, private val values: List<
                         }
                     val dialog = builder.create()
                     dialog.show()
+// кароч вот здееесь надо сдлеать для каждого растения html  через список ссылок и вызывать через позицию я хз у меня не получаеться памаги
+var Culture_info_list = arrayListOf<Int>(R.string.url_rozh,)
+                    currentButton = position
+
+                    helpButton.setOnClickListener {
+                        var webFragment = WebFragment()
+                        var webView:WebView = WebView(fragment.requireContext())
+                        webView.loadUrl(
+                            Culture_info_list[position].toString()
+                        )
+                        /*val bundle = Bundle()
+                        bundle.putString("key", "URL_PLANTED")
+                        bundle.putString("URL_PLANTED", itemView.resources.getString(R.string.url_culture))
+                        itemView.findNavController().navigate(R.id.action_eventFragment_to_webFragment, bundle)*/
+                        var builder = AlertDialog.Builder(fragment.requireContext())
+                        builder.setTitle("")
+                            .setView(webView)
+                            .setNeutralButton("OK"){
+                                    dialog, which ->
+                            }
+                            .show()
+                    }
                 }
                 else {
                     buttonsClickedMutableList[position] = false
@@ -75,24 +99,9 @@ class SevoobRecyclerViewAdapter(var fragment:Fragment, private val values: List<
                     addButton.text = "+"
                     selectedCulture.text = "Выберите растение"
                 }
-                currentButton = position
+
             }
-            helpButton.setOnClickListener {
-                var webFragment = WebFragment()
-                var webView:WebView = WebView(fragment.requireContext())
-                webView.loadUrl(itemView.resources.getString(R.string.url_culture))
-                /*val bundle = Bundle()
-                bundle.putString("key", "URL_PLANTED")
-                bundle.putString("URL_PLANTED", itemView.resources.getString(R.string.url_culture))
-                itemView.findNavController().navigate(R.id.action_eventFragment_to_webFragment, bundle)*/
-                var builder = AlertDialog.Builder(fragment.requireContext())
-                builder.setTitle("")
-                    .setView(webView)
-                    .setNeutralButton("OK"){
-                        dialog, which ->
-                    }
-                    .show()
-            }
+
         }
     }
     fun fillButtonsClickedMutableList():MutableList<Boolean>{
