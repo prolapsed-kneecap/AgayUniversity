@@ -70,15 +70,14 @@ class SevoobRecyclerViewAdapter(var fragment:Fragment, private val values: List<
                         }
                     val dialog = builder.create()
                     dialog.show()
-// кароч вот здееесь надо сдлеать для каждого растения html  через список ссылок и вызывать через позицию я хз у меня не получаеться памаги
-var Culture_info_list = arrayListOf<Int>(R.string.url_rozh,)
+                    var Culture_info_list = arrayListOf<String>(itemView.resources.getString(R.string.url_rozh))
                     currentButton = position
 
                     helpButton.setOnClickListener {
                         var webFragment = WebFragment()
                         var webView:WebView = WebView(fragment.requireContext())
                         webView.loadUrl(
-                            Culture_info_list[position].toString()
+                            Culture_info_list[position]
                         )
                         /*val bundle = Bundle()
                         bundle.putString("key", "URL_PLANTED")
