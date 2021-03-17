@@ -15,8 +15,15 @@
 
 
     <string name="url_rozh">file:///android_asset/Rozh.html</string>
-
-
+    <string name="url_Psheno">file:///android_asset/Psheno.html</string>
+    <string name="url_proso">file:///android_asset/Proso.html</string>
+    <string name="url_gorox">file:///android_asset/gorox.html</string>
+    <string name="url_grech">file:///android_asset/Grechka.html</string>
+    <string name="url_iach">file:///android_asset/Iachmen.html</string>
+    <string name="url_kartof">file:///android_asset/Kartofiel.html</string>
+    <string name="url_kykuru">file:///android_asset/Kykyruza.html</string>
+    <string name="url_podsolnc">file:///android_asset/Podsolnc.html</string>
+    <string name="url_oves">file:///android_asset/oves.html</string>
 
     <string name="result_fragment">Результаты</string>
     <string name="manual_fragment">Справочник</string>

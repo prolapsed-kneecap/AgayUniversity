@@ -70,14 +70,26 @@ class SevoobRecyclerViewAdapter(var fragment:Fragment, private val values: List<
                         }
                     val dialog = builder.create()
                     dialog.show()
-                    var Culture_info_list = arrayListOf<String>(itemView.resources.getString(R.string.url_rozh))
+                    var Culture_info_list = arrayListOf<String>(itemView.resources.getString(R.string.url_rozh),
+                        itemView.resources.getString(R.string.url_oves),
+                        itemView.resources.getString(R.string.url_Psheno),
+                        itemView.resources.getString(R.string.url_grech),
+                        itemView.resources.getString(R.string.url_proso),
+                        itemView.resources.getString(R.string.url_podsolnc),
+                        itemView.resources.getString(R.string.url_gorox),
+                        itemView.resources.getString(R.string.url_kartof),
+                        itemView.resources.getString(R.string.url_kykuru),
+                        itemView.resources.getString(R.string.url_iach),
+                    )
+
+
                     currentButton = position
 
                     helpButton.setOnClickListener {
                         var webFragment = WebFragment()
                         var webView:WebView = WebView(fragment.requireContext())
                         webView.loadUrl(
-                            Culture_info_list[position]
+                            Culture_info_list[checkedItem]
                         )
                         /*val bundle = Bundle()
                         bundle.putString("key", "URL_PLANTED")
