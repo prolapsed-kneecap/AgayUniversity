@@ -10,29 +10,26 @@ import android.media.AudioManager
 import android.media.SoundPool
 import android.os.Build
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
-import android.view.View.GONE
-import android.view.View.VISIBLE
 import android.view.ViewGroup
+import android.webkit.WebView
 import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
+import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.polich.kneecap.*
-import com.polich.kneecap.data.*
+import com.polich.kneecap.PlantMaster
+import com.polich.kneecap.R
+import com.polich.kneecap.data.Eventik
+import com.polich.kneecap.data.History
+import com.polich.kneecap.data.Plants
 import com.polich.kneecap.data.Plants.cmDataInvalidate
 import com.polich.kneecap.data.Plants.counter
 import com.polich.kneecap.data.Plants.gline
-import com.polich.kneecap.data.Plants.initFilter
 import com.polich.kneecap.data.Plants.isCanHarvest
-import com.polich.kneecap.data.Plants.isPlanted
 import com.polich.kneecap.data.Plants.lline
-import com.polich.kneecap.data.Plants.plants
 import com.polich.kneecap.data.Plants.rline
 import com.polich.kneecap.data.TemporaryObject.amountOfHappendEvents
 import com.polich.kneecap.data.TemporaryObject.playerScore
@@ -40,7 +37,7 @@ import com.polich.kneecap.data.TemporaryObject.progressBarNeedsToBeFilled
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import kotlin.random.Random.Default.nextLong
+
 
 class GameFragment : Fragment() {
 
@@ -80,6 +77,7 @@ class GameFragment : Fragment() {
         val history: TextView = view.findViewById(R.id.history)
         val show_result: TextView = view.findViewById(R.id.show_result_check)
         val eventFloatingActionButton:FloatingActionButton = view.findViewById(R.id.eventFloatingActionButton)
+        var operationsButton:Button = view.findViewById(R.id.operationsButton)
 
         history.text = "$counter/$PLANS_COUNT_FOR_FINISH"
         if (progressBarNeedsToBeFilled){progressBar.setProgress(1000, false)}
@@ -110,8 +108,37 @@ class GameFragment : Fragment() {
         var checkedItem = 0
 
         var INTevent = 0
+        val rootView: View = inflater.inflate(R.layout.fragment_spinner, container, false)
+        operationsButton.setOnClickListener {v->
+                val alertDialog =
+                    AlertDialog.Builder(v.context)
+                val factory = LayoutInflater.from(v.context)
+                val view: View = factory.inflate(R.layout.fragment_spinner, null)
+                alertDialog.setView(view)
+                alertDialog.setNegativeButton(
+                    "Cancel"
+                ) { dialog, which -> dialog.dismiss() }
+                alertDialog.show()
+            }
+        //return rootView
 
-        eventFloatingActionButton.setOnClickListener {
+        /*operationsButton.setOnClickListener {
+            var webFragment = WebFragment()
+            var webView: WebView = WebView(this.requireContext())
+            //var spinnerFragment = SpinnerFragment()
+            var manualFragment = ManualFragment()
+           *//* webView.loadUrl(
+                spinnerFragment
+            )*//*
+            var builder = android.app.AlertDialog.Builder(this.activity)
+            builder.setTitle("")
+                .setView(manualFragment.view)
+                .setNeutralButton("OK"){
+                        dialog, which ->
+                }
+            builder.show()
+        }*/
+        /*eventFloatingActionButton.setOnClickListener {
             val bundle = Bundle()
             bundle.putString("level",requireArguments().getString("level"))
             bundle.putString("POLE", requireArguments().getString("POLE"))
@@ -126,13 +153,13 @@ class GameFragment : Fragment() {
             }
 
 
-        }
+        }*/
 
-        builderPlant.setSingleChoiceItems(plants, checkedItem) { dialog, which ->
+        /*builderPlant.setSingleChoiceItems(plants, checkedItem) { dialog, which ->
             checkedItem = which
-        }
+        }*/
 
-        buttonPlant.setOnClickListener {
+        /*buttonPlant.setOnClickListener {
 //            soundPool.play(zvon, 1f, 1f, 1, 0, 1f)
             val dialog = builderPlant.create()
             dialog.show()
@@ -215,7 +242,7 @@ class GameFragment : Fragment() {
             }
         }
         builderPlant.setNegativeButton("Отмена", null)
-
+*/
         return view
     }
 

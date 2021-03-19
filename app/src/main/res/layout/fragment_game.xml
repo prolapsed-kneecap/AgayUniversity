@@ -72,6 +72,7 @@
       app:layout_constraintTop_toBottomOf="@+id/myView" />
 
   <com.google.android.material.button.MaterialButton
+      android:visibility="gone"
       android:id="@+id/add_button"
       android:layout_width="140dp"
       android:layout_height="65dp"
@@ -83,6 +84,7 @@
       app:layout_constraintStart_toStartOf="parent" />
 
   <com.google.android.material.button.MaterialButton
+      android:visibility="gone"
       android:id="@+id/sbor_button"
       android:layout_width="140dp"
       android:layout_height="65dp"
@@ -105,6 +107,17 @@
       app:backgroundTint="#FFC400"
       app:layout_constraintBottom_toBottomOf="@+id/myView"
       app:layout_constraintEnd_toEndOf="parent" />
+
+  <Button
+      android:id="@+id/operationsButton"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="144dp"
+      android:layout_marginLeft="144dp"
+      android:layout_marginTop="72dp"
+      android:text="Операции"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/show_result_check" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -47,6 +47,10 @@
         android:name="com.polich.kneecap.fragment.WebFragment"
         android:label="@string/manual_fragment" />
     <fragment
+        android:id="@+id/spinnerFragment"
+        android:name="com.polich.kneecap.fragment.WebFragment"
+        android:label="спиннер туть" />
+    <fragment
         android:id="@+id/manualFragment"
         android:name="com.polich.kneecap.fragment.ManualFragment"
         android:label="@string/manual_fragment"
