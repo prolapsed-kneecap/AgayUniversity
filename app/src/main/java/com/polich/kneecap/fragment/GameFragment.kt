@@ -91,7 +91,7 @@ class GameFragment : Fragment() {
             progressBar.max = 1000
             while (schet_progressa_po_culturam >= schetchik_progressa ){
                 ObjectAnimator.ofInt(progressBar,"progress",currentprogress)
-                    .setDuration(4550)
+                    .setDuration(45500)
                     .start()
                 schetchik_progressa++
 
@@ -161,12 +161,13 @@ class GameFragment : Fragment() {
 
         /*buttonPlant.setOnClickListener {
 //            soundPool.play(zvon, 1f, 1f, 1, 0, 1f)
-            val dialog = builderPlant.create()
-            dialog.show()
+//            val dialog = builderPlant.create()
+//            dialog.show()
             view?.findNavController()?.navigate(R.id.action_gameFragment_to_eventFragment)
         }
 
         buttonHarvest.setOnClickListener {
+            progress()
             if (isCanHarvest) {
                 buttonHarvest.alpha = 0.5F
                 buttonHarvest.isClickable = false
@@ -238,7 +239,7 @@ class GameFragment : Fragment() {
 
                 progressBar.setProgress(counter, true)
                 history.text = (counter).toString() + "/$PLANS_COUNT_FOR_FINISH"
-                progress()
+
             }
         }
         builderPlant.setNegativeButton("Отмена", null)
