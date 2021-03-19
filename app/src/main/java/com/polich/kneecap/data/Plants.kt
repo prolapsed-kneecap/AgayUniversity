@@ -85,6 +85,7 @@ object PlayerResults{
     )
 }
 object Sevoob{
+    var currentFieldNumber = 1
     var culturesChosen = 0
     var addButtonClicked = false
 }

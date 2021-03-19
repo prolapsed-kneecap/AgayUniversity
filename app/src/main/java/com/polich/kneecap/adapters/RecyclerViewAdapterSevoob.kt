@@ -12,18 +12,21 @@ import android.webkit.WebView
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
+import android.widget.Toast.LENGTH_SHORT
 import androidx.core.content.res.TypedArrayUtils.getString
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.polich.kneecap.CultureSelectListener
 import com.polich.kneecap.R
 import com.polich.kneecap.data.Plants
 import com.polich.kneecap.data.Sevoob.addButtonClicked
 import com.polich.kneecap.data.Sevoob.culturesChosen
 import com.polich.kneecap.fragment.WebFragment
 
-class SevoobRecyclerViewAdapter(var fragment:Fragment, private val values: List<String>) :
+class SevoobRecyclerViewAdapter(var fragment:Fragment, private val values: List<String>, private val cultureSelectListener: CultureSelectListener) :
     RecyclerView.Adapter<SevoobRecyclerViewAdapter.MyViewHolder>() {
 
     override fun getItemCount() = values.size
@@ -49,7 +52,7 @@ class SevoobRecyclerViewAdapter(var fragment:Fragment, private val values: List<
 
         @SuppressLint("RestrictedApi")
         fun onBing(position: Int){
-            addButton.setOnClickListener {
+            addButton.setOnClickListener{
                 if (!buttonsClickedMutableList[position]){
                     var checkedItem = 1
                     var builder = AlertDialog.Builder(fragment.requireContext())
@@ -64,13 +67,15 @@ class SevoobRecyclerViewAdapter(var fragment:Fragment, private val values: List<
                             helpButton.visibility = VISIBLE
                             selectedCulture.text = Plants.plants[checkedItem]
                             culturesChosen++
+                            cultureSelectListener.onCultureSelected()
                         }
                         .setNegativeButton("Отмена") {
                                 dialog, id ->
                         }
                     val dialog = builder.create()
                     dialog.show()
-                    var Culture_info_list = arrayListOf<String>(itemView.resources.getString(R.string.url_rozh),
+                    var Culture_info_list = arrayListOf<String>(
+                        itemView.resources.getString(R.string.url_rozh),
                         itemView.resources.getString(R.string.url_oves),
                         itemView.resources.getString(R.string.url_Psheno),
                         itemView.resources.getString(R.string.url_grech),
@@ -105,12 +110,13 @@ class SevoobRecyclerViewAdapter(var fragment:Fragment, private val values: List<
                     }
                 }
                 else {
+                    culturesChosen-=1
+                    cultureSelectListener.onCultureSelected()
                     buttonsClickedMutableList[position] = false
                     helpButton.visibility = INVISIBLE
                     addButton.text = "+"
                     selectedCulture.text = "Выберите растение"
                 }
-
             }
 
         }
@@ -122,4 +128,7 @@ class SevoobRecyclerViewAdapter(var fragment:Fragment, private val values: List<
         }
         return buttonsClickedMutableList
     }
+    /*fun NextField(){
+
+    }*/
 }

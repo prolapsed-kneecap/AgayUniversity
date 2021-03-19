@@ -1,7 +1,5 @@
 package com.polich.kneecap.fragment
 
-import android.app.AlertDialog
-import android.app.Dialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -16,8 +14,8 @@ import androidx.recyclerview.widget.RecyclerView
 
 import com.polich.kneecap.*
 import com.polich.kneecap.adapters.SevoobRecyclerViewAdapter
-import com.polich.kneecap.data.Plants.plants
 import com.polich.kneecap.data.Sevoob.culturesChosen
+import com.polich.kneecap.data.Sevoob.currentFieldNumber
 
 
 class SevoobFragment : Fragment() {
@@ -35,17 +33,19 @@ class SevoobFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_sevoob, container, false)
 
         var recycler : RecyclerView = view.findViewById(R.id.rekukler)
-        var moveToGameFragmentButton:Button = view.findViewById(R.id.moveToGameFragmentButton)
-
+        var moveToNextField:Button = view.findViewById(R.id.moveToGameFragmentButton)
         var columns = 1
 
-        moveToGameFragmentButton.text = "$culturesChosen/${sevoob.size}"
-        moveToGameFragmentButton.setOnClickListener{
+        moveToNextField.isEnabled = false
+        moveToNextField.setOnClickListener{
             view?.findNavController()?.navigate(R.id.action_eventFragment_to_gameFragment)
         }
-
         recycler.layoutManager = GridLayoutManager(requireContext(), columns)
-        val adapter = SevoobRecyclerViewAdapter(this, sevoob)
+        val adapter = SevoobRecyclerViewAdapter(this, sevoob, object : CultureSelectListener {
+            override fun onCultureSelected() {
+                moveToNextField.isEnabled = culturesChosen == sevoob.size
+            }
+        })
         recycler.adapter = adapter
         return view
     }

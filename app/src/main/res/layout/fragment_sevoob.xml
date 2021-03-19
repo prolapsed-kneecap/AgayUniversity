@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/FieldNumberTextView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragment.ResultFragment">
@@ -23,6 +24,7 @@
         android:id="@+id/rekukler"
         android:layout_width="match_parent"
         android:layout_height="400dp"
+        android:layout_marginTop="36dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -30,12 +32,13 @@
         android:id="@+id/moveToGameFragmentButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="156dp"
-        android:layout_marginLeft="156dp"
-        android:layout_marginTop="8dp"
-        android:text="0/4"
+        android:layout_marginStart="120dp"
+        android:layout_marginLeft="120dp"
+        android:layout_marginTop="76dp"
+        android:text="Перейти к полю"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rekukler" />
+
     <!--
         <TextView
             android:id="@+id/text_select_sevoob"
@@ -58,8 +61,6 @@
             android:text="+"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />-->
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
