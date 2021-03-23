@@ -31,7 +31,7 @@ class SevoobRecyclerViewAdapter(var fragment:Fragment, private val values: List<
 
     override fun getItemCount() = values.size
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder{
         val itemView = LayoutInflater.from(parent?.context).inflate(R.layout.sevoob_item, parent, false)
         return MyViewHolder(itemView)
     }

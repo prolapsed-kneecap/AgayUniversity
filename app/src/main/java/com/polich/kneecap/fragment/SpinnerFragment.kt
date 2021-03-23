@@ -9,15 +9,21 @@ import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.RecyclerView
 import com.polich.kneecap.R
+import com.polich.kneecap.adapters.SevoobRecyclerViewAdapter
+import com.polich.kneecap.adapters.SpinnerRecyclerView
 import com.polich.kneecap.data.Plants
 
 class SpinnerFragment:Fragment(){
-    var list = listOf<String>("1","2","12")
+    var list = listOf<String>("1","2","3")
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_spinner, container,false)
-
+        var recycler : RecyclerView = view.findViewById(R.id.rekukler)
+        val adapter = SpinnerRecyclerView(this, list)
+        recycler.adapter = adapter
+/*
 
         var spinner = view.findViewById<Spinner>(R.id.simple_spinner)
         var spinnerArrayAdapter = ArrayAdapter(this.requireContext(),android.R.layout.simple_spinner_dropdown_item,Plants.plants)
@@ -34,9 +40,7 @@ class SpinnerFragment:Fragment(){
 
             }
 
-            override fun onNothingSelected(parent: AdapterView<*>?) {
-
-            }
+            override fun onNothingSelected(parent: AdapterView<*>?) {}
 
             override fun onItemClick(
                 parent: AdapterView<*>?,
@@ -47,7 +51,7 @@ class SpinnerFragment:Fragment(){
 
             }
 
-        }
+        }*/
         return view
     }
 

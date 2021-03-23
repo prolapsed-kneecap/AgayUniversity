@@ -44,12 +44,28 @@
     <string name="answ_4">Обработка иммуностимуляторами</string>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string-array name="instuments">
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
-        <item>4</item>
-        <item>5</item>
+    <string-array name="Комбайны">
+        <item>к1</item>
+        <item>к2</item>
+        <item>к3</item>
+        <item>к4</item>
+        <item>к5</item>
     </string-array>
-    
+
+    <string-array name="Сеялки">
+        <item>с1</item>
+        <item>с2</item>
+        <item>с3</item>
+        <item>с4</item>
+        <item>с5</item>
+    </string-array>
+
+    <string-array name="Борона">
+        <item>Борона 1</item>
+        <item>Борона 2</item>
+        <item>Борона 3</item>
+        <item>Борона 4</item>
+        <item>Борона 5</item>
+    </string-array>
+
 </resources>

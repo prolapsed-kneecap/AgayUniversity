@@ -29,6 +29,9 @@
         <action
             android:id="@+id/action_resultFragment_to_levelSelectionFragment"
             app:destination="@id/levelSelectionFragment" />
+        <action
+            android:id="@+id/action_resultFragment_to_spinnerFragment"
+            app:destination="@id/spinnerFragment" />
     </fragment>
     <fragment
         android:id="@+id/eventFragment"

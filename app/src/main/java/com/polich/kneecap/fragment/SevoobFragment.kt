@@ -38,7 +38,7 @@ class SevoobFragment : Fragment() {
 
         moveToNextField.isEnabled = false
         moveToNextField.setOnClickListener{
-            view?.findNavController()?.navigate(R.id.action_eventFragment_to_gameFragment)
+            view?.findNavController()?.navigate(R.id.spinnerFragment)
         }
         recycler.layoutManager = GridLayoutManager(requireContext(), columns)
         val adapter = SevoobRecyclerViewAdapter(this, sevoob, object : CultureSelectListener {
