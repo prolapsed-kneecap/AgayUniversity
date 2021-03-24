@@ -20,6 +20,9 @@
         <action
             android:id="@+id/action_gameFragment_to_fragmentCultList"
             app:destination="@id/fragmentCultList" />
+        <action
+            android:id="@+id/action_gameFragment_to_fragmentInstruments"
+            app:destination="@id/fragmentInstruments" />
     </fragment>
     <fragment
         android:id="@+id/resultFragment"
@@ -83,4 +86,9 @@
         android:name="com.polich.kneecap.fragment.RulesFragment"
         android:label="@string/rules"
         tools:layout="@layout/fragment_rules" />
+    <fragment
+        android:id="@+id/fragmentInstruments"
+        android:name="com.polich.kneecap.fragment.InstrumentsFragment"
+        android:label="спиннеры"
+        tools:layout="@layout/fragment_instruments" />
 </navigation>

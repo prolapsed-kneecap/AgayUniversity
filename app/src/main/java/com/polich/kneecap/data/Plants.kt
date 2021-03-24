@@ -89,3 +89,8 @@ object Sevoob{
     var culturesChosen = 0
     var addButtonClicked = false
 }
+object InstrumentFragment{
+    var selectedCategory = "Комбайны"
+    var selectedInstrument = "Комбайн 1"
+    var isInstrumentSelection=true
+}

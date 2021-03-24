@@ -13,7 +13,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.webkit.WebView
 import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
@@ -24,6 +23,7 @@ import com.polich.kneecap.PlantMaster
 import com.polich.kneecap.R
 import com.polich.kneecap.data.Eventik
 import com.polich.kneecap.data.History
+import com.polich.kneecap.data.InstrumentFragment.isInstrumentSelection
 import com.polich.kneecap.data.Plants
 import com.polich.kneecap.data.Plants.cmDataInvalidate
 import com.polich.kneecap.data.Plants.counter
@@ -108,17 +108,25 @@ class GameFragment : Fragment() {
         var checkedItem = 0
 
         var INTevent = 0
-        val rootView: View = inflater.inflate(R.layout.fragment_spinner, container, false)
+        val rootView: View = inflater.inflate(R.layout.fragment_instruments, container, false)
         operationsButton.setOnClickListener {v->
-                val alertDialog =
-                    AlertDialog.Builder(v.context)
-                val factory = LayoutInflater.from(v.context)
-                val view: View = factory.inflate(R.layout.fragment_spinner, null)
-                alertDialog.setView(view)
-                alertDialog.setNegativeButton(
-                    "Cancel"
-                ) { dialog, which -> dialog.dismiss() }
-                alertDialog.show()
+            view?.findNavController()?.navigate(R.id.action_gameFragment_to_fragmentInstruments)
+            isInstrumentSelection = !isInstrumentSelection
+
+            /*val alertDialog =
+                AlertDialog.Builder(v.context)
+            val factory = LayoutInflater.from(v.context)
+            val view: View = factory.inflate(R.layout.fragment_spinner, null)
+            val adapter = SpinnerRecyclerViewAdapter(this, arrayListOf("1", "2", "3"))
+            view.findViewById<RecyclerView>(R.id.spinnerRecyclerView).apply {
+                layoutManager = LinearLayoutManager(requireContext())
+                this.adapter = adapter
+            }
+            alertDialog.setView(view)
+            alertDialog.setNegativeButton(
+                "Cancel"
+            ) { dialog, which -> dialog.dismiss() }
+            alertDialog.create().show()*/
             }
         //return rootView
 

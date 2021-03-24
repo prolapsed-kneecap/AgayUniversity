@@ -4,17 +4,21 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.Spinner
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
-import com.polich.kneecap.CultureSelectListener
+import com.polich.kneecap.CategorySelectListener
+import com.polich.kneecap.InstrumentSelectListener
 import com.polich.kneecap.R
-import com.polich.kneecap.data.Plants
+import com.polich.kneecap.data.InstrumentFragment.isInstrumentSelection
+import com.polich.kneecap.data.InstrumentFragment.selectedCategory
+import com.polich.kneecap.data.InstrumentFragment.selectedInstrument
 
-class SpinnerRecyclerView(var fragment: Fragment, private val values: List<String>) :
-    RecyclerView.Adapter<SpinnerRecyclerView.NewViewHolder>() {
+class SpinnerRecyclerViewAdapter(var fragment: Fragment, private val values: List<String>,
+                                 private val categorySelectListener: CategorySelectListener,
+                                 private val instrumentSelectListener: InstrumentSelectListener) :
+    RecyclerView.Adapter<SpinnerRecyclerViewAdapter.NewViewHolder>() {
 
     override fun getItemCount() = values.size
 
@@ -23,53 +27,40 @@ class SpinnerRecyclerView(var fragment: Fragment, private val values: List<Strin
         viewType: Int
     ): NewViewHolder {
         val itemView =
-            LayoutInflater.from(parent?.context).inflate(R.layout.spinner_item, parent, false)
+            LayoutInflater.from(parent?.context).inflate(R.layout.instruments_item, parent, false)
         return NewViewHolder(itemView)
     }
 
     override fun onBindViewHolder(holder: NewViewHolder, position: Int) {
-        holder.onBing(position)
+        if (isInstrumentSelection)
+            holder.onBingInstruments(position)
+        else
+            holder.onBing(position)
     }
 
     inner class NewViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var spinner = itemView.findViewById<Spinner>(R.id.simple_spinner)
         lateinit var spinnerArrayAdapter:ArrayAdapter<Int>
         var boronaArray = arrayOf(R.array.Борона)
         var seyalkiArray = arrayOf(R.array.Сеялки)
         var combineArray = arrayOf(R.array.Комбайны)
+        var categories = arrayOf("Сеялки","Комбайны","Бороны","Бороны","Бороны","Бороны","Бороны")
+        var instruments = arrayOf("Сеялка 1", "Комбайн 1", "Борона 1", "Борона 1", "Борона 1", "Борона 1", "Борона 1")
+        var instrumentTextView = itemView.findViewById<TextView>(R.id.instrumentTextView)
+
         @SuppressLint("ResourceType")
-
         fun onBing(position: Int) {
-            when(position){
-                0->spinnerArrayAdapter = ArrayAdapter(itemView.context,android.R.layout.simple_spinner_dropdown_item, seyalkiArray)
-                1->spinnerArrayAdapter = ArrayAdapter(itemView.context,android.R.layout.simple_spinner_dropdown_item, seyalkiArray)
-                2->spinnerArrayAdapter = ArrayAdapter(itemView.context,android.R.layout.simple_spinner_dropdown_item, seyalkiArray)
+            instrumentTextView.text = categories[position]
+            instrumentTextView.setOnClickListener {
+                selectedCategory=categories[position]
+                categorySelectListener.onCategorySelected()
             }
-            spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            spinner.adapter = spinnerArrayAdapter
-            spinner.onItemClickListener = object : AdapterView.OnItemSelectedListener,
-                AdapterView.OnItemClickListener {
-                override fun onItemSelected(
-                    parent: AdapterView<*>?,
-                    view: View?,
-                    position: Int,
-                    id: Long
-                ) {
-
-                }
-
-                override fun onNothingSelected(parent: AdapterView<*>?) {}
-
-                override fun onItemClick(
-                    parent: AdapterView<*>?,
-                    view: View?,
-                    position: Int,
-                    id: Long
-                ) {
-
-                }
+        }
+        fun onBingInstruments(position: Int){
+            selectedInstrument=instruments[position]
+            instrumentTextView.setOnClickListener {
+                instrumentTextView.text = instruments[position]
+                instrumentSelectListener.onInstrumentSelected()
             }
-            spinnerArrayAdapter
         }
     }
 }

@@ -12,11 +12,12 @@ class WebFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
-        val key = requireArguments().getString("key")
+    ): View?{
+        /*val key = requireArguments().getString("key")
         if (key != null) {
             url = requireArguments().getString(key, "file:///android_asset/posadka.html")
         }
-        return WebView(requireContext()).apply {loadUrl(this@WebFragment.url) }
+        return WebView(requireContext()).apply {loadUrl(this@WebFragment.url)*/
+        return view
     }
 }
