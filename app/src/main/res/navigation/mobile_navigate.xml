@@ -21,8 +21,8 @@
             android:id="@+id/action_gameFragment_to_fragmentCultList"
             app:destination="@id/fragmentCultList" />
         <action
-            android:id="@+id/action_gameFragment_to_fragmentInstruments"
-            app:destination="@id/fragmentInstruments" />
+            android:id="@+id/action_gameFragment_to_fragmentCategories"
+            app:destination="@id/fragmentCategories" />
     </fragment>
     <fragment
         android:id="@+id/resultFragment"
@@ -32,9 +32,6 @@
         <action
             android:id="@+id/action_resultFragment_to_levelSelectionFragment"
             app:destination="@id/levelSelectionFragment" />
-        <action
-            android:id="@+id/action_resultFragment_to_spinnerFragment"
-            app:destination="@id/spinnerFragment" />
     </fragment>
     <fragment
         android:id="@+id/eventFragment"
@@ -52,10 +49,6 @@
         android:id="@+id/webFragment"
         android:name="com.polich.kneecap.fragment.WebFragment"
         android:label="@string/manual_fragment" />
-    <fragment
-        android:id="@+id/spinnerFragment"
-        android:name="com.polich.kneecap.fragment.WebFragment"
-        android:label="спиннер туть" />
     <fragment
         android:id="@+id/manualFragment"
         android:name="com.polich.kneecap.fragment.ManualFragment"
@@ -89,6 +82,15 @@
     <fragment
         android:id="@+id/fragmentInstruments"
         android:name="com.polich.kneecap.fragment.InstrumentsFragment"
-        android:label="спиннеры"
+        android:label="Инструменты"
         tools:layout="@layout/fragment_instruments" />
+    <fragment
+        android:id="@+id/fragmentCategories"
+        android:name="com.polich.kneecap.fragment.InstrumentsFragment"
+        android:label="Категории"
+        tools:layout="@layout/fragment_instruments" >
+        <action
+            android:id="@+id/action_fragmentCategories_to_fragmentInstruments"
+            app:destination="@id/fragmentInstruments" />
+    </fragment>
 </navigation>

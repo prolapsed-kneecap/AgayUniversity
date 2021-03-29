@@ -92,5 +92,5 @@ object Sevoob{
 object InstrumentFragment{
     var selectedCategory = "Комбайны"
     var selectedInstrument = "Комбайн 1"
-    var isInstrumentSelection=true
+    var isInstrumentSelection=false
 }

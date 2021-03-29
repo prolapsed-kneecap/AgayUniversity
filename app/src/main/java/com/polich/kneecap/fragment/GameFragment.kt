@@ -110,8 +110,7 @@ class GameFragment : Fragment() {
         var INTevent = 0
         val rootView: View = inflater.inflate(R.layout.fragment_instruments, container, false)
         operationsButton.setOnClickListener {v->
-            view?.findNavController()?.navigate(R.id.action_gameFragment_to_fragmentInstruments)
-            isInstrumentSelection = !isInstrumentSelection
+            view?.findNavController()?.navigate(R.id.action_gameFragment_to_fragmentCategories)
 
             /*val alertDialog =
                 AlertDialog.Builder(v.context)

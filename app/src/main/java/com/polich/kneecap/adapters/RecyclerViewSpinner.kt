@@ -26,8 +26,11 @@ class SpinnerRecyclerViewAdapter(var fragment: Fragment, private val values: Lis
         parent: ViewGroup,
         viewType: Int
     ): NewViewHolder {
-        val itemView =
-            LayoutInflater.from(parent?.context).inflate(R.layout.instruments_item, parent, false)
+        var itemView = LayoutInflater.from(parent?.context).inflate(R.layout.instruments_item, parent, false)
+        if (isInstrumentSelection)
+            itemView = LayoutInflater.from(parent?.context).inflate(R.layout.instruments_item,parent,false)
+        else
+            itemView = LayoutInflater.from(parent?.context).inflate(R.layout.category_item,parent,false)
         return NewViewHolder(itemView)
     }
 
@@ -35,7 +38,7 @@ class SpinnerRecyclerViewAdapter(var fragment: Fragment, private val values: Lis
         if (isInstrumentSelection)
             holder.onBingInstruments(position)
         else
-            holder.onBing(position)
+            holder.onBingCategory(position)
     }
 
     inner class NewViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -45,20 +48,19 @@ class SpinnerRecyclerViewAdapter(var fragment: Fragment, private val values: Lis
         var combineArray = arrayOf(R.array.Комбайны)
         var categories = arrayOf("Сеялки","Комбайны","Бороны","Бороны","Бороны","Бороны","Бороны")
         var instruments = arrayOf("Сеялка 1", "Комбайн 1", "Борона 1", "Борона 1", "Борона 1", "Борона 1", "Борона 1")
-        var instrumentTextView = itemView.findViewById<TextView>(R.id.instrumentTextView)
+        var instrumentTextView = itemView.findViewById<TextView>(R.id.instrumentsTextView)
+        var categoriesTextView = itemView.findViewById<TextView>(R.id.categoriesTextView)
 
         @SuppressLint("ResourceType")
-        fun onBing(position: Int) {
-            instrumentTextView.text = categories[position]
-            instrumentTextView.setOnClickListener {
-                selectedCategory=categories[position]
-                categorySelectListener.onCategorySelected()
+        fun onBingCategory(position: Int) {
+            //instrumentTextView.text = categories[position]
+            categoriesTextView.setOnClickListener {
+                onBingInstruments(position)
             }
         }
         fun onBingInstruments(position: Int){
-            selectedInstrument=instruments[position]
+            //selectedInstrument=instruments[position]
             instrumentTextView.setOnClickListener {
-                instrumentTextView.text = instruments[position]
                 instrumentSelectListener.onInstrumentSelected()
             }
         }
