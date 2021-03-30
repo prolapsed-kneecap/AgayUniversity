@@ -26,7 +26,7 @@ class SpinnerRecyclerViewAdapter(var fragment: Fragment, private val values: Lis
         parent: ViewGroup,
         viewType: Int
     ): NewViewHolder {
-        var itemView = LayoutInflater.from(parent?.context).inflate(R.layout.instruments_item, parent, false)
+        lateinit var itemView:View
         if (isInstrumentSelection)
             itemView = LayoutInflater.from(parent?.context).inflate(R.layout.instruments_item,parent,false)
         else
@@ -43,24 +43,36 @@ class SpinnerRecyclerViewAdapter(var fragment: Fragment, private val values: Lis
 
     inner class NewViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         lateinit var spinnerArrayAdapter:ArrayAdapter<Int>
-        var boronaArray = arrayOf(R.array.Борона)
+       /* var boronaArray = arrayOf(R.array.Борона)
         var seyalkiArray = arrayOf(R.array.Сеялки)
-        var combineArray = arrayOf(R.array.Комбайны)
+        var combineArray = arrayOf(R.array.Комбайны)*/
+        var boroni = arrayOf("Бороны", "", "", "", "", "", "", "", "")
+        var seyalki = arrayOf("Сеялки", "", "", "", "", "", "", "", "")
+        var combines = arrayOf("Комбайны", "", "", "", "", "", "", "", "")
+
         var categories = arrayOf("Сеялки","Комбайны","Бороны","Бороны","Бороны","Бороны","Бороны")
-        var instruments = arrayOf("Сеялка 1", "Комбайн 1", "Борона 1", "Борона 1", "Борона 1", "Борона 1", "Борона 1")
         var instrumentTextView = itemView.findViewById<TextView>(R.id.instrumentsTextView)
         var categoriesTextView = itemView.findViewById<TextView>(R.id.categoriesTextView)
 
         @SuppressLint("ResourceType")
         fun onBingCategory(position: Int) {
-            //instrumentTextView.text = categories[position]
+            categoriesTextView.text = categories[position]
             categoriesTextView.setOnClickListener {
-                onBingInstruments(position)
+                selectedCategory = categories[position]
+                isInstrumentSelection=true
+                categorySelectListener.onCategorySelected()
             }
         }
         fun onBingInstruments(position: Int){
-            //selectedInstrument=instruments[position]
+            if (selectedCategory=="Сеялки")
+                instrumentTextView.text = seyalki[position]
+            else if (selectedCategory=="Бороны")
+                instrumentTextView.text = boroni[position]
+            else if (selectedCategory=="Комбайны")
+                instrumentTextView.text = combines[position]
+            
             instrumentTextView.setOnClickListener {
+                isInstrumentSelection=false
                 instrumentSelectListener.onInstrumentSelected()
             }
         }

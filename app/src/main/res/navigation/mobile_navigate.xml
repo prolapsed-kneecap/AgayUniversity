@@ -17,9 +17,9 @@
         <action
             android:id="@+id/action_gameFragment_to_eventFragment"
             app:destination="@id/eventFragment" />
-        <action
+        <!--<action
             android:id="@+id/action_gameFragment_to_fragmentCultList"
-            app:destination="@id/fragmentCultList" />
+            app:destination="@id/fragmentCultList" />-->
         <action
             android:id="@+id/action_gameFragment_to_fragmentCategories"
             app:destination="@id/fragmentCategories" />
@@ -70,10 +70,10 @@
             android:id="@+id/action_levelSelectionFragment_to_eventFragment"
             app:destination="@id/eventFragment" />
     </fragment>
-    <fragment
+    <!--<fragment
         android:id="@+id/fragmentCultList"
         android:name="com.polich.kneecap.fragment.LevelSelectionFragment"
-        tools:layout="@layout/fragment_culture_list"/>
+        tools:layout="@layout/fragment_culture_list"/>-->
     <fragment
         android:id="@+id/rulesFragment"
         android:name="com.polich.kneecap.fragment.RulesFragment"

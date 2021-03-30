@@ -25,7 +25,7 @@ class InstrumentsFragment : Fragment() {
         val recycler = view.findViewById<RecyclerView>(R.id.spinnerRecyclerView)
         recycler.adapter = SpinnerRecyclerViewAdapter(this, arrayListOf("1","2","3","4","5","6","7"), object:CategorySelectListener {
             override fun onCategorySelected() {
-                view?.findNavController()?.navigate(R.id.action_fragmentCategories_to_fragmentInstruments)
+                view?.findNavController()?.navigate(R.id.fragmentInstruments)
             }
         }, object :InstrumentSelectListener{
             override fun onInstrumentSelected() {
