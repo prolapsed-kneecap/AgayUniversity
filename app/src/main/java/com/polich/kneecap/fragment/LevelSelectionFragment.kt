@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.polich.kneecap.MainActivity
 import com.polich.kneecap.data.LevelDif.levelSection
 import com.polich.kneecap.adapters.MyRecyclerViewAdapter
 import com.polich.kneecap.R
@@ -17,7 +18,7 @@ class LevelSelectionFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
+        (requireActivity() as MainActivity).setAppBarTitle("Уровни")
         var yearsPlants_curent = yearsPlants
         val level = arrayListOf(levelSection[0].name, levelSection[1].name, levelSection[2].name)
 

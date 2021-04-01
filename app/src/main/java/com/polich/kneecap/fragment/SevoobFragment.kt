@@ -36,6 +36,8 @@ class SevoobFragment : Fragment() {
         var moveToNextField:Button = view.findViewById(R.id.moveToGameFragmentButton)
         var columns = 1
 
+        (requireActivity() as MainActivity).setAppBarTitle("Севооборот")
+
         moveToNextField.isEnabled = false
         moveToNextField.setOnClickListener{
             view?.findNavController()?.navigate(R.id.gameFragment)

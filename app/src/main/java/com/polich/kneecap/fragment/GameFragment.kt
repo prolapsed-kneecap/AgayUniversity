@@ -18,7 +18,9 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.polich.kneecap.MainActivity
 import com.polich.kneecap.PlantMaster
 import com.polich.kneecap.R
 import com.polich.kneecap.data.Eventik
@@ -78,7 +80,7 @@ class GameFragment : Fragment() {
         val show_result: TextView = view.findViewById(R.id.show_result_check)
         val eventFloatingActionButton:FloatingActionButton = view.findViewById(R.id.eventFloatingActionButton)
         var operationsButton:Button = view.findViewById(R.id.operationsButton)
-
+        (requireActivity() as MainActivity).setAppBarTitle("Поле")
         history.text = "$counter/$PLANS_COUNT_FOR_FINISH"
         if (progressBarNeedsToBeFilled){progressBar.setProgress(1000, false)}
 
@@ -111,7 +113,7 @@ class GameFragment : Fragment() {
         val rootView: View = inflater.inflate(R.layout.fragment_instruments, container, false)
         operationsButton.setOnClickListener {v->
             view?.findNavController()?.navigate(R.id.action_gameFragment_to_fragmentCategories)
-
+            (requireActivity() as MainActivity).setAppBarTitle("Категории")
             /*val alertDialog =
                 AlertDialog.Builder(v.context)
             val factory = LayoutInflater.from(v.context)
@@ -311,4 +313,8 @@ class GameFragment : Fragment() {
         lline[3] += 0.0120f
         cmDataInvalidate()
     }
+//    fun deleteFromBackStack(){
+//        findNavController().popBackStack(R.id.levelSelectionFragment, true)
+//        findNavController().popBackStack(R.id.eventFragment, true)
+//    }
 }

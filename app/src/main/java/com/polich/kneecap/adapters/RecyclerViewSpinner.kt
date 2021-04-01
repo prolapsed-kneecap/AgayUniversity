@@ -1,3 +1,5 @@
+
+
 package com.polich.kneecap.adapters
 
 import android.annotation.SuppressLint
@@ -46,12 +48,13 @@ class SpinnerRecyclerViewAdapter(var fragment: Fragment, private val values: Lis
        /* var boronaArray = arrayOf(R.array.Борона)
         var seyalkiArray = arrayOf(R.array.Сеялки)
         var combineArray = arrayOf(R.array.Комбайны)*/
-        var boroni = arrayOf("Бороны", "", "", "", "", "", "", "", "")
-        var seyalki = arrayOf("Сеялки", "", "", "", "", "", "", "", "")
-        var combines = arrayOf("Комбайны", "", "", "", "", "", "", "", "")
+        var boroni = arrayOf("Бороны", "1", "2", "3", "4", "5", "6", "", "")
+        var seyalki = arrayOf("Сеялки", "1", "", "", "", "", "", "", "")
+        var combines = arrayOf("Комбайны", "1", "", "", "", "", "", "", "")
 
         var categories = arrayOf("Сеялки","Комбайны","Бороны","Бороны","Бороны","Бороны","Бороны")
         var instrumentTextView = itemView.findViewById<TextView>(R.id.instrumentsTextView)
+
         var categoriesTextView = itemView.findViewById<TextView>(R.id.categoriesTextView)
 
         @SuppressLint("ResourceType")
@@ -60,19 +63,24 @@ class SpinnerRecyclerViewAdapter(var fragment: Fragment, private val values: Lis
             categoriesTextView.setOnClickListener {
                 selectedCategory = categories[position]
                 isInstrumentSelection=true
+
                 categorySelectListener.onCategorySelected()
             }
         }
         fun onBingInstruments(position: Int){
-            if (selectedCategory=="Сеялки")
+            if (selectedCategory=="Сеялки") {
                 instrumentTextView.text = seyalki[position]
+
+            }
             else if (selectedCategory=="Бороны")
+
                 instrumentTextView.text = boroni[position]
             else if (selectedCategory=="Комбайны")
                 instrumentTextView.text = combines[position]
-            
+
             instrumentTextView.setOnClickListener {
                 isInstrumentSelection=false
+
                 instrumentSelectListener.onInstrumentSelected()
             }
         }

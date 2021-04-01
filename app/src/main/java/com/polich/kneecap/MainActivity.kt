@@ -40,6 +40,14 @@ class MainActivity : AppCompatActivity() {
         return item.onNavDestinationSelected(navController) || super.onOptionsItemSelected(item)
     }
 
+    fun setAppBarTitle(string: String){
+        title = string
+    }
+
+    fun setAppBarTitle(id: Int){
+        title = resources.getString(id)
+    }
+
     interface OnBackPressedListener {
         fun onBackPressed()
     }

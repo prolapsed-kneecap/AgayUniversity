@@ -8,7 +8,6 @@
     <fragment
         android:id="@+id/gameFragment"
         android:name="com.polich.kneecap.fragment.GameFragment"
-        android:label="@string/game_fragment"
         tools:layout="@layout/fragment_game">
         <action
             android:id="@+id/action_gameFragment_to_resultFragment"
@@ -22,12 +21,12 @@
             app:destination="@id/fragmentCultList" />-->
         <action
             android:id="@+id/action_gameFragment_to_fragmentCategories"
-            app:destination="@id/fragmentCategories" />
+            app:destination="@id/fragmentCategories"
+            app:popUpTo="@id/gameFragment" />
     </fragment>
     <fragment
         android:id="@+id/resultFragment"
         android:name="com.polich.kneecap.fragment.ResultFragment"
-        android:label="@string/result_fragment"
         tools:layout="@layout/fragment_result" >
         <action
             android:id="@+id/action_resultFragment_to_levelSelectionFragment"
@@ -36,7 +35,6 @@
     <fragment
         android:id="@+id/eventFragment"
         android:name="com.polich.kneecap.fragment.SevoobFragment"
-        android:label="@string/sevoob_fragment"
         tools:layout="@layout/fragment_sevoob" >
         <action
             android:id="@+id/action_eventFragment_to_gameFragment"
@@ -48,11 +46,10 @@
     <fragment
         android:id="@+id/webFragment"
         android:name="com.polich.kneecap.fragment.WebFragment"
-        android:label="@string/manual_fragment" />
+        />
     <fragment
         android:id="@+id/manualFragment"
         android:name="com.polich.kneecap.fragment.ManualFragment"
-        android:label="@string/manual_fragment"
         tools:layout="@layout/fragment_manual" >
         <action
             android:id="@+id/action_manualFragment_to_webFragment"
@@ -64,7 +61,6 @@
     <fragment
         android:id="@+id/levelSelectionFragment"
         android:name="com.polich.kneecap.fragment.LevelSelectionFragment"
-        android:label="@string/levels"
         tools:layout="@layout/fragment_level_selection">
         <action
             android:id="@+id/action_levelSelectionFragment_to_eventFragment"
@@ -77,17 +73,18 @@
     <fragment
         android:id="@+id/rulesFragment"
         android:name="com.polich.kneecap.fragment.RulesFragment"
-        android:label="@string/rules"
         tools:layout="@layout/fragment_rules" />
     <fragment
         android:id="@+id/fragmentInstruments"
         android:name="com.polich.kneecap.fragment.InstrumentsFragment"
-        android:label="Инструменты"
-        tools:layout="@layout/fragment_instruments" />
+        tools:layout="@layout/fragment_instruments" >
+        <action
+            android:id="@+id/action_fragmentInstruments_to_gameFragment2"
+            app:destination="@id/gameFragment" />
+    </fragment>
     <fragment
         android:id="@+id/fragmentCategories"
         android:name="com.polich.kneecap.fragment.InstrumentsFragment"
-        android:label="Категории"
         tools:layout="@layout/fragment_instruments" >
         <action
             android:id="@+id/action_fragmentCategories_to_fragmentInstruments"
