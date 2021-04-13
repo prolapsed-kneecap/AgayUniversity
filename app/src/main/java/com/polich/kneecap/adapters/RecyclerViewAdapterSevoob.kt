@@ -47,7 +47,7 @@ class SevoobRecyclerViewAdapter(var fragment:Fragment, private val values: List<
         var addButton: Button = itemView.findViewById(R.id.addToSevoob)
         var helpButton:ImageView = itemView.findViewById(R.id.helpImageView)
         var currentButton = -1
-        val selectedItems = ArrayList<Int>()
+        var selectedItems = ArrayList<Int>()
         var buttonsClickedMutableList = fillButtonsClickedMutableList()
 
         @SuppressLint("RestrictedApi")
@@ -66,6 +66,8 @@ class SevoobRecyclerViewAdapter(var fragment:Fragment, private val values: List<
                             addButton.text = "-"
                             helpButton.visibility = VISIBLE
                             selectedCulture.text = Plants.plants[checkedItem]
+                            selectedItems.add(checkedItem)
+                            
                             culturesChosen++
                             cultureSelectListener.onCultureSelected()
                         }

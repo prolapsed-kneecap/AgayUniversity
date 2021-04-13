@@ -82,6 +82,7 @@ class GameFragment : Fragment() {
         var operationsButton:Button = view.findViewById(R.id.operationsButton)
         (requireActivity() as MainActivity).setAppBarTitle("Поле")
         history.text = "$counter/$PLANS_COUNT_FOR_FINISH"
+
         if (progressBarNeedsToBeFilled){progressBar.setProgress(1000, false)}
 
         fun progress() {

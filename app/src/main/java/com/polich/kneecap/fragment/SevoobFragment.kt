@@ -26,6 +26,7 @@ class SevoobFragment : Fragment() {
     val selectedItems = ArrayList<Int>()
     var textsev = "Выберите культуру"
     var sevoob = arrayListOf("1", "2", "3", "4")
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -41,6 +42,7 @@ class SevoobFragment : Fragment() {
         moveToNextField.isEnabled = false
         moveToNextField.setOnClickListener{
             view?.findNavController()?.navigate(R.id.gameFragment)
+
         }
         recycler.layoutManager = GridLayoutManager(requireContext(), columns)
         val adapter = SevoobRecyclerViewAdapter(this, sevoob, object : CultureSelectListener {

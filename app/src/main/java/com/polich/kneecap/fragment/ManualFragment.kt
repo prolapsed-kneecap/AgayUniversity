@@ -20,7 +20,7 @@ class ManualFragment (): Fragment() {
         val card_tech: MaterialCardView = view.findViewById(R.id.card_tech)
         val card_culture: MaterialCardView = view.findViewById(R.id.card_culture)
         val card_planted: MaterialCardView = view.findViewById(R.id.card_planted)
-        LevelDif.easyLevelEvent
+//        LevelDif.easyLevelEvent
         card_tech.setOnClickListener{
             val bundle = Bundle()
             bundle.putString("key", "URL_TECH")
