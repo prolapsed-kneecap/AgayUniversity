@@ -19,7 +19,7 @@ class InstrumentsFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_instruments, container, false)
         val recycler = view.findViewById<RecyclerView>(R.id.spinnerRecyclerView)
 
-        recycler.adapter = SpinnerRecyclerViewAdapter(this, arrayListOf("1","2","3","4","5","6","7"), object:CategorySelectListener {
+        recycler.adapter = SpinnerRecyclerViewAdapter(this, arrayListOf("1"), object:CategorySelectListener {
             override fun onCategorySelected() {
                 view?.findNavController()?.navigate(R.id.fragmentInstruments)
                 (requireActivity() as MainActivity).setAppBarTitle("Инструменты")

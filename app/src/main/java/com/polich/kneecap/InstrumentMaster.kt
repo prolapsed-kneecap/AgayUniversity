@@ -32,3 +32,23 @@
 //
 //    Harvesters("Катки"),
 //)
+abstract class Instrument(var isUSed:Boolean, var name:String): RecycleItem
+
+class Seeder(isUSed: Boolean, name:String):Instrument(isUSed, name){
+    override var typeItem: TypeItem = TypeItem.SEEDER
+}
+class Combine(isUSed: Boolean, name:String):Instrument(isUSed, name) {
+    override var typeItem: TypeItem = TypeItem.COMBINE
+}
+
+
+interface RecycleItem {
+    val typeItem : TypeItem
+}
+
+enum class TypeItem(val id : Int) {
+    SEEDER(0),
+    COMBINE(1);
+
+
+}

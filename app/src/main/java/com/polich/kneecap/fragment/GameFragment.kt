@@ -18,14 +18,11 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.polich.kneecap.MainActivity
 import com.polich.kneecap.PlantMaster
 import com.polich.kneecap.R
-import com.polich.kneecap.data.Eventik
 import com.polich.kneecap.data.History
-import com.polich.kneecap.data.InstrumentFragment.isInstrumentSelection
 import com.polich.kneecap.data.Plants
 import com.polich.kneecap.data.Plants.cmDataInvalidate
 import com.polich.kneecap.data.Plants.counter
@@ -74,24 +71,19 @@ class GameFragment : Fragment() {
         val soundPool: SoundPool = buildSoundPool(100000)
         val zvon = soundPool.load(sd, 1)
 
-        val buttonPlant: Button = view.findViewById(R.id.add_button)
-        val buttonHarvest: Button = view.findViewById(R.id.sbor_button)
         val history: TextView = view.findViewById(R.id.history)
         val show_result: TextView = view.findViewById(R.id.show_result_check)
-        val eventFloatingActionButton:FloatingActionButton = view.findViewById(R.id.eventFloatingActionButton)
-        var operationsButton:Button = view.findViewById(R.id.operationsButton)
+        var operationsButton:FloatingActionButton = view.findViewById(R.id.operationsButton)
         (requireActivity() as MainActivity).setAppBarTitle("Поле")
         history.text = "$counter/$PLANS_COUNT_FOR_FINISH"
 
         if (progressBarNeedsToBeFilled){progressBar.setProgress(1000, false)}
 
         fun progress() {
-            val get_progressBar = progressBar.getProgress()
+            progressBar.max = 1000
             var schet_progressa_po_culturam = Plants.counter
             var schetchik_progressa = 0
             val currentprogress = 1000
-
-            progressBar.max = 1000
             while (schet_progressa_po_culturam >= schetchik_progressa ){
                 ObjectAnimator.ofInt(progressBar,"progress",currentprogress)
                     .setDuration(45500)
@@ -115,145 +107,8 @@ class GameFragment : Fragment() {
         operationsButton.setOnClickListener {v->
             view?.findNavController()?.navigate(R.id.action_gameFragment_to_fragmentCategories)
             (requireActivity() as MainActivity).setAppBarTitle("Категории")
-            /*val alertDialog =
-                AlertDialog.Builder(v.context)
-            val factory = LayoutInflater.from(v.context)
-            val view: View = factory.inflate(R.layout.fragment_spinner, null)
-            val adapter = SpinnerRecyclerViewAdapter(this, arrayListOf("1", "2", "3"))
-            view.findViewById<RecyclerView>(R.id.spinnerRecyclerView).apply {
-                layoutManager = LinearLayoutManager(requireContext())
-                this.adapter = adapter
+            operationsButton.setBackgroundColor(R.drawable.ic_baseline_remove_24)
             }
-            alertDialog.setView(view)
-            alertDialog.setNegativeButton(
-                "Cancel"
-            ) { dialog, which -> dialog.dismiss() }
-            alertDialog.create().show()*/
-            }
-        //return rootView
-
-        /*operationsButton.setOnClickListener {
-            var webFragment = WebFragment()
-            var webView: WebView = WebView(this.requireContext())
-            //var spinnerFragment = SpinnerFragment()
-            var manualFragment = ManualFragment()
-           *//* webView.loadUrl(
-                spinnerFragment
-            )*//*
-            var builder = android.app.AlertDialog.Builder(this.activity)
-            builder.setTitle("")
-                .setView(manualFragment.view)
-                .setNeutralButton("OK"){
-                        dialog, which ->
-                }
-            builder.show()
-        }*/
-        /*eventFloatingActionButton.setOnClickListener {
-            val bundle = Bundle()
-            bundle.putString("level",requireArguments().getString("level"))
-            bundle.putString("POLE", requireArguments().getString("POLE"))
-
-            val level = bundle.getString("POLE")
-            if(level != null){
-                when(level){
-                    "easy" -> INTevent = LevelDif.levelSection[0].amountOfEvents
-                    "medium" -> INTevent = LevelDif.levelSection[1].amountOfEvents
-                    "hard" ->  INTevent = LevelDif.levelSection[2].amountOfEvents
-                }
-            }
-
-
-        }*/
-
-        /*builderPlant.setSingleChoiceItems(plants, checkedItem) { dialog, which ->
-            checkedItem = which
-        }*/
-
-        /*buttonPlant.setOnClickListener {
-//            soundPool.play(zvon, 1f, 1f, 1, 0, 1f)
-//            val dialog = builderPlant.create()
-//            dialog.show()
-            view?.findNavController()?.navigate(R.id.action_gameFragment_to_eventFragment)
-        }
-
-        buttonHarvest.setOnClickListener {
-            progress()
-            if (isCanHarvest) {
-                buttonHarvest.alpha = 0.5F
-                buttonHarvest.isClickable = false
-                progressBarNeedsToBeFilled = false
-                isPlanted = false
-                initFilter()
-                myCanvasView.setColorFilter(ColorMatrixColorFilter(cmDataInvalidate()))
-                myCanvasView.invalidate()
-                progressBar.setProgress(0)
-                if (counter == PLANS_COUNT_FOR_FINISH) {
-                    calculateScore().toString()
-                    restartGame()
-                }
-            }
-            else{
-                initFilter()
-                myCanvasView.setColorFilter(ColorMatrixColorFilter(cmDataInvalidate()))
-                myCanvasView.invalidate()
-            }
-        }
-
-        fun EventButtonAppear(eventFloatingActionButton: FloatingActionButton, delay: Long) {
-            Handler(Looper.getMainLooper()).postDelayed({
-                eventFloatingActionButton.visibility = VISIBLE
-            }, delay)
-            Handler(Looper.getMainLooper()).postDelayed({
-                eventFloatingActionButton.visibility = GONE
-                buttonHarvest.isEnabled = true
-                buttonHarvest.isClickable = true
-                buttonHarvest.text = "Собрать Урожай"
-            }, 10000)
-        }
-
-        builderPlant.setPositiveButton("OK") { dialog, which ->
-            if (isPlanted == true) {
-                Toast.makeText(requireContext(), "Поле уже засажено", Toast.LENGTH_SHORT).show()
-            } else {
-                progressBarNeedsToBeFilled = true
-                var delay = nextLong(2000)+2000
-                val bundle = Bundle()
-
-                bundle.putString("level",requireArguments().getString("level"))
-                bundle.putString("POLE", requireArguments().getString("POLE"))
-
-                val level = bundle.getString("POLE")
-                if(level != null){
-                    when(level){
-                        "1" -> amountOfHappendEvents = LevelDif.levelSection[0].amountOfEvents
-                        "2" -> amountOfHappendEvents = LevelDif.levelSection[1].amountOfEvents
-                        "3" ->  amountOfHappendEvents = LevelDif.levelSection[2].amountOfEvents
-                    }
-                    when(level){
-                        "1" -> leveeel = LevelDif.levelSection[0].name
-                        "2" -> leveeel = LevelDif.levelSection[1].name
-                        "3" ->  leveeel = LevelDif.levelSection[2].name
-                    }
-                }
-
-                amountOfHappendEvents-=1
-                if (amountOfHappendEvents>0){
-                    EventButtonAppear(eventFloatingActionButton, delay)
-                }
-                isPlanted = true
-                isCanHarvest = false
-                initFilter()
-                draw(myCanvasView, buttonHarvest)
-                History.plantHistory.add(Plants.cultures[checkedItem])
-                counter++
-
-                progressBar.setProgress(counter, true)
-                history.text = (counter).toString() + "/$PLANS_COUNT_FOR_FINISH"
-
-            }
-        }
-        builderPlant.setNegativeButton("Отмена", null)
-*/
         return view
     }
 
@@ -297,17 +152,6 @@ class GameFragment : Fragment() {
             playerScore += plantMaster.howIsGoodChoice(History.plantHistory[i], History.plantHistory[i + 1])
         }
     }
-
-    fun toRate(checkedItem: Int) {
-        var rate = "WRONG"
-        for (i in 0 until Eventik.solutions.size) {
-            if (Eventik.instruments[checkedItem].name == Eventik.solutions[i].name)
-                rate = "RIGHT"
-            break
-        }
-        Toast.makeText(requireContext(), rate, Toast.LENGTH_SHORT).show()
-    }
-
     fun lvlup() {
         rline[1] += 0.024f
         gline[1] += 0.0120f

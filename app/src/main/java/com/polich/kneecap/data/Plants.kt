@@ -1,6 +1,9 @@
 package com.polich.kneecap.data
 
-import com.polich.kneecap.Harvesters
+import Combine
+import Instrument
+import Seeder
+
 
 object Plants {
     val plants = arrayOf("Рожь", "Овёс", "Пшеница", "Гречиха", "Просо","Подсолнечник","Горох","Картофель","Кукуруза","Ячмень")
@@ -53,20 +56,6 @@ object Plants {
 object History {
     var plantHistory: MutableList<Culture> = mutableListOf()
 }
-
-object Eventik{
-    val solutions:Array<Harvesters> = arrayOf(
-        Harvesters("Комбайн")
-        )
-    var instruments:MutableList<Harvesters> = mutableListOf(
-        Harvesters("Плуг"),
-        Harvesters("Борона"),
-        Harvesters("Лущильник"),
-        Harvesters("Комбайн"),
-        Harvesters("Культиватор"),
-        Harvesters("Катки"),
-    )
-}
 object TemporaryObject /*Временно существующий объект*/{
     var amountOfHappendEvents = 0
     var playerScore = 0 // счёт игрока (пока будет выглядеть так)
@@ -91,6 +80,10 @@ object Sevoob{
 }
 object InstrumentFragment{
     var selectedCategory = "Комбайны"
-    var selectedInstrument = "Комбайн 1"
+    var selectedInstrument : Instrument = Seeder(false, "Сеялка")
     var isInstrumentSelection=false
+}
+object Instruments{
+    var seeder = Seeder(false, "Сеялка")
+    var combine = Combine(false, "Комбайн")
 }

@@ -2,6 +2,7 @@
 
 package com.polich.kneecap.adapters
 
+import Instrument
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
@@ -16,10 +17,14 @@ import com.polich.kneecap.R
 import com.polich.kneecap.data.InstrumentFragment.isInstrumentSelection
 import com.polich.kneecap.data.InstrumentFragment.selectedCategory
 import com.polich.kneecap.data.InstrumentFragment.selectedInstrument
+import com.polich.kneecap.data.Instruments
+import com.polich.kneecap.data.Instruments.combine
+import com.polich.kneecap.data.Instruments.seeder
 
 class SpinnerRecyclerViewAdapter(var fragment: Fragment, private val values: List<String>,
                                  private val categorySelectListener: CategorySelectListener,
-                                 private val instrumentSelectListener: InstrumentSelectListener) :
+                                 private val instrumentSelectListener: InstrumentSelectListener,
+                                private val items : List<Instrument>) :
     RecyclerView.Adapter<SpinnerRecyclerViewAdapter.NewViewHolder>() {
 
     override fun getItemCount() = values.size
@@ -28,6 +33,8 @@ class SpinnerRecyclerViewAdapter(var fragment: Fragment, private val values: Lis
         parent: ViewGroup,
         viewType: Int
     ): NewViewHolder {
+
+
         lateinit var itemView:View
         if (isInstrumentSelection)
             itemView = LayoutInflater.from(parent?.context).inflate(R.layout.instruments_item,parent,false)
@@ -37,6 +44,14 @@ class SpinnerRecyclerViewAdapter(var fragment: Fragment, private val values: Lis
     }
 
     override fun onBindViewHolder(holder: NewViewHolder, position: Int) {
+        when (items[position].typeItem){
+            TypeItem.COMBINE ->{
+
+            }
+            TypeItem.SEEDER ->{
+
+            }
+        }
         if (isInstrumentSelection)
             holder.onBingInstruments(position)
         else
@@ -48,13 +63,14 @@ class SpinnerRecyclerViewAdapter(var fragment: Fragment, private val values: Lis
        /* var boronaArray = arrayOf(R.array.Борона)
         var seyalkiArray = arrayOf(R.array.Сеялки)
         var combineArray = arrayOf(R.array.Комбайны)*/
-        var boroni = arrayOf("Бороны", "1", "2", "3", "4", "5", "6", "", "")
-        var seyalki = arrayOf("Сеялки", "1", "", "", "", "", "", "", "")
-        var combines = arrayOf("Комбайны", "1", "", "", "", "", "", "", "")
 
-        var categories = arrayOf("Сеялки","Комбайны","Бороны","Бороны","Бороны","Бороны","Бороны")
+        var seyalki = arrayOf(seeder.name)
+        var seyalki1 = arrayOf(seeder)
+        var combines = arrayOf(combine.name)
+        var combines1 = arrayOf(combine)
+
+        var categories = arrayOf("Сеялки","Комбайны")
         var instrumentTextView = itemView.findViewById<TextView>(R.id.instrumentsTextView)
-
         var categoriesTextView = itemView.findViewById<TextView>(R.id.categoriesTextView)
 
         @SuppressLint("ResourceType")
@@ -70,17 +86,17 @@ class SpinnerRecyclerViewAdapter(var fragment: Fragment, private val values: Lis
         fun onBingInstruments(position: Int){
             if (selectedCategory=="Сеялки") {
                 instrumentTextView.text = seyalki[position]
-
+                instrumentTextView.setOnClickListener {
+                    selectedInstrument = seyalki1[position]
+                    isInstrumentSelection=false
+                    instrumentSelectListener.onInstrumentSelected()
+                }
             }
-            else if (selectedCategory=="Бороны")
-
-                instrumentTextView.text = boroni[position]
             else if (selectedCategory=="Комбайны")
                 instrumentTextView.text = combines[position]
-
             instrumentTextView.setOnClickListener {
+                selectedInstrument = combines1[position]
                 isInstrumentSelection=false
-
                 instrumentSelectListener.onInstrumentSelected()
             }
         }
