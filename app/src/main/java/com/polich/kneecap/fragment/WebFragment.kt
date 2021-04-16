@@ -13,9 +13,9 @@ class WebFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View?{
-        /*val key = requireArguments().getString("key")
+/*        val key = requireArguments().getString("key")
         if (key != null) {
-            url = requireArguments().getString(key, "file:///android_asset/posadka.html")
+            url = requireArguments().getString(key, "file:///android_asset/info/posadka.html")
         }
         return WebView(requireContext()).apply {loadUrl(this@WebFragment.url)*/
         return view
